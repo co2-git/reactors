@@ -12,4 +12,4 @@ import Reactors from 'reactors';
 
 Reactors.platform = 'mobile';
 
-AppRegistry.registerComponent({app}, () => App);
+AppRegistry.registerComponent('{app}', () => App);

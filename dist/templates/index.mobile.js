@@ -20,6 +20,6 @@ _reactors2.default.platform = 'mobile'; /**
                                           * 
                                         **/
 
-_reactNative.AppRegistry.registerComponent({ app: app }, function () {
+_reactNative.AppRegistry.registerComponent('{app}', function () {
   return _App2.default;
 });
