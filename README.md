@@ -18,9 +18,9 @@ reactors init MyAwesomeApp
 # Run
 
 ```bash
-reactor run ios
-reactor run android
-reactor run web
+reactors run ios
+reactors run android
+reactors run web
 ```
 
 # Usage
@@ -30,7 +30,6 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
 } from 'reactors';
 
 export default class MyAwesomeComponent extends Component {
