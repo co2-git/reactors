@@ -25,6 +25,10 @@ var _write = require('../lib/write');
 
 var _write2 = _interopRequireDefault(_write);
 
+var _npmInstall = require('../lib/npmInstall');
+
+var _npmInstall2 = _interopRequireDefault(_npmInstall);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getLocalFile(file) {
@@ -40,9 +44,9 @@ function init(app) {
     return _path2.default.resolve(process.cwd(), app, file);
   }
 
-  return (0, _promiseSequencer2.default)(
-  // () => exec(`react-native init ${app}`),
-  function () {
+  return (0, _promiseSequencer2.default)(function () {
+    return (0, _exec2.default)('react-native init ' + app);
+  }, function () {
     return (0, _transform2.default)(getLocalFile('templates/index.mobile.js'), transformer, getAppFile('index.ios.js'));
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/index.mobile.js'), transformer, getAppFile('index.android.js'));
@@ -56,5 +60,7 @@ function init(app) {
     return (0, _transform2.default)(getLocalFile('templates/App.js'), transformer, getAppFile('app/App.js'));
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/App.js'), transformer, getAppFile('app/App.js'));
+  }, function () {
+    return (0, _npmInstall2.default)('co2-git/reactor');
   });
 }

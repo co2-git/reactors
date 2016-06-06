@@ -3,6 +3,7 @@ import sequencer from 'promise-sequencer';
 import exec from '../lib/exec';
 import transform from '../lib/transform';
 import write from '../lib/write';
+import npmInstall from '../lib/npmInstall';
 
 function getLocalFile(file) {
   return path.resolve(__dirname, '../../app', file);
