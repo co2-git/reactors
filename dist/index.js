@@ -22,6 +22,15 @@ Object.defineProperty(exports, 'Text', {
   }
 });
 
+var _StyleSheet = require('./src/StyleSheet');
+
+Object.defineProperty(exports, 'StyleSheet', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_StyleSheet).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {};
