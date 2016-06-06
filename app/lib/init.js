@@ -18,7 +18,7 @@ export default function init(app) {
   }
 
   return sequencer(
-    // () => exec(`react-native init ${app}`),
+    () => exec(`react-native init ${app}`),
     () => transform(
       getLocalFile('templates/index.mobile.js'),
       transformer,
