@@ -46,3 +46,9 @@ export default class MyAwesomeComponent extends Component {
   }
 }
 ```
+
+# Components
+
+## `View`
+
+## `Text`

@@ -8,17 +8,24 @@ var _init2 = _interopRequireDefault(_init);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _process$argv = _slicedToArray(process.argv, 3);
+var _process$argv = _slicedToArray(process.argv, 4);
 
-var app = _process$argv[2];
+var cmd = _process$argv[2];
+var app = _process$argv[3];
 
 
-console.log();
-console.log('Creating Reactor app', app);
-console.log();
+switch (cmd) {
+  case 'init':
+    console.log();
+    console.log('Creating Reactor app', app);
+    console.log();
 
-(0, _init2.default)(app).then(function () {
-  return console.log('Your app is ready to be awesome');
-}).catch(function (error) {
-  return console.log(error.stack);
-});
+    (0, _init2.default)(app).then(function () {
+      return console.log('Your app is ready to be awesome');
+    }).catch(function (error) {
+      return console.log(error.stack);
+    });
+    break;
+  default:
+    console.log('reactor [init] [app]');
+}
