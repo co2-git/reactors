@@ -51,6 +51,6 @@ export default function init(app) {
       transformer,
       getAppFile('app/App.js'),
     ),
-    () => npmInstall('co2-git/reactor')
+    () => npmInstall(app, 'co2-git/reactor')
   );
 }
