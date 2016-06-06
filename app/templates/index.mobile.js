@@ -8,8 +8,8 @@
 
 import {AppRegistry} from 'react-native';
 import App from './app/App';
-import Reactor from 'reactor';
+import Reactors from 'reactors';
 
-Reactor.platform = 'mobile';
+Reactors.platform = 'mobile';
 
 AppRegistry.registerComponent({app}, () => App);

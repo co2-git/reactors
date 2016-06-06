@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Text} from 'react-native';
-import Reactor from 'reactor';
+import Reactors from 'reactors';
 
-export default class ReactorText extends Component {
+export default class ReactorsText extends Component {
   render() {
-    switch (Reactor.platform) {
+    switch (Reactors.platform) {
     case 'mobile':
       return <Text {...this.props}>{this.props.children}</Text>;
     case 'web':

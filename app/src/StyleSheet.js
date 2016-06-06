@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
-import Reactor from 'reactor';
+import Reactors from 'reactors';
 
-export default class ReactorStyleSheet {
+export default class ReactorsStyleSheet {
   static create(style) {
-    switch (Reactor.platform) {
+    switch (Reactors.platform) {
     case 'mobile':
       return StyleSheet.create(style);
     default:

@@ -61,6 +61,6 @@ function init(app) {
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/App.js'), transformer, getAppFile('app/App.js'));
   }, function () {
-    return (0, _npmInstall2.default)(app, 'co2-git/reactor');
+    return (0, _npmInstall2.default)(app, 'co2-git/reactors');
   });
 }

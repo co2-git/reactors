@@ -7,7 +7,7 @@ const [,,cmd,app] = process.argv;
 switch (cmd) {
 case 'init':
   console.log();
-  console.log('Creating Reactor app', app);
+  console.log('Creating Reactors app', app);
   console.log();
 
   init(app)
@@ -15,5 +15,5 @@ case 'init':
     .catch(error => console.log(error.stack));
   break;
 default:
-  console.log('reactor [init] [app]');
+  console.log('reactors [init] [app]');
 }

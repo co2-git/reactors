@@ -3,7 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
-} from 'reactor';
+} from 'reactors';
 
 export default class App extends Component {
   render() {

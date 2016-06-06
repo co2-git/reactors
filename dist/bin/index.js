@@ -18,7 +18,7 @@ var app = _process$argv[3];
 switch (cmd) {
   case 'init':
     console.log();
-    console.log('Creating Reactor app', app);
+    console.log('Creating Reactors app', app);
     console.log();
 
     (0, _init2.default)(app).then(function () {
@@ -28,5 +28,5 @@ switch (cmd) {
     });
     break;
   default:
-    console.log('reactor [init] [app]');
+    console.log('reactors [init] [app]');
 }

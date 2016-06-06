@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import Reactor from 'reactor';
+import Reactors from 'reactors';
 
-export default class ReactorView extends Component {
+export default class ReactorsView extends Component {
   render() {
-    switch (Reactor.platform) {
+    switch (Reactors.platform) {
     case 'mobile':
       return <View {...this.props}>{this.props.children}</View>;
     case 'web':

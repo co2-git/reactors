@@ -6,13 +6,13 @@ var _App = require('./app/App');
 
 var _App2 = _interopRequireDefault(_App);
 
-var _reactor = require('reactor');
+var _reactors = require('reactors');
 
-var _reactor2 = _interopRequireDefault(_reactor);
+var _reactors2 = _interopRequireDefault(_reactors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactor2.default.platform = 'mobile'; /**
+_reactors2.default.platform = 'mobile'; /**
                                          * @module {app}
                                          * @name Index for mobile platforms (iOS & Android)
                                          * @type RN Index

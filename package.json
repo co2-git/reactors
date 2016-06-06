@@ -1,5 +1,5 @@
 {
-  "name": "reactor",
+  "name": "reactors",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "babel-watch": "babel --watch --out-dir dist/ app/"
   },
   "bin": {
-    "reactor": "dist/bin/index.js"
+    "reactors": "dist/bin/index.js"
   },
   "author": "",
   "license": "ISC",

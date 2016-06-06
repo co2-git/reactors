@@ -1,4 +1,4 @@
-reactor
+reactors
 ===
 
 Framework based on React and React Native to build hybrid apps for both mobile and the web.
@@ -6,13 +6,13 @@ Framework based on React and React Native to build hybrid apps for both mobile a
 # Install
 
 ```bash
-sudo npm install --global react-native-cli co2-git/reactor
+sudo npm install --global react-native-cli co2-git/reactors
 ```
 
-# Create a new Reactor app
+# Create a new Reactors app 
 
 ```bash
-reactor init MyAwesomeApp
+reactors init MyAwesomeApp
 ```
 
 # Run for mobile
@@ -34,7 +34,7 @@ import {
   View,
   Text,
   StyleSheet,
-} from 'reactor';
+} from 'reactors';
 
 export default class MyAwesomeComponent extends Component {
   render() {

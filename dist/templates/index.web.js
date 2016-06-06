@@ -8,14 +8,14 @@ var _App = require('./app/App');
 
 var _App2 = _interopRequireDefault(_App);
 
-var _reactor = require('reactor');
+var _reactors = require('reactors');
 
-var _reactor2 = _interopRequireDefault(_reactor);
+var _reactors2 = _interopRequireDefault(_reactors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactor2.default.platform = 'web';
+_reactors2.default.platform = 'web';
 
 var props = {};
 
-_reactDom2.default.render(React.createElement(_App2.default, props), document.getElementById('reactor'));
+_reactDom2.default.render(React.createElement(_App2.default, props), document.getElementById('reactors'));

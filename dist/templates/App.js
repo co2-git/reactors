@@ -10,7 +10,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactor = require('reactor');
+var _reactors = require('reactors');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33,10 +33,10 @@ var App = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactor.View,
+        _reactors.View,
         { style: styles.view },
         _react2.default.createElement(
-          _reactor.Text,
+          _reactors.Text,
           { style: styles.text },
           app
         )
@@ -50,7 +50,7 @@ var App = function (_Component) {
 exports.default = App;
 
 
-var styles = _reactor.StyleSheet.create({
+var styles = _reactors.StyleSheet.create({
   view: {
     marginTop: 100
   },

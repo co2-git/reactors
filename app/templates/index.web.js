@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom';
 import App from './app/App';
-import Reactor from 'reactor';
+import Reactors from 'reactors';
 
-Reactor.platform = 'web';
+Reactors.platform = 'web';
 
 const props = {};
 
-ReactDOM.render(<App {...props} />, document.getElementById('reactor'));
+ReactDOM.render(<App {...props} />, document.getElementById('reactors'));

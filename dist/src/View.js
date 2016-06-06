@@ -12,9 +12,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactNative = require('react-native');
 
-var _reactor = require('reactor');
+var _reactors = require('reactors');
 
-var _reactor2 = _interopRequireDefault(_reactor);
+var _reactors2 = _interopRequireDefault(_reactors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,19 +24,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ReactorView = function (_Component) {
-  _inherits(ReactorView, _Component);
+var ReactorsView = function (_Component) {
+  _inherits(ReactorsView, _Component);
 
-  function ReactorView() {
-    _classCallCheck(this, ReactorView);
+  function ReactorsView() {
+    _classCallCheck(this, ReactorsView);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactorView).apply(this, arguments));
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactorsView).apply(this, arguments));
   }
 
-  _createClass(ReactorView, [{
+  _createClass(ReactorsView, [{
     key: 'render',
     value: function render() {
-      switch (_reactor2.default.platform) {
+      switch (_reactors2.default.platform) {
         case 'mobile':
           return _react2.default.createElement(
             _reactNative.View,
@@ -53,7 +53,7 @@ var ReactorView = function (_Component) {
     }
   }]);
 
-  return ReactorView;
+  return ReactorsView;
 }(_react.Component);
 
-exports.default = ReactorView;
+exports.default = ReactorsView;
