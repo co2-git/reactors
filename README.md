@@ -9,7 +9,7 @@ Framework based on React and React Native to build hybrid apps for both mobile a
 sudo npm install --global react-native-cli co2-git/reactors
 ```
 
-# Create a new Reactors app 
+# Create a new Reactors app
 
 ```bash
 reactors init MyAwesomeApp
@@ -47,6 +47,6 @@ export default class MyAwesomeComponent extends Component {
 }
 ```
 
-# Components
+# Features
 
-- [View](doc/View.md)
+- [Components](doc/Components.md)
