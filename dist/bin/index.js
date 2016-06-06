@@ -17,11 +17,10 @@ var _exec2 = _interopRequireDefault(_exec);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _process$argv = _slicedToArray(process.argv, 5);
+var _process$argv = _slicedToArray(process.argv, 4);
 
 var cmd = _process$argv[2];
 var app = _process$argv[3];
-var platform = _process$argv[4];
 
 
 switch (cmd) {
@@ -37,6 +36,7 @@ switch (cmd) {
     });
     break;
   case 'run':
+    var platform = app;
     switch (platform) {
       case 'android':
       case 'ios':
@@ -55,7 +55,7 @@ switch (cmd) {
         }
         break;
       default:
-        throw new Error('Unknown platform');
+        throw new Error('Unknown platform: ' + platform);
     }
     break;
   default:

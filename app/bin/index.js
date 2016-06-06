@@ -4,7 +4,7 @@ import os from 'os';
 import init from '../lib/init';
 import exec from '../lib/exec';
 
-const [, , cmd, app, platform] = process.argv;
+const [, , cmd, app] = process.argv;
 
 switch (cmd) {
 case 'init':
@@ -17,6 +17,7 @@ case 'init':
     .catch(error => console.log(error.stack));
   break;
 case 'run':
+  const platform = app;
   switch (platform) {
   case 'android':
   case 'ios':
@@ -35,7 +36,7 @@ case 'run':
     }
     break;
   default:
-    throw new Error('Unknown platform');
+    throw new Error('Unknown platform: ' + platform);
   }
   break;
 default:
