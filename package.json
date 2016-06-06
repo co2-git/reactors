@@ -1,0 +1,25 @@
+{
+  "name": "reactor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "babel --out-dir dist/ app/",
+    "babel-watch": "babel --watch --out-dir dist/ app/"
+  },
+  "bin": {
+    "reactor": "node dist/bin",
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0"
+  },
+  "dependencies": {
+    "promise-sequencer": "^3.0.0"
+  }
+}
