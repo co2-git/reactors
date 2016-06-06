@@ -9,7 +9,7 @@
     "babel-watch": "babel --watch --out-dir dist/ app/"
   },
   "bin": {
-    "reactor": "node dist/bin"
+    "reactor": "dist/bin/index.js"
   },
   "author": "",
   "license": "ISC",

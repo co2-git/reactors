@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import init from '../lib/init';
 
 const [,,cmd,app] = process.argv;
