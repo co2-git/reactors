@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _View = require('./lib/View');
+var _View = require('./src/View');
 
 Object.defineProperty(exports, 'View', {
   enumerable: true,
@@ -13,7 +13,7 @@ Object.defineProperty(exports, 'View', {
   }
 });
 
-var _Text = require('./lib/Text');
+var _Text = require('./src/Text');
 
 Object.defineProperty(exports, 'Text', {
   enumerable: true,

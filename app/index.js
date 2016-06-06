@@ -1,4 +1,4 @@
 export default {};
 
-export {default as View} from './lib/View';
-export {default as Text} from './lib/Text';
+export {default as View} from './src/View';
+export {default as Text} from './src/Text';
