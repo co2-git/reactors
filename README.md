@@ -15,16 +15,13 @@ sudo npm install --global react-native-cli co2-git/reactors
 reactors init MyAwesomeApp
 ```
 
-# Run for mobile
+# Run
 
 ```bash
-react-native run-ios
-react-native run-android
+reactor run ios
+reactor run android
+reactor run web
 ```
-
-# Run for web
-
-Just open `index.html` in your favorite browser.
 
 # Usage
 
