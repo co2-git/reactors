@@ -44,6 +44,10 @@ function init(app) {
     return _path2.default.resolve(process.cwd(), app, file);
   }
 
+  function logger(message) {
+    return new Promise(function (resolve, reject) {});
+  }
+
   return (0, _promiseSequencer2.default)(function () {
     return (0, _exec2.default)('react-native init ' + app);
   }, function () {
@@ -53,14 +57,18 @@ function init(app) {
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/index.html'), transformer, getAppFile('index.html'));
   }, function () {
+    return (0, _exec2.default)('mkdir ' + app + '/web/');
+  }, function () {
     return (0, _transform2.default)(getLocalFile('templates/index.web.js'), transformer, getAppFile('index.web.js'));
   }, function () {
-    return (0, _exec2.default)('mkdir -p ' + app + '/app/');
+    return (0, _exec2.default)('mkdir ' + app + '/app/');
   }, function () {
-    return (0, _transform2.default)(getLocalFile('templates/App.js'), transformer, getAppFile('app/App.js'));
+    return (0, _transform2.default)(getLocalFile('templates/app/App.js'), transformer, getAppFile('app/App.js'));
   }, function () {
-    return (0, _transform2.default)(getLocalFile('templates/App.js'), transformer, getAppFile('app/App.js'));
+    return (0, _transform2.default)(getLocalFile('templates/webpack.config.js'), transformer, getAppFile('webpack.config.js'));
   }, function () {
-    return (0, _npmInstall2.default)(app, 'co2-git/reactors');
+    return (0, _npmInstall2.default)(app, 'co2-git/reactors', 'react-dom', 'babel-loader', 'webpack', 'babel-preset-react', 'babel-preset-stage-0', 'ignore-loader');
+  }, function () {
+    return (0, _exec2.default)('mkdir -p ' + app + '/assets/js');
   });
 }

@@ -3,6 +3,7 @@
 import os from 'os';
 import init from '../lib/init';
 import exec from '../lib/exec';
+import bundle from '../lib/bundle';
 
 const [, , cmd, app] = process.argv;
 
@@ -24,16 +25,22 @@ case 'run':
     exec(`react-native run-${platform}`);
     break;
   case 'web':
-    switch (os.platform()) {
-    case 'darwin':
-      exec('open index.html');
-      break;
-    case 'linux':
-      exec('x-www-browser index.html');
-      break;
-    default:
-      throw new Error('Platform not supported: ' + os.platform());
-    }
+    bundle()
+      .then(() => {
+        switch (os.platform()) {
+        case 'darwin':
+          exec('open index.html');
+          break;
+        case 'linux':
+          exec('x-www-browser index.html');
+          break;
+        default:
+          throw new Error('Platform not supported: ' + os.platform());
+        }
+      })
+      .catch(error => {
+        throw error;
+      });
     break;
   default:
     throw new Error('Unknown platform: ' + platform);

@@ -18,6 +18,12 @@ export default function init(app) {
     return path.resolve(process.cwd(), app, file);
   }
 
+  function logger(message) {
+    return new Promise((resolve, reject) => {
+
+    });
+  }
+
   return sequencer(
     () => exec(`react-native init ${app}`),
     () => transform(
@@ -35,22 +41,32 @@ export default function init(app) {
       transformer,
       getAppFile('index.html'),
     ),
+    () => exec(`mkdir ${app}/web/`),
     () => transform(
       getLocalFile('templates/index.web.js'),
       transformer,
       getAppFile('index.web.js'),
     ),
-    () => exec(`mkdir -p ${app}/app/`),
+    () => exec(`mkdir ${app}/app/`),
     () => transform(
-      getLocalFile('templates/App.js'),
+      getLocalFile('templates/app/App.js'),
       transformer,
       getAppFile('app/App.js'),
     ),
     () => transform(
-      getLocalFile('templates/App.js'),
+      getLocalFile('templates/webpack.config.js'),
       transformer,
-      getAppFile('app/App.js'),
+      getAppFile('webpack.config.js'),
     ),
-    () => npmInstall(app, 'co2-git/reactors')
+    () => npmInstall(app,
+      'co2-git/reactors',
+      'react-dom',
+      'babel-loader',
+      'webpack',
+      'babel-preset-react',
+      'babel-preset-stage-0',
+      'ignore-loader',
+    ),
+    () => exec(`mkdir -p ${app}/assets/js`),
   );
 }

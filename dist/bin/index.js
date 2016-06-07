@@ -15,6 +15,10 @@ var _exec = require('../lib/exec');
 
 var _exec2 = _interopRequireDefault(_exec);
 
+var _bundle = require('../lib/bundle');
+
+var _bundle2 = _interopRequireDefault(_bundle);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _process$argv = _slicedToArray(process.argv, 4);
@@ -43,16 +47,20 @@ switch (cmd) {
         (0, _exec2.default)('react-native run-' + platform);
         break;
       case 'web':
-        switch (_os2.default.platform()) {
-          case 'darwin':
-            (0, _exec2.default)('open index.html');
-            break;
-          case 'linux':
-            (0, _exec2.default)('x-www-browser index.html');
-            break;
-          default:
-            throw new Error('Platform not supported: ' + _os2.default.platform());
-        }
+        (0, _bundle2.default)().then(function () {
+          switch (_os2.default.platform()) {
+            case 'darwin':
+              (0, _exec2.default)('open index.html');
+              break;
+            case 'linux':
+              (0, _exec2.default)('x-www-browser index.html');
+              break;
+            default:
+              throw new Error('Platform not supported: ' + _os2.default.platform());
+          }
+        }).catch(function (error) {
+          throw error;
+        });
         break;
       default:
         throw new Error('Unknown platform: ' + platform);
