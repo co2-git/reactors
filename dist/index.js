@@ -31,6 +31,15 @@ Object.defineProperty(exports, 'StyleSheet', {
   }
 });
 
+var _ScrollView = require('./src/ScrollView');
+
+Object.defineProperty(exports, 'ScrollView', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ScrollView).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {};
