@@ -43,4 +43,4 @@ export default class MyAwesomeComponent extends Component {
 }
 ```
 
-Read more in our [documentation](docs/index.md).
+Read more in our [documentation](doc/index.md).
