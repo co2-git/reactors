@@ -43,6 +43,4 @@ export default class MyAwesomeComponent extends Component {
 }
 ```
 
-# Features
-
-- [Components](doc/Components.md)
+Read more in our [documentation](docs/index.md).
