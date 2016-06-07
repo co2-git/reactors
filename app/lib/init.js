@@ -6,7 +6,7 @@ import write from '../lib/write';
 import npmInstall from '../lib/npmInstall';
 
 function getLocalFile(file) {
-  return path.resolve(__dirname, '../../app', file);
+  return path.resolve(__dirname, '../../', file);
 }
 
 export default function init(app) {

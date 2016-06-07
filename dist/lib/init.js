@@ -32,7 +32,7 @@ var _npmInstall2 = _interopRequireDefault(_npmInstall);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getLocalFile(file) {
-  return _path2.default.resolve(__dirname, '../../app', file);
+  return _path2.default.resolve(__dirname, '../../', file);
 }
 
 function init(app) {

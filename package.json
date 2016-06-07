@@ -1,8 +1,20 @@
 {
   "name": "reactors",
   "version": "1.0.0",
-  "description": "",
+  "description": "Framework based on React and React Native to build hybrid apps for both mobile and the web.",
   "main": "dist/index.js",
+  "tags": [
+    "react",
+    "react-native",
+    "mobile",
+    "web",
+    "android",
+    "ios"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/co2-git/reactors"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel --out-dir dist/ app/",
@@ -11,7 +23,10 @@
   "bin": {
     "reactors": "dist/bin/index.js"
   },
-  "author": "",
+  "author": {
+    "name": "francois",
+    "github": "https://github.com/co2-git"
+  },
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.9.0",
