@@ -59,7 +59,7 @@ export default function init(app) {
       getAppFile('webpack.config.js'),
     ),
     () => npmInstall(app,
-      'co2-git/reactors',
+      'reactors',
       'react-dom',
       'babel-loader',
       'webpack',

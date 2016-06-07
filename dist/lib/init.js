@@ -67,7 +67,7 @@ function init(app) {
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/webpack.config.js'), transformer, getAppFile('webpack.config.js'));
   }, function () {
-    return (0, _npmInstall2.default)(app, 'co2-git/reactors', 'react-dom', 'babel-loader', 'webpack', 'babel-preset-react', 'babel-preset-stage-0', 'ignore-loader');
+    return (0, _npmInstall2.default)(app, 'reactors', 'react-dom', 'babel-loader', 'webpack', 'babel-preset-react', 'babel-preset-stage-0', 'ignore-loader');
   }, function () {
     return (0, _exec2.default)('mkdir -p ' + app + '/assets/js');
   });
