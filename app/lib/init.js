@@ -19,12 +19,16 @@ export default function init(app) {
   }
 
   function logger(message) {
-    return new Promise((resolve, reject) => {
-
+    return new Promise((resolve) => {
+      console.log();
+      console.log(message);
+      console.log();
+      resolve();
     });
   }
 
   return sequencer(
+    () => logger('Installing React Native'),
     () => exec(`react-native init ${app}`),
     () => transform(
       getLocalFile('templates/index.mobile.js'),
@@ -64,9 +68,9 @@ export default function init(app) {
       'babel-loader',
       'webpack',
       'babel-preset-react',
+      'babel-preset-es2015',
       'babel-preset-stage-0',
       'ignore-loader',
     ),
-    () => exec(`mkdir -p ${app}/assets/js`),
   );
 }

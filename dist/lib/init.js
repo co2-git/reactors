@@ -45,10 +45,17 @@ function init(app) {
   }
 
   function logger(message) {
-    return new Promise(function (resolve, reject) {});
+    return new Promise(function (resolve) {
+      console.log();
+      console.log(message);
+      console.log();
+      resolve();
+    });
   }
 
   return (0, _promiseSequencer2.default)(function () {
+    return logger('Installing React Native');
+  }, function () {
     return (0, _exec2.default)('react-native init ' + app);
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/index.mobile.js'), transformer, getAppFile('index.ios.js'));
@@ -67,8 +74,6 @@ function init(app) {
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/webpack.config.js'), transformer, getAppFile('webpack.config.js'));
   }, function () {
-    return (0, _npmInstall2.default)(app, 'reactors', 'react-dom', 'babel-loader', 'webpack', 'babel-preset-react', 'babel-preset-stage-0', 'ignore-loader');
-  }, function () {
-    return (0, _exec2.default)('mkdir -p ' + app + '/assets/js');
+    return (0, _npmInstall2.default)(app, 'reactors', 'react-dom', 'babel-loader', 'webpack', 'babel-preset-react', 'babel-preset-es2015', 'babel-preset-stage-0', 'ignore-loader');
   });
 }
