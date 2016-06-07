@@ -6,7 +6,7 @@ Framework based on React and React Native to build hybrid apps for both mobile a
 # Install
 
 ```bash
-sudo npm install --global react-native-cli co2-git/reactors
+sudo npm install --global react-native-cli reactors
 ```
 
 # Create a new Reactors app
