@@ -25,22 +25,20 @@ case 'run':
     exec(`react-native run-${platform}`);
     break;
   case 'web':
-    bundle()
-      .then(() => {
-        switch (os.platform()) {
-        case 'darwin':
-          exec('open index.html');
-          break;
-        case 'linux':
-          exec('x-www-browser index.html');
-          break;
-        default:
-          throw new Error('Platform not supported: ' + os.platform());
-        }
-      })
-      .catch(error => {
-        throw error;
-      });
+    console.log('bundling ...');
+    bundle();
+    setTimeout(() => {
+      switch (os.platform()) {
+      case 'darwin':
+        exec('open index.html');
+        break;
+      case 'linux':
+        exec('x-www-browser index.html');
+        break;
+      default:
+        throw new Error('Platform not supported: ' + os.platform());
+      }
+    }, 5000);
     break;
   default:
     throw new Error('Unknown platform: ' + platform);

@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -36,17 +38,19 @@ var ReactorsView = function (_Component) {
   _createClass(ReactorsView, [{
     key: 'render',
     value: function render() {
+      var props = _extends({}, this.props);
+
       switch (_reactors2.default.platform) {
         case 'mobile':
           return _react2.default.createElement(
             _reactNative.View,
-            this.props,
+            props,
             this.props.children
           );
         case 'web':
           return _react2.default.createElement(
             'section',
-            this.props,
+            props,
             this.props.children
           );
       }
@@ -56,4 +60,7 @@ var ReactorsView = function (_Component) {
   return ReactorsView;
 }(_react.Component);
 
+ReactorsView.propTypes = {
+  accessibilitylabel: _react.PropTypes.string
+};
 exports.default = ReactorsView;

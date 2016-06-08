@@ -47,7 +47,9 @@ switch (cmd) {
         (0, _exec2.default)('react-native run-' + platform);
         break;
       case 'web':
-        (0, _bundle2.default)().then(function () {
+        console.log('bundling ...');
+        (0, _bundle2.default)();
+        setTimeout(function () {
           switch (_os2.default.platform()) {
             case 'darwin':
               (0, _exec2.default)('open index.html');
@@ -58,9 +60,7 @@ switch (cmd) {
             default:
               throw new Error('Platform not supported: ' + _os2.default.platform());
           }
-        }).catch(function (error) {
-          throw error;
-        });
+        }, 5000);
         break;
       default:
         throw new Error('Unknown platform: ' + platform);

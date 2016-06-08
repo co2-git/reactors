@@ -19,5 +19,6 @@ module.exports = {
         loader: 'ignore-loader',
       },
     ]
-  }
+  },
+  watch: true
 };
