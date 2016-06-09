@@ -1,4 +1,7 @@
 /**
+  * @module reactors
+  * @name View
+  * @type Component
   * @flow
 **/
 
@@ -16,7 +19,7 @@ export default class ReactorsView extends Component {
   };
 
   render() {
-    const props = {...this.props};
+    const props: PROPS = {...this.props};
 
     switch (Reactors.platform) {
     case 'mobile':

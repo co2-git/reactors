@@ -1,3 +1,10 @@
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
+
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
 import Reactors from 'reactors';

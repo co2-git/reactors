@@ -22,7 +22,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @module reactors
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @name Text
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @type Component
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               **/
 
 var ReactorsText = function (_Component) {
   _inherits(ReactorsText, _Component);
@@ -45,7 +50,7 @@ var ReactorsText = function (_Component) {
           );
         case 'web':
           return _react2.default.createElement(
-            'span',
+            'div',
             this.props,
             this.props.children
           );
