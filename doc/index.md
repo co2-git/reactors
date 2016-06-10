@@ -6,6 +6,7 @@ Reactors Doc
 - [View](Components/View.md)
 - [Text](Components/Text.md)
 - [ScrollView](Components/ScrollView.md)
+- [Image](Components/Image.md)
 
 # API
 
