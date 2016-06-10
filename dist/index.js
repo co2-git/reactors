@@ -40,6 +40,15 @@ Object.defineProperty(exports, 'ScrollView', {
   }
 });
 
+var _Image = require('./src/Image');
+
+Object.defineProperty(exports, 'Image', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Image).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {};
