@@ -1,3 +1,10 @@
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
+
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
 import Reactors from 'reactors';
@@ -12,7 +19,11 @@ export default class ReactorsScrollView extends Component {
         overflow: 'auto',
       };
       return (
-        <section style={style} {...this.props}>
+        <section
+          style={style}
+          {...this.props}
+          className={'reactors$ScrollView'}
+          >
           {this.props.children}
         </section>
       );
