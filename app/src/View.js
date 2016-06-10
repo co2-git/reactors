@@ -18,6 +18,27 @@ export default class ReactorsView extends Component {
     accessibilitylabel: PropTypes.string,
   };
 
+  style = {};
+
+  renderChildren() {
+    const children = Array.isArray(this.props.children) ? this.props.children :
+      [this.props.children];
+
+    return children.map((child, index) => {
+      const props = {};
+
+      if (child.key === null) {
+        props.key = index;
+      }
+
+      if (child.type.name === 'ReactorsScrollView') {
+        this.style.overflow = 'auto';
+      }
+
+      return React.cloneElement(child, props);
+    });
+  }
+
   render() {
     const props: PROPS = {...this.props};
 
@@ -29,9 +50,14 @@ export default class ReactorsView extends Component {
         </View>
       );
     case 'web':
+      const children = this.renderChildren();
+      let style = {};
+      if (this.props.style) {
+        style = this.props.style;
+      }
       return (
-        <section {...props}>
-          {this.props.children}
+        <section {...props} style={{...style, ...this.style}}>
+          {children}
         </section>
       );
     }

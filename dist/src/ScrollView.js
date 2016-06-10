@@ -56,7 +56,11 @@ var ReactorsScrollView = function (_Component) {
           };
           return _react2.default.createElement(
             'section',
-            _extends({ style: style }, this.props),
+            _extends({
+              style: style
+            }, this.props, {
+              className: 'reactors$ScrollView'
+            }),
             this.props.children
           );
       }

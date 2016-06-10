@@ -19,7 +19,11 @@ export default class ReactorsScrollView extends Component {
         overflow: 'auto',
       };
       return (
-        <section style={style} {...this.props}>
+        <section
+          style={style}
+          {...this.props}
+          className={'reactors$ScrollView'}
+          >
           {this.props.children}
         </section>
       );
