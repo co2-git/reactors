@@ -3,6 +3,8 @@ Image
 
 Displays an image.
 
+**Don't forget to add dimension to your image**.
+
 # Props
 
 ## `source`

@@ -11,12 +11,21 @@ import Reactors from 'reactors';
 
 export default class ReactorsImage extends Component {
   render() {
+    const props = {...this.props};
+
     switch (Reactors.platform) {
     case 'mobile':
-      return <Image {...this.props} />;
+      if (typeof props.source === 'string') {
+        props.source = {uri: props.source};
+      }
+      return <Image {...props} />;
     case 'web':
+      props.src = props.source;
+      if (typeof props.src === 'object' && props.src.uri) {
+        props.src = props.src.uri;
+      }
       return (
-        <img {...this.props} />
+        <img {...props} />
       );
     }
   }
