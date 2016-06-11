@@ -12,21 +12,31 @@ import Reactors from 'reactors';
 export default class ReactorsScrollView extends Component {
   render() {
     switch (Reactors.platform) {
+    default:
+      throw new Error('Unknown platform: ' + Reactors.platform);
     case 'mobile':
-      return <ScrollView {...this.props}>{this.props.children}</ScrollView>;
+      return this._renderMobile();
     case 'web':
-      const style = {
-        overflow: 'auto',
-      };
-      return (
-        <section
-          style={style}
-          {...this.props}
-          className={'reactors$ScrollView'}
-          >
-          {this.props.children}
-        </section>
-      );
+      return this._renderWeb();
     }
+  }
+
+  _renderMobile() {
+    return <ScrollView {...this.props}>{this.props.children}</ScrollView>;
+  }
+
+  _renderWeb() {
+    const style = {
+      overflow: 'auto',
+    };
+    return (
+      <section
+        style={style}
+        {...this.props}
+        className={'reactors$ScrollView'}
+        >
+        {this.props.children}
+      </section>
+    );
   }
 }

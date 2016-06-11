@@ -12,6 +12,8 @@ import Reactors from 'reactors';
 export default class ReactorsText extends Component {
   render() {
     switch (Reactors.platform) {
+    default:
+      throw new Error('Unknown platform: ' + Reactors.platform);
     case 'mobile':
       return <Text {...this.props}>{this.props.children}</Text>;
     case 'web':

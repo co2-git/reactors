@@ -14,6 +14,8 @@ export default class ReactorsImage extends Component {
     const props = {...this.props};
 
     switch (Reactors.platform) {
+    default:
+      throw new Error('Unknown platform: ' + Reactors.platform);
     case 'mobile':
       if (typeof props.source === 'string') {
         props.source = {uri: props.source};
