@@ -54,6 +54,5 @@ export default class MyAwesomeComponent extends Component {
 
 # Core APIs
 
-- Link
 - Gesture
 - StyleSheet
