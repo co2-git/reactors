@@ -43,4 +43,17 @@ export default class MyAwesomeComponent extends Component {
 }
 ```
 
-Read more in our [documentation](doc/index.md).
+# Core Components
+
+- Image
+- ListView
+- Link
+- ScrollView
+- Text
+- View
+
+# Core APIs
+
+- Link
+- Gesture
+- StyleSheet
