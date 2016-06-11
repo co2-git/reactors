@@ -43,6 +43,8 @@ export default class ReactorsView extends Component {
     const props: PROPS = {...this.props};
 
     switch (Reactors.platform) {
+    default:
+      throw new Error('Unknown platform: ' + Reactors.platform);
     case 'mobile':
       return (
         <View {...props}>
