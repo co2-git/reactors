@@ -49,6 +49,15 @@ Object.defineProperty(exports, 'Image', {
   }
 });
 
+var _DatePicker = require('./src/DatePicker');
+
+Object.defineProperty(exports, 'DatePicker', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_DatePicker).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {};
