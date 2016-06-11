@@ -1,7 +1,7 @@
 export default {};
 
-export {default as View} from './src/View';
-export {default as Text} from './src/Text';
-export {default as StyleSheet} from './src/StyleSheet';
-export {default as ScrollView} from './src/ScrollView';
-export {default as Image} from './src/Image';
+export {default as View} from './src/Component/View';
+export {default as Text} from './src/Component/Text';
+export {default as ScrollView} from './src/Component/ScrollView';
+export {default as Image} from './src/Component/Image';
+export {default as StyleSheet} from './src/API/StyleSheet';
