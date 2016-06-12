@@ -49,6 +49,15 @@ Object.defineProperty(exports, 'ListView', {
   }
 });
 
+var _Link = require('./src/Component/Link');
+
+Object.defineProperty(exports, 'Link', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Link).default;
+  }
+});
+
 var _StyleSheet = require('./src/API/StyleSheet');
 
 Object.defineProperty(exports, 'StyleSheet', {
