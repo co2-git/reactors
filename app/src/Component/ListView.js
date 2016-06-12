@@ -57,6 +57,10 @@ export default class ReactorsListView extends Component {
     const props = {...this.props};
     props.dataSource = this.state.dataSource;
 
+    if (!('enableEmptySections' in props)) {
+      props.enableEmptySections = true;
+    }
+
     return <ListView {...props} />;
   }
 
