@@ -1,7 +1,7 @@
 {
   "name": "reactors",
   "version": "0.0.8",
-  "description": "Framework based on React and React Native to build hybrid apps for both mobile and the web.",
+  "description": "Framework based on React to build hybrid apps that run web, mobile and desktop.",
   "main": "dist/index.js",
   "tags": [
     "react",

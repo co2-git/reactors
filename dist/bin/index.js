@@ -40,32 +40,41 @@ switch (cmd) {
     });
     break;
   case 'run':
-    var platform = app;
-    switch (platform) {
-      case 'android':
-      case 'ios':
-        (0, _exec2.default)('react-native run-' + platform);
-        break;
-      case 'web':
-        console.log('bundling ...');
-        (0, _bundle2.default)();
-        setTimeout(function () {
-          switch (_os2.default.platform()) {
-            case 'darwin':
-              (0, _exec2.default)('open index.html');
-              break;
-            case 'linux':
-              (0, _exec2.default)('x-www-browser index.html');
-              break;
-            default:
-              throw new Error('Platform not supported: ' + _os2.default.platform());
-          }
-        }, 5000);
-        break;
-      default:
-        throw new Error('Unknown platform: ' + platform);
+    {
+      (function () {
+        var platform = app;
+        switch (platform) {
+          case 'android':
+          case 'ios':
+            (0, _exec2.default)('react-native run-' + platform);
+            break;
+          case 'web':
+          case 'desktop':
+            (0, _bundle2.default)();
+            setTimeout(function () {
+              if (platform === 'web') {
+                switch (_os2.default.platform()) {
+                  case 'darwin':
+                    (0, _exec2.default)('open index.html');
+                    break;
+                  case 'linux':
+                    (0, _exec2.default)('x-www-browser index.html');
+                    break;
+                  default:
+                    throw new Error('Platform not supported: ' + _os2.default.platform());
+                }
+              } else if (platform === 'desktop') {
+                (0, _exec2.default)('electron .');
+              }
+            }, 5000);
+            break;
+          default:
+            throw new Error('Unknown platform: ' + platform);
+        }
+      })();
     }
     break;
   default:
-    console.log('reactors [init] [app]');
+    console.log('Init a new app: `reactors init <AppName>`');
+    console.log('Run app: `reactors run <platform>`');
 }

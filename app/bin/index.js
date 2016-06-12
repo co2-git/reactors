@@ -17,7 +17,7 @@ case 'init':
     .then(() => console.log('Your app is ready to be awesome'))
     .catch(error => console.log(error.stack));
   break;
-case 'run':
+case 'run': {
   const platform = app;
   switch (platform) {
   case 'android':
@@ -25,25 +25,31 @@ case 'run':
     exec(`react-native run-${platform}`);
     break;
   case 'web':
-    console.log('bundling ...');
+  case 'desktop':
     bundle();
     setTimeout(() => {
-      switch (os.platform()) {
-      case 'darwin':
-        exec('open index.html');
-        break;
-      case 'linux':
-        exec('x-www-browser index.html');
-        break;
-      default:
-        throw new Error('Platform not supported: ' + os.platform());
+      if (platform === 'web') {
+        switch (os.platform()) {
+        case 'darwin':
+          exec('open index.html');
+          break;
+        case 'linux':
+          exec('x-www-browser index.html');
+          break;
+        default:
+          throw new Error('Platform not supported: ' + os.platform());
+        }
+      } else if (platform === 'desktop') {
+        exec('electron .');
       }
     }, 5000);
     break;
   default:
     throw new Error('Unknown platform: ' + platform);
   }
+}
   break;
 default:
-  console.log('reactors [init] [app]');
+  console.log('Init a new app: `reactors init <AppName>`');
+  console.log('Run app: `reactors run <platform>`');
 }

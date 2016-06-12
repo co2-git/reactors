@@ -51,6 +51,7 @@ var ReactorsText = function (_Component) {
             this.props.children
           );
         case 'web':
+        case 'desktop':
           return _react2.default.createElement(
             'div',
             this.props,

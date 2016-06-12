@@ -49,6 +49,7 @@ var ReactorsScrollView = function (_Component) {
         case 'mobile':
           return this._renderMobile();
         case 'web':
+        case 'desktop':
           return this._renderWeb();
       }
     }

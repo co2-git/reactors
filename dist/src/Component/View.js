@@ -84,17 +84,24 @@ var ReactorsView = function (_Component) {
             this.props.children
           );
         case 'web':
-          var children = this.renderChildren();
-          var style = {};
-          if (this.props.style) {
-            style = this.props.style;
-          }
-          return _react2.default.createElement(
-            'section',
-            _extends({}, props, { style: _extends({}, style, this.style) }),
-            children
-          );
+        case 'desktop':
+          return this._renderWeb();
       }
+    }
+  }, {
+    key: '_renderWeb',
+    value: function _renderWeb() {
+      var props = _extends({}, this.props);
+      var children = this.renderChildren();
+      var style = {};
+      if (this.props.style) {
+        style = this.props.style;
+      }
+      return _react2.default.createElement(
+        'section',
+        _extends({}, props, { style: _extends({}, style, this.style) }),
+        children
+      );
     }
   }]);
 

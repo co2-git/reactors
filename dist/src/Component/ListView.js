@@ -54,6 +54,7 @@ var ReactorsListView = function (_Component) {
         _this.state.dataSource = _this.ds.cloneWithRows(_this.props.dataSource);
         break;
       case 'web':
+      case 'desktop':
         _this.state.dataSource = _this.props.dataSource;
         break;
     }
@@ -69,6 +70,7 @@ var ReactorsListView = function (_Component) {
         case 'mobile':
           return this._renderMobile();
         case 'web':
+        case 'desktop':
           return this._renderWeb();
       }
     }

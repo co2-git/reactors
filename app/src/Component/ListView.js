@@ -35,6 +35,7 @@ export default class ReactorsListView extends Component {
       this.state.dataSource = this.ds.cloneWithRows(this.props.dataSource);
       break;
     case 'web':
+    case 'desktop':
       this.state.dataSource = this.props.dataSource;
       break;
     }
@@ -47,6 +48,7 @@ export default class ReactorsListView extends Component {
     case 'mobile':
       return this._renderMobile();
     case 'web':
+    case 'desktop':
       return this._renderWeb();
     }
   }
