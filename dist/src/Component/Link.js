@@ -68,7 +68,8 @@ var ReactorsLink = function (_Component) {
         _reactNative.TouchableHighlight,
         {
           onPress: this.go,
-          style: this.props.style
+          style: this.props.style,
+          underlayColor: 'rgba(255, 255, 255, 0)'
         },
         _react2.default.createElement(
           _reactNative.View,

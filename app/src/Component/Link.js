@@ -35,6 +35,7 @@ export default class ReactorsLink extends Component {
       <TouchableHighlight
         onPress={this.go}
         style={this.props.style}
+        underlayColor="rgba(255, 255, 255, 0)"
         >
         <View>
           {this.props.children}
