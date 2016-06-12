@@ -25,6 +25,7 @@ export default class ReactorsLink extends Component {
     case 'mobile':
       return this._renderMobile();
     case 'web':
+    case 'desktop':
       return this._renderWeb();
     }
   }

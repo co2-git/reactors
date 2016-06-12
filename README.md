@@ -1,12 +1,13 @@
 reactors
 ===
 
-Framework based on React and React Native to build hybrid apps for both mobile and the web.
+Framework based on React to build hybrid apps that run web, mobile and desktop.
+We use React Native for mobile, and Electron for desktop.
 
 # Install
 
 ```bash
-sudo npm install --global react-native-cli reactors
+sudo npm install --global react-native-cli electron-prebuilt reactors
 ```
 
 # Create a new Reactors app
@@ -21,6 +22,7 @@ reactors init MyAwesomeApp
 reactors run ios
 reactors run android
 reactors run web
+reactors run desktop
 ```
 
 # Usage
@@ -55,3 +57,23 @@ export default class MyAwesomeComponent extends Component {
 # Core APIs
 
 - StyleSheet
+
+# Platform dependent code
+
+You can code for a specific platform:
+
+```javascript
+switch (Reactors.platform) {
+case 'mobile':
+  // ...
+  break;
+case 'web':
+  // ...
+  break;
+case 'desktop':
+  // ...
+  break;
+}
+```
+
+You can access `react-native` and `electron` via `import`.

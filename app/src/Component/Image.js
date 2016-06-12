@@ -22,6 +22,7 @@ export default class ReactorsImage extends Component {
       }
       return <Image {...props} />;
     case 'web':
+    case 'desktop':
       props.src = props.source;
       if (typeof props.src === 'object' && props.src.uri) {
         props.src = props.src.uri;

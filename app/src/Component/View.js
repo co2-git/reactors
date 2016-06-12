@@ -52,16 +52,22 @@ export default class ReactorsView extends Component {
         </View>
       );
     case 'web':
-      const children = this.renderChildren();
-      let style = {};
-      if (this.props.style) {
-        style = this.props.style;
-      }
-      return (
-        <section {...props} style={{...style, ...this.style}}>
-          {children}
-        </section>
-      );
+    case 'desktop':
+      return this._renderWeb();
     }
+  }
+
+  _renderWeb() {
+    const props: PROPS = {...this.props};
+    const children = this.renderChildren();
+    let style = {};
+    if (this.props.style) {
+      style = this.props.style;
+    }
+    return (
+      <section {...props} style={{...style, ...this.style}}>
+        {children}
+      </section>
+    );
   }
 }

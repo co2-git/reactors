@@ -56,6 +56,7 @@ var ReactorsImage = function (_Component) {
           }
           return _react2.default.createElement(_reactNative.Image, props);
         case 'web':
+        case 'desktop':
           props.src = props.source;
           if (_typeof(props.src) === 'object' && props.src.uri) {
             props.src = props.src.uri;

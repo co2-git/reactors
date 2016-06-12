@@ -17,6 +17,7 @@ export default class ReactorsText extends Component {
     case 'mobile':
       return <Text {...this.props}>{this.props.children}</Text>;
     case 'web':
+    case 'desktop':
       return <div {...this.props}>{this.props.children}</div>;
     }
   }
