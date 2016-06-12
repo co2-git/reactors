@@ -21,13 +21,17 @@ var _transform = require('../lib/transform');
 
 var _transform2 = _interopRequireDefault(_transform);
 
-var _write = require('../lib/write');
+var _changeJSON = require('../lib/changeJSON');
 
-var _write2 = _interopRequireDefault(_write);
+var _changeJSON2 = _interopRequireDefault(_changeJSON);
 
 var _npmInstall = require('../lib/npmInstall');
 
 var _npmInstall2 = _interopRequireDefault(_npmInstall);
+
+var _copy = require('../lib/copy');
+
+var _copy2 = _interopRequireDefault(_copy);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64,8 +68,6 @@ function init(app) {
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/index.html'), transformer, getAppFile('index.html'));
   }, function () {
-    return (0, _exec2.default)('mkdir ' + app + '/web/');
-  }, function () {
     return (0, _transform2.default)(getLocalFile('templates/index.web.js'), transformer, getAppFile('index.web.js'));
   }, function () {
     return (0, _exec2.default)('mkdir ' + app + '/app/');
@@ -74,6 +76,16 @@ function init(app) {
   }, function () {
     return (0, _transform2.default)(getLocalFile('templates/webpack.config.js'), transformer, getAppFile('webpack.config.js'));
   }, function () {
+    return (0, _exec2.default)('mkdir ' + app + '/desktop/');
+  }, function () {
+    return (0, _transform2.default)(getLocalFile('templates/index.desktop.html'), transformer, getAppFile('desktop/index.html'));
+  }, function () {
+    return (0, _copy2.default)(getLocalFile('templates/index.desktop.js'), getAppFile('index.desktop.js'));
+  }, function () {
     return (0, _npmInstall2.default)(app, 'reactors', 'react-dom', 'babel-loader', 'webpack', 'babel-preset-react', 'babel-preset-es2015', 'babel-preset-stage-0', 'ignore-loader');
+  }, function () {
+    return (0, _changeJSON2.default)(getAppFile('package.json'), function (json) {
+      json.main = 'index.desktop.js';
+    });
   });
 }

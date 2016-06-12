@@ -32,13 +32,25 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
+  ListView,
 } from 'reactors';
 
 export default class MyAwesomeComponent extends Component {
   render() {
     return (
       <View>
-        <Text>Hey! This works on web, android and ios!</Text>
+        <Text style={{fontWeight: 'bold'}}>One code to rule them all:</Text>
+        <ListView
+          dataSource={[
+            'Web browser',
+            'Android',
+            'iPhone and iPad',
+            'Mac OSX',
+            'Ubuntu and Linux',
+            'Windows 10',
+          ]}
+          renderRow={(platform) => <Text>{platform}</Text>}
+          />
       </View>
     );
   }
@@ -77,3 +89,7 @@ case 'desktop':
 ```
 
 You can access `react-native` and `electron` via `import`.
+
+# Plugins
+
+Check out Reactors plugin in the `npm` registry. Look for packages starting by `reactors-`.

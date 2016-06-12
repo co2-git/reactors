@@ -2,8 +2,9 @@ import path from 'path';
 import sequencer from 'promise-sequencer';
 import exec from '../lib/exec';
 import transform from '../lib/transform';
-import write from '../lib/write';
+import changeJSON from '../lib/changeJSON';
 import npmInstall from '../lib/npmInstall';
+import copy from '../lib/copy';
 
 function getLocalFile(file) {
   return path.resolve(__dirname, '../../', file);
@@ -45,7 +46,6 @@ export default function init(app) {
       transformer,
       getAppFile('index.html'),
     ),
-    () => exec(`mkdir ${app}/web/`),
     () => transform(
       getLocalFile('templates/index.web.js'),
       transformer,
@@ -62,6 +62,16 @@ export default function init(app) {
       transformer,
       getAppFile('webpack.config.js'),
     ),
+    () => exec(`mkdir ${app}/desktop/`),
+    () => transform(
+      getLocalFile('templates/index.desktop.html'),
+      transformer,
+      getAppFile('desktop/index.html'),
+    ),
+    () => copy(
+      getLocalFile('templates/index.desktop.js'),
+      getAppFile('index.desktop.js'),
+    ),
     () => npmInstall(app,
       'reactors',
       'react-dom',
@@ -71,6 +81,12 @@ export default function init(app) {
       'babel-preset-es2015',
       'babel-preset-stage-0',
       'ignore-loader',
+    ),
+    () => changeJSON(
+      getAppFile('package.json'),
+      (json) => {
+        json.main = 'index.desktop.js';
+      },
     ),
   );
 }
