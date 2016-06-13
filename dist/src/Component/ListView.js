@@ -80,6 +80,10 @@ var ReactorsListView = function (_Component) {
       var props = _extends({}, this.props);
       props.dataSource = this.state.dataSource;
 
+      if (!('enableEmptySections' in props)) {
+        props.enableEmptySections = true;
+      }
+
       return _react2.default.createElement(_reactNative.ListView, props);
     }
   }, {
