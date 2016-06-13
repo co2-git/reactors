@@ -16,7 +16,7 @@
     "electron",
     "native",
     "hybrid",
-    "awesome",
+    "awesome"
   ],
   "repository": {
     "type": "git",
