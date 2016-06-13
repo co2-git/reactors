@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "description": "Framework based on React to build hybrid apps that run web, mobile and desktop.",
   "main": "dist/index.js",
-  "tags": [
+  "keywords": [
+    "reactors",
     "react",
     "react-native",
+    "app",
     "mobile",
     "web",
     "android",
-    "ios"
+    "ios",
+    "desktop",
+    "electron",
+    "native",
+    "hybrid",
+    "awesome",
   ],
   "repository": {
     "type": "git",
