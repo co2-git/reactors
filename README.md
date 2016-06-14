@@ -57,6 +57,8 @@ export default class MyAwesomeComponent extends Component {
 }
 ```
 
+View a detailed example [here](templates/app/App.js).
+
 # Core Components
 
 - [Image](doc/Components/Image.md)
