@@ -59,16 +59,16 @@ export default class MyAwesomeComponent extends Component {
 
 # Core Components
 
-- Image
-- ListView
-- Link
-- ScrollView
-- Text
-- View
+- [Image](doc/Components/Image.md)
+- [ListView](doc/Components/ListView.md)
+- [Link](doc/Components/Link.md)
+- [ScrollView](doc/Components/ScrollView.md)
+- [Text](doc/Components/Text.md)
+- [View](doc/Components/View.md)
 
 # Core APIs
 
-- StyleSheet
+- [StyleSheet](doc/API/StyleSheet.md)
 
 # Platform dependent code
 
