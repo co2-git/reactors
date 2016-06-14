@@ -1,8 +1,8 @@
 reactors
 ===
 
-Framework based on React to build hybrid apps that run web, mobile and desktop.
-We use React Native for mobile, and Electron for desktop.
+Framework based on [React](https://facebook.github.io/react/) to build hybrid apps that run web, mobile and desktop.
+We use [React Native](https://facebook.github.io/react-native/) for mobile, and [Electron](http://electron.atom.io/) for desktop.
 
 # Install
 
