@@ -55,7 +55,9 @@ var ReactorsView = function (_Component) {
 
       var children = Array.isArray(this.props.children) ? this.props.children : [this.props.children];
 
-      return children.map(function (child, index) {
+      return children.filter(function (child) {
+        return child;
+      }).map(function (child, index) {
         var props = {};
 
         if (child.key === null) {
