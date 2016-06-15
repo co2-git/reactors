@@ -62,7 +62,7 @@ var ReactorsView = function (_Component) {
           props.key = index;
         }
 
-        if (child.type.name === 'ReactorsScrollView') {
+        if (child.type && child.type.name === 'ReactorsScrollView') {
           _this2.style.overflow = 'auto';
         }
 
