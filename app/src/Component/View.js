@@ -33,7 +33,7 @@ export default class ReactorsView extends Component {
           props.key = index;
         }
 
-        if (child.type.name === 'ReactorsScrollView') {
+        if (child.type && child.type.name === 'ReactorsScrollView') {
           this.style.overflow = 'auto';
         }
 
