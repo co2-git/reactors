@@ -24,19 +24,21 @@ export default class ReactorsView extends Component {
     const children = Array.isArray(this.props.children) ? this.props.children :
       [this.props.children];
 
-    return children.map((child, index) => {
-      const props = {};
+    return children
+      .filter(child => child)
+      .map((child, index) => {
+        const props = {};
 
-      if (child.key === null) {
-        props.key = index;
-      }
+        if (child.key === null) {
+          props.key = index;
+        }
 
-      if (child.type && child.type.name === 'ReactorsScrollView') {
-        this.style.overflow = 'auto';
-      }
+        if (child.type && child.type.name === 'ReactorsScrollView') {
+          this.style.overflow = 'auto';
+        }
 
-      return React.cloneElement(child, props);
-    });
+        return React.cloneElement(child, props);
+      });
   }
 
   render() {
