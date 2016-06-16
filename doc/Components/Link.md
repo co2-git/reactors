@@ -19,3 +19,9 @@ export default class MyComponent extends Component {
   }
 }
 ```
+
+# Props
+
+## `href: string`
+
+The link to open in web browser.
