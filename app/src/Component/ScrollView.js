@@ -30,10 +30,14 @@ export default class ReactorsScrollView extends Component {
     const style = {
       overflow: 'auto',
     };
+    const props = {...this.props};
+    if (props.onPress) {
+      props.onClick = props.onPress;
+    }
     return (
       <section
         style={style}
-        {...this.props}
+        {...props}
         className={'reactors$ScrollView'}
         >
         {this.props.children}

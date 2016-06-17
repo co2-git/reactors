@@ -45,8 +45,12 @@ export default class ReactorsLink extends Component {
   }
 
   _renderWeb() {
+    const props = {...this.props};
+    if (props.onPress) {
+      props.onClick = props.onPress;
+    }
     return (
-      <a href={this.props.href}>
+      <a {...props}>
         {this.props.children}
       </a>
     );

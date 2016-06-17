@@ -48,6 +48,9 @@ export default class ReactorsView extends Component {
     default:
       throw new Error('Unknown platform: ' + Reactors.platform);
     case 'mobile':
+      if (props.onPress) {
+        props.onStartShouldSetResponder = props.onPress;
+      }
       return (
         <View {...props}>
           {this.props.children}
@@ -65,6 +68,9 @@ export default class ReactorsView extends Component {
     let style = {};
     if (this.props.style) {
       style = this.props.style;
+    }
+    if (props.onPress) {
+      props.onClick = props.onPress;
     }
     return (
       <section {...props} style={{...style, ...this.style}}>

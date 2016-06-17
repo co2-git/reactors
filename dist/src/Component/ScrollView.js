@@ -68,11 +68,15 @@ var ReactorsScrollView = function (_Component) {
       var style = {
         overflow: 'auto'
       };
+      var props = _extends({}, this.props);
+      if (props.onPress) {
+        props.onClick = props.onPress;
+      }
       return _react2.default.createElement(
         'section',
         _extends({
           style: style
-        }, this.props, {
+        }, props, {
           className: 'reactors$ScrollView'
         }),
         this.props.children
