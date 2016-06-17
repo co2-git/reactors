@@ -80,6 +80,9 @@ var ReactorsView = function (_Component) {
         default:
           throw new Error('Unknown platform: ' + _reactors2.default.platform);
         case 'mobile':
+          if (props.onPress) {
+            props.onStartShouldSetResponder = props.onPress;
+          }
           return _react2.default.createElement(
             _reactNative.View,
             props,
@@ -98,6 +101,9 @@ var ReactorsView = function (_Component) {
       var style = {};
       if (this.props.style) {
         style = this.props.style;
+      }
+      if (props.onPress) {
+        props.onClick = props.onPress;
       }
       return _react2.default.createElement(
         'section',

@@ -67,6 +67,15 @@ Object.defineProperty(exports, 'StyleSheet', {
   }
 });
 
+var _Gesture = require('./src/API/Gesture');
+
+Object.defineProperty(exports, 'Gesture', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Gesture).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {};

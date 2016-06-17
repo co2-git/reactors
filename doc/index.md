@@ -12,4 +12,5 @@ Reactors Doc
 
 # API
 
+- [Gesture](API/Gesture.md)
 - [StyleSheet](API/StyleSheet.md)

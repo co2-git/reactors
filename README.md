@@ -70,6 +70,7 @@ View a detailed example [here](templates/app/App.js).
 
 # Core APIs
 
+- [Gesture](doc/API/Gesture.md)
 - [StyleSheet](doc/API/StyleSheet.md)
 
 # Platform dependent code
