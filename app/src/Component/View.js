@@ -55,6 +55,9 @@ export default class ReactorsView extends Component {
       );
     case 'web':
     case 'desktop':
+      if (props.onPress) {
+        props.onClick = props.onPress;
+      }
       return this._renderWeb();
     }
   }
