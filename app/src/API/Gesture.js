@@ -9,14 +9,15 @@ import Reactors from 'reactors';
 
 export default class Gesture {
   static handlers(props: Object) {
+    const clone_props = {...props};
     switch (Reactors.platform) {
     case 'mobile':
-      return props;
+      return clone_props;
     default:
-      if (props.onPress) {
-        props.onClick = props.onPress;
+      if (clone_props.onPress) {
+        clone_props.onClick = clone_props.onPress;
       }
-      return props;
+      return clone_props;
     }
   }
 }
