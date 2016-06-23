@@ -1,16 +1,35 @@
-import "babel-polyfill";
-import sequencer from 'promise-sequencer';
+import 'babel-polyfill';
+import semver from 'semver';
 import read from './read';
+import changeJSON from './changeJSON';
 import getAppFile from './getAppFile';
 import v0_1_4 from '../migrations/v0.1.4';
+import pkg from '../../package.json';
 
-export default function upgrade() {
-  return new Promise(async (resolve, reject) => {
+const versions = {
+  '0.1.4': v0_1_4,
+};
+
+export default () => new Promise(async (resolve, reject) => {
+  try {
+    let reactors;
     try {
-      const pkg = await read(getAppFile('node_modules/reactors/package.json'));
-      const json = JSON.parse(pkg);
+      reactors = await read(getAppFile('reactors.json'));
     } catch (error) {
-      reject(error);
+      reactors = {};
     }
-  });
-}
+    const updatable = versions.filter(version =>
+      semver.gt(version, reactors.version) && semver.lte(version, pkg.version)
+    );
+    updatable.forEach(async (fn) => await fn());
+    await changeJSON(
+      getAppFile('reactors.json'),
+      json => {
+        json.version = pkg.version;
+      },
+    );
+    resolve();
+  } catch (error) {
+    reject(error);
+  }
+});

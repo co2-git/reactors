@@ -5,10 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = init;
 
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
 var _promiseSequencer = require('promise-sequencer');
 
 var _promiseSequencer2 = _interopRequireDefault(_promiseSequencer);
@@ -29,6 +25,10 @@ var _npmInstall = require('../lib/npmInstall');
 
 var _npmInstall2 = _interopRequireDefault(_npmInstall);
 
+var _write = require('../lib/write');
+
+var _write2 = _interopRequireDefault(_write);
+
 var _copy = require('../lib/copy');
 
 var _copy2 = _interopRequireDefault(_copy);
@@ -42,6 +42,10 @@ var _getLocalFile = require('../lib/getLocalFile');
 var _getLocalFile2 = _interopRequireDefault(_getLocalFile);
 
 var _getAppFile2 = require('../lib/getAppFile');
+
+var _package = require('../../package.json');
+
+var _package2 = _interopRequireDefault(_package);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -116,6 +120,10 @@ function init(app) {
     return (0, _changeJSON2.default)(getAppFile('package.json'), function (json) {
       json.main = 'index.desktop.js';
     });
+  }, function () {
+    return (0, _logger2.default)('create reactors.json');
+  }, function () {
+    return (0, _write2.default)(getAppFile('reactors.json'), JSON.stringify({ version: _package2.default.version }));
   }, function () {
     return _logger2.default.ok('Reactors app ' + app + ' successfully created');
   });

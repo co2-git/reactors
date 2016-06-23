@@ -1,13 +1,14 @@
-import path from 'path';
 import sequencer from 'promise-sequencer';
 import exec from '../lib/exec';
 import transform from '../lib/transform';
 import changeJSON from '../lib/changeJSON';
 import npmInstall from '../lib/npmInstall';
+import write from '../lib/write';
 import copy from '../lib/copy';
 import logger from '../lib/logger';
 import getLocalFile from '../lib/getLocalFile';
 import {getAppFile as _getAppFile} from '../lib/getAppFile';
+import pkg from '../../package.json';
 
 export default function init(app) {
   function transformer(source) {
@@ -99,6 +100,11 @@ export default function init(app) {
       (json) => {
         json.main = 'index.desktop.js';
       },
+    ),
+    () => logger('create reactors.json'),
+    () => write(
+      getAppFile('reactors.json'),
+      JSON.stringify({version: pkg.version}),
     ),
     () => logger.ok(`Reactors app ${app} successfully created`),
   );

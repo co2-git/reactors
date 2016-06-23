@@ -29,8 +29,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel --out-dir dist/ app/",
-    "babel-watch": "babel --watch --out-dir dist/ app/",
-    "postinstall": "reactors upgrade"
+    "babel-watch": "babel --watch --out-dir dist/ app/"
   },
   "bin": {
     "reactors": "dist/bin/index.js"
@@ -52,6 +51,7 @@
   },
   "dependencies": {
     "colors": "^1.1.2",
-    "promise-sequencer": "^3.0.0"
+    "promise-sequencer": "^3.0.0",
+    "semver": "^5.1.0"
   }
 }
