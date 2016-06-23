@@ -50,7 +50,7 @@ switch (cmd) {
             break;
           case 'web':
           case 'desktop':
-            (0, _bundle2.default)();
+            (0, _bundle2.default)(platform);
             setTimeout(function () {
               if (platform === 'web') {
                 switch (_os2.default.platform()) {

@@ -29,7 +29,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel --out-dir dist/ app/",
-    "babel-watch": "babel --watch --out-dir dist/ app/"
+    "babel-watch": "babel --watch --out-dir dist/ app/",
+    "postinstall": "reactors upgrade"
   },
   "bin": {
     "reactors": "dist/bin/index.js"
