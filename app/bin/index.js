@@ -4,6 +4,7 @@ import os from 'os';
 import init from '../lib/init';
 import exec from '../lib/exec';
 import bundle from '../lib/bundle';
+import upgrade from '../lib/upgrade';
 
 const [, , cmd, app] = process.argv;
 
@@ -47,7 +48,12 @@ case 'run': {
   default:
     throw new Error('Unknown platform: ' + platform);
   }
+  break;
 }
+case 'upgrade':
+  upgrade()
+    .then(() => console.log('Your app has been upgraded'))
+    .catch(error => console.log(error.stack));
   break;
 default:
   console.log('Init a new app: `reactors init <AppName>`');

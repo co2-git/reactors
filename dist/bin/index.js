@@ -19,6 +19,10 @@ var _bundle = require('../lib/bundle');
 
 var _bundle2 = _interopRequireDefault(_bundle);
 
+var _upgrade = require('../lib/upgrade');
+
+var _upgrade2 = _interopRequireDefault(_upgrade);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _process$argv = _slicedToArray(process.argv, 4);
@@ -41,7 +45,7 @@ switch (cmd) {
     break;
   case 'run':
     {
-      (function () {
+      var _ret = function () {
         var platform = app;
         switch (platform) {
           case 'android':
@@ -71,8 +75,17 @@ switch (cmd) {
           default:
             throw new Error('Unknown platform: ' + platform);
         }
-      })();
+        return 'break';
+      }();
+
+      if (_ret === 'break') break;
     }
+  case 'upgrade':
+    (0, _upgrade2.default)().then(function () {
+      return console.log('Your app has been upgraded');
+    }).catch(function (error) {
+      return console.log(error.stack);
+    });
     break;
   default:
     console.log('Init a new app: `reactors init <AppName>`');
