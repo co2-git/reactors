@@ -25,5 +25,3 @@ exports.default = function (cmd) {
 };
 
 var _child_process = require('child_process');
-
-;

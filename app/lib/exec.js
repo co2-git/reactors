@@ -15,7 +15,7 @@ export default function (cmd, options = {}) {
         reject(new Error(`Got status ${status}`));
       });
 
-      ps.stdout.pipe(process.stdout);
-      ps.stderr.pipe(process.stderr);
+    ps.stdout.pipe(process.stdout);
+    ps.stderr.pipe(process.stderr);
   });
-};
+}

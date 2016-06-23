@@ -5,11 +5,9 @@ import transform from '../lib/transform';
 import changeJSON from '../lib/changeJSON';
 import npmInstall from '../lib/npmInstall';
 import copy from '../lib/copy';
-import colors from 'colors';
-
-function getLocalFile(file) {
-  return path.resolve(__dirname, '../../', file);
-}
+import logger from '../lib/logger';
+import getLocalFile from '../lib/getLocalFile';
+import {getAppFile as _getAppFile} from '../lib/getAppFile';
 
 export default function init(app) {
   function transformer(source) {
@@ -17,26 +15,8 @@ export default function init(app) {
   }
 
   function getAppFile(file) {
-    return path.resolve(process.cwd(), app, file);
+    return _getAppFile(file, app);
   }
-
-  function logger(message) {
-    return new Promise((resolve) => {
-      console.log();
-      console.log(colors.cyan.bold(message));
-      console.log();
-      resolve();
-    });
-  }
-
-  logger.ok = (message) => {
-    return new Promise((resolve) => {
-      console.log();
-      console.log(colors.green.bold(message));
-      console.log();
-      resolve();
-    });
-  };
 
   return sequencer(
     () => logger('Installing React Native'),
@@ -91,6 +71,16 @@ export default function init(app) {
     () => copy(
       getLocalFile('templates/index.desktop.js'),
       getAppFile('index.desktop.js'),
+    ),
+    () => logger('Create DOM html'),
+    () => copy(
+      getLocalFile('templates/index.dom.html'),
+      getAppFile('index.dom.html'),
+    ),
+    () => logger('Create electron index'),
+    () => copy(
+      getLocalFile('templates/index.electron.js'),
+      getAppFile('index.electron.js'),
     ),
     () => logger('Installing npm dependencies'),
     () => npmInstall(app,
