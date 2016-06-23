@@ -1,6 +1,6 @@
 {
   "name": "reactors",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Framework based on React to build hybrid apps that run web, mobile and desktop.",
   "main": "dist/index.js",
   "keywords": [

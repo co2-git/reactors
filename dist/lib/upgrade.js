@@ -18,6 +18,10 @@ var _read = require('./read');
 
 var _read2 = _interopRequireDefault(_read);
 
+var _write = require('./write');
+
+var _write2 = _interopRequireDefault(_write);
+
 var _changeJSON = require('./changeJSON');
 
 var _changeJSON2 = _interopRequireDefault(_changeJSON);
@@ -59,32 +63,34 @@ exports.default = function () {
             case 0:
               _context3.prev = 0;
               return _context3.delegateYield(regeneratorRuntime.mark(function _callee2() {
-                var reactors, versions;
+                var reactors, first_time, versions;
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                   while (1) {
                     switch (_context2.prev = _context2.next) {
                       case 0:
                         reactors = void 0;
-                        _context2.prev = 1;
-                        _context2.next = 4;
+                        first_time = false;
+                        _context2.prev = 2;
+                        _context2.next = 5;
                         return (0, _read2.default)(getFile('reactors.json'));
 
-                      case 4:
+                      case 5:
                         reactors = _context2.sent;
 
                         reactors = JSON.parse(reactors);
-                        _context2.next = 11;
+                        _context2.next = 13;
                         break;
 
-                      case 8:
-                        _context2.prev = 8;
-                        _context2.t0 = _context2['catch'](1);
+                      case 9:
+                        _context2.prev = 9;
+                        _context2.t0 = _context2['catch'](2);
 
+                        first_time = true;
                         reactors = {
                           version: _package2.default.version
                         };
 
-                      case 11:
+                      case 13:
                         versions = migrations.filter(function (migration) {
                           return _semver2.default.gt(migration.version, reactors.version) && _semver2.default.lte(migration.version, _package2.default.version);
                         });
@@ -113,20 +119,34 @@ exports.default = function () {
                             return ref.apply(this, arguments);
                           };
                         }());
-                        _context2.next = 15;
+
+                        if (!first_time) {
+                          _context2.next = 20;
+                          break;
+                        }
+
+                        _context2.next = 18;
+                        return (0, _write2.default)(getFile('reactors.json'), JSON.stringify(reactors, null, 2));
+
+                      case 18:
+                        _context2.next = 22;
+                        break;
+
+                      case 20:
+                        _context2.next = 22;
                         return (0, _changeJSON2.default)(getFile('reactors.json'), function (json) {
                           json.version = _package2.default.version;
                         });
 
-                      case 15:
+                      case 22:
                         resolve();
 
-                      case 16:
+                      case 23:
                       case 'end':
                         return _context2.stop();
                     }
                   }
-                }, _callee2, undefined, [[1, 8]]);
+                }, _callee2, undefined, [[2, 9]]);
               })(), 't0', 2);
 
             case 2:
