@@ -15,7 +15,6 @@ var _exec2 = _interopRequireDefault(_exec);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function bundle(platform) {
-  console.log('bundle', platform);
   return (0, _exec2.default)('node_modules/.bin/webpack', {
     env: _extends({}, process.env, {
       REACTORS_PLATFORM: platform
