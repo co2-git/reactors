@@ -1,3 +1,7 @@
+# 0.1.6
+
+https://github.com/co2-git/reactors/issues?q=milestone%3Av0.1.6
+
 # 0.1.5
 
 https://github.com/co2-git/reactors/issues?q=milestone%3Av0.1.5

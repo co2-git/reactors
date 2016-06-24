@@ -5,41 +5,47 @@ import copy from '../lib/copy';
 import changeJSON from '../lib/changeJSON';
 import getAppFile from '../lib/getAppFile';
 
+function getTemplate(file) {
+  return path.join(__dirname, `../../templates/migrations/v0.1.4/${file}`);
+}
+
 export default () => new Promise(async (resolve, reject) => {
   try {
+    await logger('UPGRADING TO v0.1.4');
+
     await logger('Updating web pack config');
     await copy(
-      path.join(__dirname, '/v0.1.4/webpack.config.js'),
+      getTemplate('webpack.config.js'),
       getAppFile('webpack.config.js'),
     );
 
     await logger('Updating desktop index.html');
     await copy(
-      path.join(__dirname, '/v0.1.4/index.desktop.html'),
+      getTemplate('index.desktop.html'),
       getAppFile('desktop/index.html'),
     );
 
     await logger('Updating desktop index.js');
     await copy(
-      path.join(__dirname, '/v0.1.4/index.desktop.js'),
+      getTemplate('index.desktop.js'),
       getAppFile('index.desktop.js'),
     );
 
     await logger('Updating electron index.js');
     await copy(
-      path.join(__dirname, '/v0.1.4/index.electron.js'),
+      getTemplate('index.electron.js'),
       getAppFile('index.electron.js'),
     );
 
     await logger('Updating dom index.js');
     await copy(
-      path.join(__dirname, '/v0.1.4/index.dom.js'),
-      path.join(__dirname, '/v0.1.4/index.dom.js'),
+      getTemplate('index.dom.js'),
+      getAppFile('index.dom.js'),
     );
 
     await logger('Updating web index.html');
     await copy(
-      path.join(__dirname, '/v0.1.4/index.html'),
+      getTemplate('index.html'),
       getAppFile('index.html'),
     );
 
@@ -50,6 +56,8 @@ export default () => new Promise(async (resolve, reject) => {
         json.main = 'index.electron.js';
       }
     );
+
+    resolve();
   } catch (error) {
     reject(error);
   }
