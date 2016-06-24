@@ -39,7 +39,11 @@ export default () => new Promise(async (resolve, reject) => {
       semver.gt(migration.version, reactors.version) &&
         semver.lte(migration.version, pkg.version)
     );
-    versions.forEach(async (migration) => await migration.migrate());
+
+    for (const version of versions) {
+      await version.migrate();
+    }
+
     if (first_time) {
       await write(
         getFile('reactors.json'),

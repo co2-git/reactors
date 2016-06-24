@@ -56,34 +56,35 @@ function getFile(file) {
 
 exports.default = function () {
   return new Promise(function () {
-    var ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee3(resolve, reject) {
-      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+    var ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee2(resolve, reject) {
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
-              _context3.prev = 0;
-              return _context3.delegateYield(regeneratorRuntime.mark(function _callee2() {
-                var reactors, first_time, versions;
-                return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              _context2.prev = 0;
+              return _context2.delegateYield(regeneratorRuntime.mark(function _callee() {
+                var reactors, first_time, versions, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, version;
+
+                return regeneratorRuntime.wrap(function _callee$(_context) {
                   while (1) {
-                    switch (_context2.prev = _context2.next) {
+                    switch (_context.prev = _context.next) {
                       case 0:
                         reactors = void 0;
                         first_time = false;
-                        _context2.prev = 2;
-                        _context2.next = 5;
+                        _context.prev = 2;
+                        _context.next = 5;
                         return (0, _read2.default)(getFile('reactors.json'));
 
                       case 5:
-                        reactors = _context2.sent;
+                        reactors = _context.sent;
 
                         reactors = JSON.parse(reactors);
-                        _context2.next = 13;
+                        _context.next = 13;
                         break;
 
                       case 9:
-                        _context2.prev = 9;
-                        _context2.t0 = _context2['catch'](2);
+                        _context.prev = 9;
+                        _context.t0 = _context['catch'](2);
 
                         first_time = true;
                         reactors = {
@@ -94,77 +95,107 @@ exports.default = function () {
                         versions = migrations.filter(function (migration) {
                           return _semver2.default.gt(migration.version, reactors.version) && _semver2.default.lte(migration.version, _package2.default.version);
                         });
+                        _iteratorNormalCompletion = true;
+                        _didIteratorError = false;
+                        _iteratorError = undefined;
+                        _context.prev = 17;
+                        _iterator = versions[Symbol.iterator]();
 
-                        versions.forEach(function () {
-                          var ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(migration) {
-                            return regeneratorRuntime.wrap(function _callee$(_context) {
-                              while (1) {
-                                switch (_context.prev = _context.next) {
-                                  case 0:
-                                    _context.next = 2;
-                                    return migration.migrate();
-
-                                  case 2:
-                                    return _context.abrupt('return', _context.sent);
-
-                                  case 3:
-                                  case 'end':
-                                    return _context.stop();
-                                }
-                              }
-                            }, _callee, undefined);
-                          }));
-
-                          return function (_x3) {
-                            return ref.apply(this, arguments);
-                          };
-                        }());
-
-                        if (!first_time) {
-                          _context2.next = 20;
+                      case 19:
+                        if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
+                          _context.next = 26;
                           break;
                         }
 
-                        _context2.next = 18;
-                        return (0, _write2.default)(getFile('reactors.json'), JSON.stringify(reactors, null, 2));
+                        version = _step.value;
+                        _context.next = 23;
+                        return version.migrate();
 
-                      case 18:
-                        _context2.next = 22;
+                      case 23:
+                        _iteratorNormalCompletion = true;
+                        _context.next = 19;
                         break;
 
-                      case 20:
-                        _context2.next = 22;
+                      case 26:
+                        _context.next = 32;
+                        break;
+
+                      case 28:
+                        _context.prev = 28;
+                        _context.t1 = _context['catch'](17);
+                        _didIteratorError = true;
+                        _iteratorError = _context.t1;
+
+                      case 32:
+                        _context.prev = 32;
+                        _context.prev = 33;
+
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                          _iterator.return();
+                        }
+
+                      case 35:
+                        _context.prev = 35;
+
+                        if (!_didIteratorError) {
+                          _context.next = 38;
+                          break;
+                        }
+
+                        throw _iteratorError;
+
+                      case 38:
+                        return _context.finish(35);
+
+                      case 39:
+                        return _context.finish(32);
+
+                      case 40:
+                        if (!first_time) {
+                          _context.next = 45;
+                          break;
+                        }
+
+                        _context.next = 43;
+                        return (0, _write2.default)(getFile('reactors.json'), JSON.stringify(reactors, null, 2));
+
+                      case 43:
+                        _context.next = 47;
+                        break;
+
+                      case 45:
+                        _context.next = 47;
                         return (0, _changeJSON2.default)(getFile('reactors.json'), function (json) {
                           json.version = _package2.default.version;
                         });
 
-                      case 22:
+                      case 47:
                         resolve();
 
-                      case 23:
+                      case 48:
                       case 'end':
-                        return _context2.stop();
+                        return _context.stop();
                     }
                   }
-                }, _callee2, undefined, [[2, 9]]);
+                }, _callee, undefined, [[2, 9], [17, 28, 32, 40], [33,, 35, 39]]);
               })(), 't0', 2);
 
             case 2:
-              _context3.next = 7;
+              _context2.next = 7;
               break;
 
             case 4:
-              _context3.prev = 4;
-              _context3.t1 = _context3['catch'](0);
+              _context2.prev = 4;
+              _context2.t1 = _context2['catch'](0);
 
-              reject(_context3.t1);
+              reject(_context2.t1);
 
             case 7:
             case 'end':
-              return _context3.stop();
+              return _context2.stop();
           }
         }
-      }, _callee3, undefined, [[0, 4]]);
+      }, _callee2, undefined, [[0, 4]]);
     }));
 
     return function (_x, _x2) {
