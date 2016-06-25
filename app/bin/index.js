@@ -41,7 +41,7 @@ case 'run': {
           throw new Error('Platform not supported: ' + os.platform());
         }
       } else if (platform === 'desktop') {
-        exec('electron .');
+        exec('electron index.electron.js');
       }
     }, 5000);
     break;

@@ -68,7 +68,7 @@ switch (cmd) {
                     throw new Error('Platform not supported: ' + _os2.default.platform());
                 }
               } else if (platform === 'desktop') {
-                (0, _exec2.default)('electron .');
+                (0, _exec2.default)('electron index.electron.js');
               }
             }, 5000);
             break;
