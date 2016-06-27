@@ -37,6 +37,9 @@ var ReactorsStyleSheet = function () {
             if (style[rule].borderWidth && !style[rule].borderStyle) {
               style[rule].borderStyle = 'solid';
             }
+            if (style[rule].flexDirection) {
+              style[rule].display = 'flex';
+            }
           }
           return style;
       }
