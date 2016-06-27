@@ -96,3 +96,7 @@ You can access `react-native` and `electron` via `import`.
 # Plugins
 
 Check out Reactors plugin in the `npm` registry. Look for packages starting by `reactors-`.
+
+Some plugins:
+
+- [reactors-form](https://www.npmjs.com/package/reactors-form)
