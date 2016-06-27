@@ -76,6 +76,15 @@ Object.defineProperty(exports, 'Gesture', {
   }
 });
 
+var _renderChildren = require('./lib/renderChildren');
+
+Object.defineProperty(exports, 'renderChildren', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_renderChildren).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {};

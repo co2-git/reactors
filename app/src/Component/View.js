@@ -5,77 +5,19 @@
   * @flow
 **/
 
-import React, {Component, PropTypes} from 'react';
-import {View} from 'react-native';
+import React from 'react';
 import Reactors from 'reactors';
+import renderMobile from './View/mobile';
+import renderWeb from './View/web';
 
-type PROPS = {
-  accessibilityLabel?: string,
+export default (props) => {
+  switch (Reactors.platform) {
+  default:
+    throw new Error('Unknown platform: ' + Reactors.platform);
+  case 'mobile':
+    return renderMobile(props);
+  case 'web':
+  case 'desktop':
+    return renderWeb(props);
+  }
 };
-
-export default class ReactorsView extends Component {
-  static propTypes = {
-    accessibilitylabel: PropTypes.string,
-  };
-
-  style = {};
-
-  renderChildren() {
-    const children = Array.isArray(this.props.children) ? this.props.children :
-      [this.props.children];
-
-    return children
-      .filter(child => child)
-      .map((child, index) => {
-        const props = {};
-
-        if (child.key === null) {
-          props.key = index;
-        }
-
-        if (child.type && child.type.name === 'ReactorsScrollView') {
-          this.style.overflow = 'auto';
-        }
-
-        return React.cloneElement(child, props);
-      });
-  }
-
-  render() {
-    const props: PROPS = {...this.props};
-
-    switch (Reactors.platform) {
-    default:
-      throw new Error('Unknown platform: ' + Reactors.platform);
-    case 'mobile':
-      if (props.onPress) {
-        props.onStartShouldSetResponder = props.onPress;
-      }
-      return (
-        <View {...props}>
-          {this.props.children}
-        </View>
-      );
-    case 'web':
-    case 'desktop':
-      return this._renderWeb();
-    }
-  }
-
-  _renderWeb() {
-    const props: PROPS = {...this.props};
-    const children = this.renderChildren();
-    let style = {};
-    if (this.props.style) {
-      style = this.props.style;
-    }
-    if (props.onPress) {
-      props.onClick = props.onPress;
-    }
-    return (
-      <section {...props} style={{...style, ...this.style}}>
-        {children}
-      </section>
-    );
-  }
-}
