@@ -101,3 +101,4 @@ Some plugins:
 
 - [reactors-form](https://www.npmjs.com/package/reactors-form)
 - [reactors-http-request](https://www.npmjs.com/package/reactors-http-request)
+- [reactors-router](https://www.npmjs.com/package/reactors-router)
