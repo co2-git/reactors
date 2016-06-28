@@ -10,12 +10,12 @@ import getLocalFile from '../lib/getLocalFile';
 import _getAppFile from '../lib/getAppFile';
 import pkg from '../../package.json';
 
-export default function init(app) {
-  function transformer(source) {
+export default function init(app: string): Promise {
+  function transformer(source: string): string {
     return source.replace(/\{app\}/g, app);
   }
 
-  function getAppFile(file) {
+  function getAppFile(file: string): string {
     return _getAppFile(file, app);
   }
 
