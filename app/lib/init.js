@@ -21,81 +21,67 @@ export default function init(app: string): Promise {
 
   return new Promise(async (resolve, reject) => {
     try {
+      const templatesToTransform = [
+        {'index.mobile.js': 'index.ios.js'},
+        {'index.mobile.js': 'index.android.js'},
+        'index.html',
+        'index.web.js',
+        'index.dom.js',
+        'index.desktop.js',
+        'app/App.js',
+        'webpack.config.js',
+        {['index.desktop.html']: 'desktop/index.html'},
+      ];
+
+      const templatesToCopy = [
+        'index.electron.js',
+      ];
+
       await logger('Installing React Native');
       await exec(`react-native init ${app}`);
       await logger.ok('React Native installed');
 
-      await logger('Update mobile indexes');
-      await transform(
-        getLocalFile('templates/index.mobile.js'),
-        transformer,
-        getAppFile('index.ios.js'),
-      );
-      await transform(
-        getLocalFile('templates/index.mobile.js'),
-        transformer,
-        getAppFile('index.android.js'),
-      );
-
-      await logger('Create html for the web');
-      await transform(
-        getLocalFile('templates/index.html'),
-        transformer,
-        getAppFile('index.html'),
-      );
-
-      await logger('Create JS for the web');
-      await transform(
-        getLocalFile('templates/index.web.js'),
-        transformer,
-        getAppFile('index.web.js'),
-      );
-
-      await logger('Create app directory');
+      await logger('Create app directories');
       await exec(`mkdir ${app}/app/`);
-
-      await logger('Create App');
-      await transform(
-        getLocalFile('templates/app/App.js'),
-        transformer,
-        getAppFile('app/App.js'),
-      );
-
-      await logger('Create webpack config file for web/desktop');
-      await transform(
-        getLocalFile('templates/webpack.config.js'),
-        transformer,
-        getAppFile('webpack.config.js'),
-      );
-
-      await logger('Create desktop directory');
       await exec(`mkdir ${app}/desktop/`);
 
-      await logger('Create html for desktop');
-
-      await transform(
-        getLocalFile('templates/index.desktop.html'),
-        transformer,
-        getAppFile('desktop/index.html'),
-      );
-
-      await logger('Create JS for desktop');
-      await copy(
-        getLocalFile('templates/index.desktop.js'),
-        getAppFile('index.desktop.js'),
-      );
-
-      await logger('Create DOM html');
-      await copy(
-        getLocalFile('templates/index.dom.html'),
-        getAppFile('index.dom.html'),
-      );
-
-      await logger('Create electron index');
-      await copy(
-        getLocalFile('templates/index.electron.js'),
-        getAppFile('index.electron.js'),
-      );
+      await logger('Install templates');
+      for (const template of templatesToTransform) {
+        if (typeof template === 'string') {
+          await transform(
+            getLocalFile(`templates/${template}`),
+            transformer,
+            getAppFile(template),
+          );
+        } else if (typeof template === 'object') {
+          for (const local in template) {
+            if (template[local]) {
+              await transform(
+                getLocalFile(`templates/${local}`),
+                transformer,
+                getAppFile(template[local]),
+              );
+            }
+          }
+        }
+      }
+      for (const template of templatesToCopy) {
+        if (typeof template === 'string') {
+          await copy(
+            getLocalFile(`templates/${template}`),
+            getAppFile(template),
+          );
+        } else if (typeof template === 'object') {
+          for (const local in template) {
+            if (template[local]) {
+              await copy(
+                getLocalFile(`templates/${local}`),
+                getAppFile(template[local]),
+              );
+            }
+          }
+        }
+      }
 
       await logger('Installing npm dependencies');
       await npmInstall(app,
