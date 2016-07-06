@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        * @module reactors
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        * @name StyleSheet
@@ -21,6 +23,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function stringifyTransformers(transformers) {
+  return transformers.map(function (transformer) {
+    var key = Object.keys(transformer);
+    return key + '(' + transformer[key] + ')';
+  }).join(' ');
+}
+
 var ReactorsStyleSheet = function () {
   function ReactorsStyleSheet() {
     _classCallCheck(this, ReactorsStyleSheet);
@@ -33,15 +42,24 @@ var ReactorsStyleSheet = function () {
         case 'mobile':
           return _reactNative.StyleSheet.create(style);
         default:
-          for (var rule in style) {
-            if (style[rule].borderWidth && !style[rule].borderStyle) {
-              style[rule].borderStyle = 'solid';
+          {
+            var _style = _extends({}, style);
+            for (var rule in _style) {
+              if (_style[rule]) {
+                var _rule = _style[rule];
+                if (_rule.borderWidth && !_rule.borderStyle) {
+                  _rule.borderStyle = 'solid';
+                }
+                if (_rule.flexDirection) {
+                  _rule.display = 'flex';
+                }
+                if (_rule.transform) {
+                  _rule.transform = stringifyTransformers(_rule.transform);
+                }
+              }
             }
-            if (style[rule].flexDirection) {
-              style[rule].display = 'flex';
-            }
+            return _style;
           }
-          return style;
       }
     }
   }]);
