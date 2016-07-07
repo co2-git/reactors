@@ -43,19 +43,22 @@ var ReactorsText = function (_Component) {
   _createClass(ReactorsText, [{
     key: 'render',
     value: function render() {
+      var props = _extends({}, this.props);
+      if (props.style) {
+        props.style = new _reactors.StyleRule(props.style);
+      }
       switch (_reactors2.default.platform) {
         default:
           throw new Error('Unknown platform: ' + _reactors2.default.platform);
         case 'mobile':
           return _react2.default.createElement(
             _reactNative.Text,
-            this.props,
+            props,
             this.props.children
           );
         case 'web':
         case 'desktop':
           {
-            var props = _extends({}, this.props);
             if (props.onPress) {
               props.onClick = props.onPress;
             }

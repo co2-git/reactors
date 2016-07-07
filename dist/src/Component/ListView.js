@@ -78,6 +78,9 @@ var ReactorsListView = function (_Component) {
     key: '_renderMobile',
     value: function _renderMobile() {
       var props = _extends({}, this.props);
+      if (props.style) {
+        props.style = new _reactors.StyleRule(props.style);
+      }
       props.dataSource = this.state.dataSource;
 
       if (!('enableEmptySections' in props)) {
@@ -100,7 +103,7 @@ var ReactorsListView = function (_Component) {
       });
       return _react2.default.createElement(
         'ul',
-        null,
+        { style: new _reactors.StyleRule(this.props.style) },
         lis
       );
     }

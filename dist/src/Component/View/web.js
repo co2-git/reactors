@@ -14,10 +14,15 @@ var _renderChildren = require('../../../lib/renderChildren');
 
 var _renderChildren2 = _interopRequireDefault(_renderChildren);
 
+var _reactors = require('reactors');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
   var webProps = _extends({}, props);
+  if (webProps.style) {
+    webProps.style = new _reactors.StyleRule(webProps.style);
+  }
   if (webProps.onPress) {
     webProps.onClick = webProps.onPress;
   }

@@ -7,7 +7,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import {ListView} from 'react-native';
-import Reactors from 'reactors';
+import Reactors, {StyleRule} from 'reactors';
 
 type STATE = {
   dataSource: Array<any>,
@@ -55,6 +55,9 @@ export default class ReactorsListView extends Component {
 
   _renderMobile() {
     const props = {...this.props};
+    if (props.style) {
+      props.style = new StyleRule(props.style);
+    }
     props.dataSource = this.state.dataSource;
 
     if (!('enableEmptySections' in props)) {
@@ -70,6 +73,6 @@ export default class ReactorsListView extends Component {
         {this.props.renderRow(item)}
       </li>
     ));
-    return <ul>{lis}</ul>;
+    return <ul style={new StyleRule(this.props.style)}>{lis}</ul>;
   }
 }

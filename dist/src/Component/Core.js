@@ -10,19 +10,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactNative = require('react-native');
-
 var _reactors = require('reactors');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
-  var mobileProps = _extends({}, props);
-  if (mobileProps.style) {
-    mobileProps.style = new _reactors.StyleRule(mobileProps.style);
+  var childProps = _extends({}, props);
+  if (childProps.style) {
+    childProps.style = new _reactors.StyleSheet(childProps.style);
   }
-  if (typeof mobileProps.source === 'string') {
-    mobileProps.source = { uri: mobileProps.source };
-  }
-  return _react2.default.createElement(_reactNative.Image, mobileProps);
 };

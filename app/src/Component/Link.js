@@ -7,7 +7,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import {TouchableHighlight, Linking, View} from 'react-native';
-import Reactors from 'reactors';
+import Reactors, {StyleRule} from 'reactors';
 
 export default class ReactorsLink extends Component {
   static propTypes = {
@@ -34,7 +34,7 @@ export default class ReactorsLink extends Component {
     return (
       <TouchableHighlight
         onPress={this.go}
-        style={this.props.style}
+        style={new StyleRule(this.props.style)}
         underlayColor="rgba(255, 255, 255, 0)"
         >
         <View>
@@ -48,6 +48,9 @@ export default class ReactorsLink extends Component {
     const props = {...this.props};
     if (props.onPress) {
       props.onClick = props.onPress;
+    }
+    if (props.style) {
+      props.style = new StyleRule(props.style);
     }
     return (
       <a {...props}>
