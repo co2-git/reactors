@@ -64,11 +64,7 @@ export default class ReactorsStyleSheet {
   }
   style = {};
   constructor(styleSheet: STYLESHEET) {
-    if (!Reactors.getPlatform()) {
-      setTimeout(() => this.parse(styleSheet));
-    } else {
-      this.parse(styleSheet);
-    }
+    this.parse(styleSheet);
   }
   parse(styleSheet: STYLESHEET) {
     switch (Reactors.platform) {
@@ -94,11 +90,7 @@ export default class ReactorsStyleSheet {
 
 export class Rule {
   constructor(style: RULE) {
-    if (!Reactors.getPlatform()) {
-      setTimeout(() => this.parse(style));
-    } else {
-      this.parse(style);
-    }
+    this.parse(style);
   }
   parse(style) {
     switch (Reactors.platform) {
