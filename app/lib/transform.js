@@ -1,4 +1,3 @@
-import fs from 'fs';
 import read from './read';
 import write from './write';
 import sequencer from 'promise-sequencer';
