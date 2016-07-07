@@ -8,12 +8,14 @@ import getAppFile from './getAppFile';
 import v0_1_4 from '../migrations/v0.1.4';
 import v0_1_9 from '../migrations/v0.1.9';
 import v0_1_11 from '../migrations/v0.1.11';
+import v0_1_15 from '../migrations/v0.1.15';
 import pkg from '../../package.json';
 
 const migrations = [
   {version: '0.1.4', migrate: v0_1_4},
   {version: '0.1.9', migrate: v0_1_9},
   {version: '0.1.11', migrate: v0_1_11},
+  {version: '0.1.15', migrate: v0_1_15},
 ];
 
 let base = getAppFile('');
