@@ -6,10 +6,14 @@ import write from './write';
 import changeJSON from './changeJSON';
 import getAppFile from './getAppFile';
 import v0_1_4 from '../migrations/v0.1.4';
+import v0_1_9 from '../migrations/v0.1.9';
+import v0_1_11 from '../migrations/v0.1.11';
 import pkg from '../../package.json';
 
 const migrations = [
   {version: '0.1.4', migrate: v0_1_4},
+  {version: '0.1.9', migrate: v0_1_9},
+  {version: '0.1.11', migrate: v0_1_11},
 ];
 
 let base = getAppFile('');
