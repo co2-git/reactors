@@ -33,12 +33,6 @@ export default () => new Promise(async (resolve, reject) => {
       getAppFile('index.android.js'),
     );
 
-    await logger('Updating web index.js');
-    await copy(
-      getTemplate('index.web.js'),
-      getAppFile('index.web.js'),
-    );
-
     resolve();
   } catch (error) {
     reject(error);
