@@ -56,9 +56,13 @@ var ReactorsScrollView = function (_Component) {
   }, {
     key: '_renderMobile',
     value: function _renderMobile() {
+      var props = _extends({}, this.props);
+      if (props.style) {
+        props.style = new _reactors.StyleRule(props.style);
+      }
       return _react2.default.createElement(
         _reactNative.ScrollView,
-        this.props,
+        props,
         this.props.children
       );
     }
@@ -71,6 +75,9 @@ var ReactorsScrollView = function (_Component) {
       var props = _extends({}, this.props);
       if (props.onPress) {
         props.onClick = props.onPress;
+      }
+      if (props.style) {
+        props.style = new _reactors.StyleRule(props.style);
       }
       return _react2.default.createElement(
         'section',

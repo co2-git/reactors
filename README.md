@@ -61,6 +61,7 @@ View a detailed example [here](templates/app/App.js).
 
 # Core Components
 
+- [Core](doc/Components/Core.md)
 - [Image](doc/Components/Image.md)
 - [ListView](doc/Components/ListView.md)
 - [Link](doc/Components/Link.md)

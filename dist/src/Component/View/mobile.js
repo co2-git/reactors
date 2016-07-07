@@ -12,10 +12,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactNative = require('react-native');
 
+var _reactors = require('reactors');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
   var mobileProps = _extends({}, props);
+  if (mobileProps.style) {
+    mobileProps.style = new _reactors.StyleRule(mobileProps.style);
+  }
   if (mobileProps.onPress) {
     mobileProps.onStartShouldSetResponder = mobileProps.onPress;
   }

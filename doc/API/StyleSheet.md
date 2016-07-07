@@ -1,19 +1,32 @@
 StyleSheet
 ===
 
-As always in Reactors, we try to take the React Native design as reference.
+`StyleSheet` unifies style conventions so you can pass it one style and it will be converted to its matching platform.
+
+All `reactors` core components already unify style.
+
+# Usage
 
 ```javascript
-import React from 'react';
-import {StyleSheet, Text} from 'reactors';
+import {StyleSheet, StyleRule} from 'reactors';
+```
 
-export default () => <Text style={styles.text}>Hello!</Text>;
+# Stylesheet
 
-const styles = StyleSheet.create({
+```javascript
+const styles = new StyleSheet({
   text: {
     color: 'grey',
   },
 });
+
+<View style={styles.text} />;
+```
+
+# Rule
+
+```javascript
+<View style={new StyleRule({color: 'grey'})} />;
 ```
 
 # Border
@@ -21,11 +34,9 @@ const styles = StyleSheet.create({
 In ReactNative, you don't need  to supply a borders style, unlike the web. `reactors` goes like ReactNative - you can omit style if it `solid`.
 
 ```javascript
-const styles = StyleSheet.create({
-  container: {
-    borderWidth: 2, // default color is black, default style is solid
-  },
-})
+new StyleRule({
+  borderWidth: 2, // default color is black, default style is solid
+});
 ```
 
 # Flexbox
@@ -35,9 +46,11 @@ In ReactNative, you can omit `display: flex`. Likewise with `reactors`.
 # Translate
 
 ```javascript
-const styles = StyleSheet.create({
-  container: {
-    transform: [{scale: 2}, {translateX: -250}],
-  },
+new StyleRule({
+  transform: [{scale: 2}, {translateX: -250}],
 });
 ```
+
+# Transitions
+
+Transitions will be ignored on mobile. Use animations instead.

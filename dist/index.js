@@ -4,6 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _Core = require('./src/API/Core');
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Core).default;
+  }
+});
+
 var _View = require('./src/Component/View');
 
 Object.defineProperty(exports, 'View', {
@@ -66,6 +75,12 @@ Object.defineProperty(exports, 'StyleSheet', {
     return _interopRequireDefault(_StyleSheet).default;
   }
 });
+Object.defineProperty(exports, 'StyleRule', {
+  enumerable: true,
+  get: function get() {
+    return _StyleSheet.Rule;
+  }
+});
 
 var _Gesture = require('./src/API/Gesture');
 
@@ -86,5 +101,3 @@ Object.defineProperty(exports, 'renderChildren', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {};

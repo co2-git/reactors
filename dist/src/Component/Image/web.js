@@ -12,12 +12,17 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactors = require('reactors');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
   var webProps = _extends({}, props);
   if (webProps.onPress) {
     webProps.onClick = webProps.onPress;
+  }
+  if (webProps.style) {
+    webProps.style = new _reactors.StyleRule(webProps.style);
   }
   webProps.src = webProps.source;
   if (_typeof(webProps.src) === 'object' && webProps.src.uri) {

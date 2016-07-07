@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
-import Reactors from 'reactors';
+import Reactors, {StyleRule} from 'reactors';
 
 export default class ReactorsScrollView extends Component {
   render() {
@@ -23,7 +23,11 @@ export default class ReactorsScrollView extends Component {
   }
 
   _renderMobile() {
-    return <ScrollView {...this.props}>{this.props.children}</ScrollView>;
+    const props = {...this.props};
+    if (props.style) {
+      props.style = new StyleRule(props.style);
+    }
+    return <ScrollView {...props}>{this.props.children}</ScrollView>;
   }
 
   _renderWeb() {
@@ -33,6 +37,9 @@ export default class ReactorsScrollView extends Component {
     const props = {...this.props};
     if (props.onPress) {
       props.onClick = props.onPress;
+    }
+    if (props.style) {
+      props.style = new StyleRule(props.style);
     }
     return (
       <section
