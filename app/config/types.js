@@ -12,6 +12,3 @@ export
 type STYLE_TRANSFORMER = {
   [key: string]: any,
 };
-
-export
-type STYLE_TRANSFORMERS = Array<STYLE_TRANSFORMER>;
