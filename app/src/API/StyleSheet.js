@@ -5,7 +5,7 @@
   * @flow
 **/
 
-import Reactors from 'reactors';
+import Reactors from '../../';
 
 type RULE = {
   [property: string]: any,
@@ -28,15 +28,6 @@ function stringifyTransformers(transformers: TRANSFORMERS): string {
       return `${key}(${transformer[key]})`;
     })
     .join(' ');
-}
-
-function parseMobile(style: RULE): RULE {
-  const mobileStyle = {...style};
-  for (const rule in mobileStyle) {
-    if (mobileStyle[rule]) {
-      delete mobileStyle[rule].transition;
-    }
-  }
 }
 
 function parseWeb(style: RULE): RULE {
@@ -62,7 +53,6 @@ export default class ReactorsStyleSheet {
   static create(style) {
     return new this(style);
   }
-  style = {};
   constructor(styleSheet: STYLESHEET) {
     this.parse(styleSheet);
   }
@@ -73,7 +63,7 @@ export default class ReactorsStyleSheet {
     case 'mobile':
       for (const selector in styleSheet) {
         if (styleSheet[selector]) {
-          styleSheet[selector] = parseMobile(styleSheet[selector]);
+          this[selector] = parseMobile(styleSheet[selector]);
         }
       }
       break;
@@ -81,7 +71,7 @@ export default class ReactorsStyleSheet {
     case 'web':
       for (const selector in styleSheet) {
         if (styleSheet[selector]) {
-          styleSheet[selector] = parseWeb(styleSheet[selector]);
+          this[selector] = parseWeb(styleSheet[selector]);
         }
       }
     }
@@ -97,11 +87,11 @@ export class Rule {
     default:
       throw new Error('Reactors platform not defined');
     case 'mobile':
-      this.style = parseMobile(style);
+      Object.assign(this, parseMobile(style));
       break;
     case 'desktop':
     case 'web':
-      this.style = parseWeb(style);
+      Object.assign(this, parseWeb(style));
     }
   }
 }
