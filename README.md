@@ -1,7 +1,7 @@
 reactors
 ===
 
-<img src="https://circleci.com/gh/co2-git/reactors.png?circle-token=4165dcefbcf62c4553fe9ce863fcd5ac93fa9a95" />
+<img src="https://circleci.com/gh/co2-git/reactors.svg?style=shield&circle-token=4165dcefbcf62c4553fe9ce863fcd5ac93fa9a95" />
 [![npm version](https://badge.fury.io/js/reactors.svg)](https://badge.fury.io/js/reactors)
 [![GitHub version](https://badge.fury.io/gh/co2-git%2Freactors.png)](https://badge.fury.io/gh/co2-git%2Freactors)
 
