@@ -27,7 +27,7 @@
     "url": "https://github.com/co2-git/reactors"
   },
   "scripts": {
-    "test": "npm run babel && redtea dist/tests/",
+    "test": "redtea dist/tests/",
     "babel": "babel --out-dir dist/ app/",
     "babel-watch": "babel --watch --out-dir dist/ app/",
     "preinstall": "npm run babel"
