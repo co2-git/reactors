@@ -44,7 +44,7 @@
       2,
       "smart"
     ],
-    "guard-for-in": 1,
+    "guard-for-in": 0,
     "handle-callback-err": [
       2,
       "^(err|error)$"
