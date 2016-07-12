@@ -50,10 +50,9 @@
     "eslint": "^2.11.1",
     "eslint-plugin-react": "^5.1.1",
     "eslint-plugin-react-native": "^1.1.0-beta",
-    "redtea": "^5.0.1"
+    "redtea": "^5.0.0"
   },
   "dependencies": {
-    "colors": "^1.1.2",
     "promise-sequencer": "^3.0.0",
     "semver": "^5.1.0"
   }
