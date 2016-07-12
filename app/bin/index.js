@@ -6,6 +6,8 @@ import exec from '../lib/exec';
 import bundle from '../lib/bundle';
 import upgrade from '../lib/upgrade';
 
+console.log('========================================');
+
 const [, , cmd, app] = process.argv;
 
 switch (cmd) {
@@ -28,6 +30,7 @@ case 'run': {
   case 'web':
   case 'desktop':
     bundle(platform);
+
     setTimeout(() => {
       if (platform === 'web') {
         switch (os.platform()) {
