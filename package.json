@@ -27,7 +27,7 @@
     "url": "https://github.com/co2-git/reactors"
   },
   "scripts": {
-    "test": "bash test.sh",
+    "test": "redtea dist/tests/",
     "babel": "babel --out-dir dist/ app/",
     "babel-watch": "babel --watch --out-dir dist/ app/",
     "postinstall": "reactors upgrade"
@@ -54,6 +54,7 @@
   "dependencies": {
     "colors": "^1.1.2",
     "promise-sequencer": "^3.0.0",
+    "redtea": "file:///Users/francois/Projects/Projects/redtea",
     "semver": "^5.1.0"
   }
 }
