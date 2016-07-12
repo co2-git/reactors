@@ -29,8 +29,7 @@
   "scripts": {
     "test": "npm run babel && redtea dist/tests/",
     "babel": "babel --out-dir dist/ app/",
-    "babel-watch": "babel --watch --out-dir dist/ app/",
-    "postinstall": "reactors upgrade"
+    "babel-watch": "babel --watch --out-dir dist/ app/"
   },
   "bin": {
     "reactors": "dist/bin/index.js"
