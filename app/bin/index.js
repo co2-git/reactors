@@ -6,6 +6,8 @@ import exec from '../lib/exec';
 import bundle from '../lib/bundle';
 import upgrade from '../lib/upgrade';
 
+console.log('========================================');
+
 const [, , cmd, app] = process.argv;
 
 switch (cmd) {

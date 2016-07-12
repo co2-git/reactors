@@ -2,7 +2,7 @@ import React from 'react';
 import {Image} from 'react-native';
 import {StyleRule} from 'reactors';
 
-export default (props) => {
+export default function ReactorsImageMobile (props) {
   const mobileProps = {...props};
   if (mobileProps.style) {
     mobileProps.style = new StyleRule(mobileProps.style);
@@ -11,4 +11,4 @@ export default (props) => {
     mobileProps.source = {uri: mobileProps.source};
   }
   return <Image {...mobileProps} />;
-};
+}

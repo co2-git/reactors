@@ -9,7 +9,7 @@ import Reactors from 'reactors';
 import renderWeb from './Image/web';
 import renderMobile from './Image/mobile';
 
-export default (props) => {
+export default function ReactorsImage (props) {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
@@ -19,4 +19,4 @@ export default (props) => {
   case 'desktop':
     return renderWeb(props);
   }
-};
+}
