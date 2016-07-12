@@ -30,6 +30,7 @@ case 'run': {
   case 'web':
   case 'desktop':
     bundle(platform);
+
     setTimeout(() => {
       if (platform === 'web') {
         switch (os.platform()) {
