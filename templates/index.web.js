@@ -1,2 +1,1 @@
-import index from './index.dom';
-index();
+import './index.dom';
