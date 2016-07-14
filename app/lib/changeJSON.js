@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import read from './read';
 import write from './write';
 

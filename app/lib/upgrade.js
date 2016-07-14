@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import path from 'path';
 import semver from 'semver';
 import read from './read';
