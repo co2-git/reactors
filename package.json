@@ -1,6 +1,6 @@
 {
   "name": "reactors",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Framework based on React to build hybrid apps that run web, mobile and desktop.",
   "main": "dist/index.js",
   "keywords": [
@@ -29,8 +29,7 @@
   "scripts": {
     "test": "redtea dist/tests/",
     "babel": "babel --out-dir dist/ app/",
-    "babel-watch": "babel --watch --out-dir dist/ app/",
-    "preinstall": "npm run babel"
+    "babel-watch": "babel --watch --out-dir dist/ app/"
   },
   "bin": {
     "reactors": "dist/bin/index.js"
