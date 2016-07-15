@@ -9,6 +9,8 @@ export default function (cmd, options = {}) {
     ps
       .on('error', reject)
       .on('exit', status => {
+        process.stdin.unpipe(ps.stdin);
+        process.stdin.end();
         if (status === 0) {
           return resolve();
         }
@@ -17,5 +19,6 @@ export default function (cmd, options = {}) {
 
     ps.stdout.pipe(process.stdout);
     ps.stderr.pipe(process.stderr);
+    process.stdin.pipe(ps.stdin);
   });
 }
