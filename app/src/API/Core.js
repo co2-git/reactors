@@ -10,6 +10,7 @@ function guessPlatform() {
   return 'mobile';
 }
 
+export
 class Core {
   platform = guessPlatform();
 }
