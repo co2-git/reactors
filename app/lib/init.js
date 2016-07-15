@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import path from 'path';
 import exec from '../lib/exec';
 import transform from '../lib/transform';
 import changeJSON from '../lib/changeJSON';
@@ -6,17 +7,22 @@ import npmInstall from '../lib/npmInstall';
 import write from '../lib/write';
 import copy from '../lib/copy';
 import logger from '../lib/logger';
-import getLocalFile from '../lib/getLocalFile';
-import _getAppFile from '../lib/getAppFile';
 import pkg from '../../package.json';
 
-export default function init(app: string): Promise {
+export default function init(app: string, dest: string): Promise<void> {
+  const _src = path.resolve(__dirname, '../../');
+  const _dest = dest || process.cwd();
+
   function transformer(source: string): string {
     return source.replace(/\{app\}/g, app);
   }
 
-  function getAppFile(file: string): string {
-    return _getAppFile(file, app);
+  function getSourceFilePath(file: string): string {
+    return path.join(_src, file);
+  }
+
+  function getDestFilePath(file: string): string {
+    return path.join(_dest, app, file);
   }
 
   return new Promise(async (resolve, reject) => {
@@ -38,28 +44,28 @@ export default function init(app: string): Promise {
       ];
 
       await logger('Installing React Native');
-      await exec(`react-native init ${app}`);
+      await exec(`react-native init ${app}`, {cwd: _dest});
       await logger.ok('React Native installed');
 
       await logger('Create app directories');
-      await exec(`mkdir ${app}/app/`);
-      await exec(`mkdir ${app}/desktop/`);
+      await exec(`mkdir ${app}/app/`, {cwd: _dest});
+      await exec(`mkdir ${app}/desktop/`, {cwd: _dest});
 
       await logger('Install templates');
       for (const template of templatesToTransform) {
         if (typeof template === 'string') {
           await transform(
-            getLocalFile(`templates/${template}`),
+            getSourceFilePath(`templates/${template}`),
             transformer,
-            getAppFile(template),
+            getDestFilePath(template),
           );
         } else if (typeof template === 'object') {
           for (const local in template) {
             if (template[local]) {
               await transform(
-                getLocalFile(`templates/${local}`),
+                getSourceFilePath(`templates/${local}`),
                 transformer,
-                getAppFile(template[local]),
+                getDestFilePath(template[local]),
               );
             }
           }
@@ -68,15 +74,15 @@ export default function init(app: string): Promise {
       for (const template of templatesToCopy) {
         if (typeof template === 'string') {
           await copy(
-            getLocalFile(`templates/${template}`),
-            getAppFile(template),
+            getSourceFilePath(`templates/${template}`),
+            getDestFilePath(template),
           );
         } else if (typeof template === 'object') {
           for (const local in template) {
             if (template[local]) {
               await copy(
-                getLocalFile(`templates/${local}`),
-                getAppFile(template[local]),
+                getSourceFilePath(`templates/${local}`),
+                getDestFilePath(template[local]),
               );
             }
           }
@@ -84,7 +90,7 @@ export default function init(app: string): Promise {
       }
 
       await logger('Installing npm dependencies');
-      await npmInstall(app,
+      await npmInstall(path.join(_dest, app),
         'reactors',
         'react-dom',
         'babel-loader',
@@ -97,7 +103,7 @@ export default function init(app: string): Promise {
 
       await logger('Updating package.json');
       await changeJSON(
-        getAppFile('package.json'),
+        getDestFilePath('package.json'),
         (json) => {
           json.main = 'index.desktop.js';
         },
@@ -105,11 +111,13 @@ export default function init(app: string): Promise {
 
       await logger('create reactors.json');
       await write(
-        getAppFile('reactors.json'),
+        getDestFilePath('reactors.json'),
         JSON.stringify({version: pkg.version}),
       );
 
       await logger.ok(`Reactors app ${app} successfully created`);
+
+      resolve();
     } catch (error) {
       reject(error);
     }

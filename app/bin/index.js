@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 
+import 'babel-polyfill';
 import os from 'os';
 import init from '../lib/init';
 import exec from '../lib/exec';
