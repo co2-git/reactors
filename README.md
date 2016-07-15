@@ -79,7 +79,6 @@ View a detailed example [here](templates/app/App.js).
 
 # Core Components
 
-- [Core](doc/Components/Core.md)
 - [Image](doc/Components/Image.md)
 - [ListView](doc/Components/ListView.md)
 - [Link](doc/Components/Link.md)
@@ -89,6 +88,8 @@ View a detailed example [here](templates/app/App.js).
 
 # Core APIs
 
+- [Core](doc/API/Core.md)
+- [Dimensions](doc/API/Dimensions.md)
 - [Gesture](doc/API/Gesture.md)
 - [StyleSheet](doc/API/StyleSheet.md)
 
