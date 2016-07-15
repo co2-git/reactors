@@ -4,4 +4,5 @@ machine:
 
 test:
   pre:
+    - npm install -g react-native-cli
     - npm run babel
