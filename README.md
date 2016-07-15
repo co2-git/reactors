@@ -31,6 +31,18 @@ reactors run web
 reactors run desktop
 ```
 
+# Upgrade
+
+```bash
+reactors upgrade
+```
+
+This is calling behind the scene:
+
+- `npm install`
+- `react-native upgrade`
+- apply migrations for new version of `reactor`
+
 # Usage
 
 ```javascript

@@ -7,9 +7,26 @@ import exec from '../lib/exec';
 import bundle from '../lib/bundle';
 import upgrade from '../lib/upgrade';
 
-console.log('========================================');
-
 const [, , cmd, app] = process.argv;
+
+function _upgrade() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      console.log('Updating npm dependencies');
+      await exec('npm install');
+
+      console.log('Upgrading react-native');
+      await exec('react-native upgrade');
+
+      console.log('Upgrading reactors');
+      await upgrade();
+
+      resolve();
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
 
 switch (cmd) {
 case 'init':
@@ -55,9 +72,14 @@ case 'run': {
   break;
 }
 case 'upgrade':
-  upgrade()
-    .then(() => console.log('Your app has been upgraded'))
-    .catch(error => console.log(error.stack));
+  _upgrade()
+    .then(() => {
+      console.log('Your app has been upgraded');
+    })
+    .catch(error => {
+      console.log(error.stack);
+      process.exit(8);
+    });
   break;
 default:
   console.log('Init a new app: `reactors init <AppName>`');
