@@ -90,7 +90,7 @@ export default function init(app: string, dest: string): Promise<void> {
       }
 
       await logger('Installing npm dependencies');
-      await npmInstall(app,
+      await npmInstall(path.join(_dest, app),
         'reactors',
         'react-dom',
         'babel-loader',
