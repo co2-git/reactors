@@ -24,6 +24,7 @@ class Core {
         _props.onStartShouldSetResponder = _props.onPress;
       } else {
         _props.onClick = _props.onPress;
+        delete _props.onPress;
       }
     }
     if (_props.onTap) {
