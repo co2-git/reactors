@@ -5,57 +5,29 @@
   * @flow
 **/
 
-import React, {Component, PropTypes} from 'react';
-import {TouchableHighlight, Linking, View} from 'react-native';
-import Reactors, {StyleRule} from 'reactors';
+import React, {PropTypes} from 'react';
+import Reactors from 'reactors';
+import renderMobile from './Link/mobile';
+import renderWeb from './Link/web';
+import type {CORE_PROPS} from '../../config/types';
 
-export default class ReactorsLink extends Component {
-  static propTypes = {
-    href: PropTypes.string,
-  };
+export
+type PROPS = CORE_PROPS & {
+  href?: string,
+};
 
-  go = () => {
-    Linking.openURL(this.props.href);
-  };
-
-  render() {
-    switch (Reactors.platform) {
-    default:
-      throw new Error('Unknown platform: ' + Reactors.platform);
-    case 'mobile':
-      return this._renderMobile();
-    case 'web':
-    case 'desktop':
-      return this._renderWeb();
-    }
-  }
-
-  _renderMobile() {
-    return (
-      <TouchableHighlight
-        onPress={this.go}
-        style={new StyleRule(this.props.style)}
-        underlayColor="rgba(255, 255, 255, 0)"
-        >
-        <View>
-          {this.props.children}
-        </View>
-      </TouchableHighlight>
-    );
-  }
-
-  _renderWeb() {
-    const props = {...this.props};
-    if (props.onPress) {
-      props.onClick = props.onPress;
-    }
-    if (props.style) {
-      props.style = new StyleRule(props.style);
-    }
-    return (
-      <a {...props}>
-        {this.props.children}
-      </a>
-    );
+export default function ReactorsLink(props: PROPS) {
+  switch (Reactors.platform) {
+  default:
+    throw new Error('Unknown platform: ' + Reactors.platform);
+  case 'mobile':
+    return renderMobile(props);
+  case 'web':
+  case 'desktop':
+    return renderWeb(props);
   }
 }
+
+ReactorsLink.propTypes = {
+  href: PropTypes.string,
+};

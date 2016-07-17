@@ -5,50 +5,23 @@
   * @flow
 **/
 
-import React, {Component} from 'react';
-import {ScrollView} from 'react-native';
-import Reactors, {StyleRule} from 'reactors';
+import React, {Element} from 'react';
+import Reactors from 'reactors';
+import renderMobile from './ScrollView/mobile';
+import renderWeb from './ScrollView/web';
+import type {CORE_PROPS} from '../../config/types';
 
-export default class ReactorsScrollView extends Component {
-  render() {
-    switch (Reactors.platform) {
-    default:
-      throw new Error('Unknown platform: ' + Reactors.platform);
-    case 'mobile':
-      return this._renderMobile();
-    case 'web':
-    case 'desktop':
-      return this._renderWeb();
-    }
-  }
+export
+type PROPS = CORE_PROPS & {};
 
-  _renderMobile() {
-    const props = {...this.props};
-    if (props.style) {
-      props.style = new StyleRule(props.style);
-    }
-    return <ScrollView {...props}>{this.props.children}</ScrollView>;
-  }
-
-  _renderWeb() {
-    const style = {
-      overflow: 'auto',
-    };
-    const props = {...this.props};
-    if (props.onPress) {
-      props.onClick = props.onPress;
-    }
-    if (props.style) {
-      props.style = new StyleRule(props.style);
-    }
-    return (
-      <section
-        style={style}
-        {...props}
-        className={'reactors$ScrollView'}
-        >
-        {this.props.children}
-      </section>
-    );
+export default function ReactorsScrollView(props: PROPS): Element<*> {
+  switch (Reactors.platform) {
+  default:
+    throw new Error('Unknown platform: ' + Reactors.platform);
+  case 'mobile':
+    return renderMobile(props);
+  case 'web':
+  case 'desktop':
+    return renderWeb(props);
   }
 }
