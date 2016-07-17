@@ -5,6 +5,7 @@ import transform from '../lib/transform';
 import changeJSON from '../lib/changeJSON';
 import npmInstall from '../lib/npmInstall';
 import write from '../lib/write';
+import read from '../lib/read';
 import copy from '../lib/copy';
 import logger from '../lib/logger';
 import pkg from '../../package.json';
@@ -114,6 +115,19 @@ export default function init(app: string, dest: string): Promise<void> {
       await write(
         getDestFilePath('reactors.json'),
         JSON.stringify({version: pkg.version}),
+      );
+
+      await logger('Add bundles to gitignore');
+      const gitignore = await read(getDestFilePath('.gitignore'));
+      await write(
+        getDestFilePath('.gitignore'),
+        `${gitignore}
+
+# Reactors
+
+/desktop/bundle.js
+/web/bundle.js
+`,
       );
 
       await logger.ok(`Reactors app ${app} successfully created`);

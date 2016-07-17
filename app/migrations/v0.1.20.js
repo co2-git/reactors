@@ -2,6 +2,8 @@ import 'babel-polyfill';
 import path from 'path';
 import logger from '../lib/logger';
 import transform from '../lib/transform';
+import read from '../lib/read';
+import write from '../lib/write';
 import getAppFile from '../lib/getAppFile';
 
 function getTemplate(file) {
@@ -19,6 +21,19 @@ export default () => new Promise(async (resolve, reject) => {
       getTemplate('README.md'),
       source => source.replace(/\{app\}/g, app),
       getAppFile('README.md'),
+    );
+
+    await logger('Add bundles to gitignore');
+    const gitignore = await read(getAppFile('.gitignore'));
+    await write(
+      getAppFile('.gitignore'),
+      `${gitignore}
+
+# Reactors
+
+/desktop/bundle.js
+/web/bundle.js
+`,
     );
 
     resolve();
