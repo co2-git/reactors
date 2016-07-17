@@ -26,6 +26,13 @@ class Core {
         _props.onClick = _props.onPress;
       }
     }
+    if (_props.onTap) {
+      if (this.platform === 'mobile') {
+        _props.onStartShouldSetResponder = _props.onTap;
+      } else {
+        _props.onClick = _props.onTap;
+      }
+    }
     return _props;
   }
 }
