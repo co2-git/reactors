@@ -37,6 +37,7 @@ export default function init(app: string, dest: string): Promise<void> {
         'app/App.js',
         'webpack.config.js',
         {['index.desktop.html']: 'desktop/index.html'},
+        'README.md',
       ];
 
       const templatesToCopy = [
