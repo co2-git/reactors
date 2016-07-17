@@ -5,12 +5,13 @@
   * @flow
 **/
 
-import React from 'react';
+import React, {Element} from 'react';
 import Reactors from 'reactors';
-import renderMobile from './View/mobile';
 import renderWeb from './View/web';
+import renderMobile from './View/mobile';
+import type {CORE_PROPS} from '../../config/types';
 
-export default (props) => {
+export default function ReactorsView (props: CORE_PROPS): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
@@ -20,4 +21,4 @@ export default (props) => {
   case 'desktop':
     return renderWeb(props);
   }
-};
+}

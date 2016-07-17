@@ -1,14 +1,9 @@
-import React from 'react';
-import {StyleRule} from 'reactors';
+import React, {Element} from 'react';
+import Reactors from 'reactors';
+import type {PROPS} from '../Image';
 
-export default function ReactorsImageWeb (props) {
-  const webProps = {...props};
-  if (webProps.onPress) {
-    webProps.onClick = webProps.onPress;
-  }
-  if (webProps.style) {
-    webProps.style = new StyleRule(webProps.style);
-  }
+export default function ReactorsWebImage (props: PROPS): Element {
+  const webProps = Reactors.props(props);
   webProps.src = webProps.source;
   if (typeof webProps.src === 'object' && webProps.src.uri) {
     webProps.src = webProps.src.uri;

@@ -1,12 +1,10 @@
 import React from 'react';
 import {Image} from 'react-native';
-import {StyleRule} from 'reactors';
+import Reactors from 'reactors';
+import type {PROPS} from '../Image';
 
-export default function ReactorsImageMobile (props) {
-  const mobileProps = {...props};
-  if (mobileProps.style) {
-    mobileProps.style = new StyleRule(mobileProps.style);
-  }
+export default function ReactorsMobileImage (props: PROPS): Image {
+  const mobileProps = Reactors.props(props);
   if (typeof mobileProps.source === 'string') {
     mobileProps.source = {uri: mobileProps.source};
   }
