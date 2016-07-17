@@ -4,25 +4,28 @@
   * @type Class
   * @flow
 **/
-
+import _ from 'lodash';
 import parseForWeb from './parseForWeb';
 import parseForMobile from './parseForMobile';
 import type {STYLE_RULE} from '../../../config/types';
 
 export default function createStyleRule(
-    rule: STYLE_RULE,
+    rule: STYLE_RULE | Array<STYLE_RULE>,
     platform: string
-  ): STYLE_RULE {
-  const _rule = {};
+  ): STYLE_RULE | Array<STYLE_RULE> {
   switch (platform) {
   default:
     throw new Error('Reactors platform not defined');
   case 'mobile':
-    Object.assign(_rule, parseForMobile(rule));
-    break;
+    if (_.isArray(rule)) {
+      return rule.map(parseForMobile);
+    }
+    return parseForMobile(rule);
   case 'desktop':
   case 'web':
-    Object.assign(_rule, parseForWeb(rule));
+    if (_.isArray(rule)) {
+      return rule.map(parseForWeb);
+    }
+    return parseForWeb(rule);
   }
-  return _rule;
 }
