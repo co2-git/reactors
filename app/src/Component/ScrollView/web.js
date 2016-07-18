@@ -1,21 +1,19 @@
 import React, {Element} from 'react';
 import Reactors from 'reactors';
-import type {PROPS} from '../ScrollView';
+import type {CORE_PROPS} from '../../../config/types';
 
-export default function ReactorsWebScrollView(props: PROPS): Element {
-  const webProps = Reactors.props({
-    ...props,
-    style: {
-      ...props.style,
-      overflow: 'auto',
-    }
-  });
+export default function ReactorsWebScrollView (props: CORE_PROPS): Element {
+  const webProps = Reactors.props(props);
+  const parentStyle = {
+    overflow: 'auto',
+    ...webProps.style,
+  };
+  delete webProps.style;
   return (
-    <section
-      {...webProps}
-      className={'reactors$ScrollView'}
-      >
-      {props.children}
+    <section style={parentStyle}>
+      <section {...webProps}>
+        {props.children}
+      </section>
     </section>
   );
 }
