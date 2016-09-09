@@ -6,6 +6,7 @@
 **/
 
 import Reactors from 'reactors';
+import _ from 'lodash';
 
 export default class Gesture {
   static handlers(props: Object) {
@@ -17,7 +18,7 @@ export default class Gesture {
       if (clone_props.onPress) {
         clone_props.onClick = clone_props.onPress;
       }
-      return clone_props;
+      return _.omit(clone_props, ['onPress']);
     }
   }
 }

@@ -29,7 +29,7 @@
   "scripts": {
     "test": "redtea dist/tests/",
     "babel": "babel --out-dir dist/ app/",
-    "babel-watch": "babel --watch --out-dir dist/ app/"
+    "babel:watch": "babel --watch --out-dir dist/ app/"
   },
   "bin": {
     "reactors": "dist/bin/index.js"
