@@ -13,7 +13,7 @@ We use [React Native](https://facebook.github.io/react-native/) for mobile, and 
 # Install
 
 ```bash
-sudo npm install --global react-native-cli electron-prebuilt reactors
+sudo npm install --global react-native-cli electron-prebuilt reactors yarn
 ```
 
 # Create a new Reactors app
@@ -91,6 +91,7 @@ View a detailed example [here](templates/app/App.js).
 - [Core](doc/API/Core.md)
 - [Dimensions](doc/API/Dimensions.md)
 - [Gesture](doc/API/Gesture.md)
+- [Node](doc/API/Node.md)
 - [StyleSheet](doc/API/StyleSheet.md)
 
 # Platform dependent code

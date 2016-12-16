@@ -1,4 +1,4 @@
-import read from './read';
+import read from '../util/read';
 import write from './write';
 import sequencer from 'promise-sequencer';
 

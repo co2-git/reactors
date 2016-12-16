@@ -4,10 +4,8 @@
   * @type Component
   * @flow
 **/
-import {Element} from 'react';
+import React, {Element} from 'react';
 import Reactors from 'reactors';
-import renderWeb from './Image/web';
-import renderMobile from './Image/mobile';
 import type {CORE_PROPS} from '../../config/types';
 
 export
@@ -20,10 +18,18 @@ export default function ReactorsImage (props: CORE_PROPS): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
-  case 'mobile':
-    return renderMobile(props);
+  case 'mobile': {
+    const ImageMobile = require('./ImageMobile').default;
+    return (
+      <ImageMobile {...props} />
+    );
+  }
   case 'web':
-  case 'desktop':
-    return renderWeb(props);
+  case 'desktop': {
+    const ImageWeb = require('./ImageWeb').default;
+    return (
+      <ImageWeb {...props} />
+    );
+  }
   }
 }

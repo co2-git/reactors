@@ -1,12 +1,12 @@
 // @flow
 /* globals window */
 
-import {Dimensions as RNDimensions} from 'react-native';
 import Reactors from 'reactors';
 
 export default class Dimensions {
   static get() {
     if (Reactors.platform === 'mobile') {
+      const {Dimensions: RNDimensions} = require('react-native').default;
       return RNDimensions.get('window');
     }
     return {

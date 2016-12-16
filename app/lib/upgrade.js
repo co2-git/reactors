@@ -1,6 +1,6 @@
 import path from 'path';
 import semver from 'semver';
-import read from './read';
+import read from '../util/read';
 import write from './write';
 import changeJSON from './changeJSON';
 import getAppFile from './getAppFile';

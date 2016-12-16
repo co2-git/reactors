@@ -10,5 +10,3 @@ export {default as Link} from './src/Component/Link';
 export {default as StyleSheet, StyleRule} from './src/API/StyleSheet';
 export {default as Gesture} from './src/API/Gesture';
 export {default as Dimensions} from './src/API/Dimensions';
-
-export {default as renderChildren} from './lib/renderChildren';

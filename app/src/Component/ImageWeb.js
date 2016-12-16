@@ -1,6 +1,6 @@
 import React, {Element} from 'react';
 import Reactors from 'reactors';
-import type {PROPS} from '../Image';
+import type {PROPS} from './Image';
 
 export default function ReactorsWebImage (props: PROPS): Element {
   const webProps = Reactors.props(props);

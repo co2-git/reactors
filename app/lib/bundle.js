@@ -1,4 +1,4 @@
-import exec from './exec';
+import exec from '../util/exec';
 
 export default function bundle(platform) {
   return exec('node_modules/.bin/webpack', {

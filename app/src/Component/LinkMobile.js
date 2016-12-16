@@ -2,7 +2,7 @@
 import React from 'react';
 import Reactors from 'reactors';
 import {TouchableHighlight, Linking, View} from 'react-native';
-import type {PROPS} from '../Link';
+import type {PROPS} from './Link';
 
 export default function ReactorsMobileLink(props: PROPS): TouchableHighlight {
   const mobileProps = Reactors.props(props);

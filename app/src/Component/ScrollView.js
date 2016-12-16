@@ -7,8 +7,6 @@
 
 import React, {Element} from 'react';
 import Reactors from 'reactors';
-import renderMobile from './ScrollView/mobile';
-import renderWeb from './ScrollView/web';
 import type {CORE_PROPS} from '../../config/types';
 
 export
@@ -18,10 +16,18 @@ export default function ReactorsScrollView(props: PROPS): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
-  case 'mobile':
-    return renderMobile(props);
+  case 'mobile': {
+    const ScrollViewMobile = require('./ScrollViewMobile').default;
+    return (
+      <ScrollViewMobile {...props} />
+    );
+  }
   case 'web':
-  case 'desktop':
-    return renderWeb(props);
+  case 'desktop': {
+    const ScrollViewWeb = require('./ScrollViewWeb').default;
+    return (
+      <ScrollViewWeb {...props} />
+    );
+  }
   }
 }

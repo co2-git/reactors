@@ -20,7 +20,7 @@ export
 type CORE_EVENT = {};
 
 export
-type ELEMENT_CHILD = null | string | number | Element;
+type ELEMENT_CHILD = null | string | number | Element<*>;
 
 export
 type ELEMENT_CHILDREN = ELEMENT_CHILD | Array<ELEMENT_CHILD>;
@@ -30,4 +30,10 @@ type CORE_PROPS = {
   style?: STYLE_RULE,
   onPress?: {[event: CORE_EVENT]: any},
   children: ELEMENT_CHILDREN,
+};
+
+export
+type GESTURE_HANDLERS = {
+  onPress?: {[event: CORE_EVENT]: boolean},
+  onEnter?: {[event: CORE_EVENT]: boolean},
 };
