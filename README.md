@@ -7,75 +7,47 @@ reactors
 
 ===
 
-Framework based on [React](https://facebook.github.io/react/) to build hybrid apps that run web, mobile and desktop.
-We use [React Native](https://facebook.github.io/react-native/) for mobile, and [Electron](http://electron.atom.io/) for desktop.
+Framework based on [React](https://facebook.github.io/react/) to build cross-platform apps that run web, mobile and desktop.
+
+**To create and run reactors apps, see [reactors-cli](https://github.com/co2-git/reactors-cli)**
 
 # Install
 
 ```bash
-sudo npm install --global react-native-cli electron-prebuilt reactors
+npm install reactors
 ```
-
-# Create a new Reactors app
-
-```bash
-reactors init MyAwesomeApp
-```
-
-# Run
-
-```bash
-reactors run ios
-reactors run android
-reactors run web
-reactors run desktop
-```
-
-# Upgrade
-
-```bash
-reactors upgrade
-```
-
-This is calling behind the scene:
-
-- `npm install`
-- `react-native upgrade`
-- apply migrations for new version of `reactor`
 
 # Usage
 
 ```javascript
-import React, {Component} from 'react';
+import React from 'react';
 import {
-  View,
-  Text,
   ListView,
+  Text,
+  View,
 } from 'reactors';
 
-export default class MyAwesomeComponent extends Component {
-  render() {
-    return (
-      <View>
-        <Text style={{fontWeight: 'bold'}}>One code to rule them all:</Text>
-        <ListView
-          dataSource={[
-            'Web browser',
-            'Android',
-            'iPhone and iPad',
-            'Mac OSX',
-            'Ubuntu and Linux',
-            'Windows 10',
-          ]}
-          renderRow={(platform) => <Text>{platform}</Text>}
-          />
-      </View>
-    );
-  }
+export default function MyAwesomeComponent() {
+  return (
+    <View>
+      <Text style={{fontWeight: 'bold'}}>One code to rule them all:</Text>
+      <ListView
+        dataSource={[
+          'Android',
+          'iPhone and iPad',
+          'Mac OSX',
+          'Ubuntu and Linux',
+          'Web browser',
+          'Windows 10',
+        ]}
+        renderRow={(platform) => <Text>{platform}</Text>}
+        />
+    </View>
+  );
 }
 ```
 
-View a detailed example [here](templates/app/App.js).
+View a detailed example [here](https://github.com/co2-git/reactors-cli/blob/master/templates/app/App.js).
 
 # Core Components
 
@@ -91,6 +63,7 @@ View a detailed example [here](templates/app/App.js).
 - [Core](doc/API/Core.md)
 - [Dimensions](doc/API/Dimensions.md)
 - [Gesture](doc/API/Gesture.md)
+- [Notifications](doc/Components/Notifications.md)
 - [StyleSheet](doc/API/StyleSheet.md)
 
 # Platform dependent code
@@ -111,8 +84,6 @@ case 'desktop':
 }
 ```
 
-You can access `react-native` and `electron` via `import`.
-
 # Plugins
 
 Check out Reactors plugin in the `npm` registry. Look for packages starting by `reactors-`.
@@ -120,5 +91,6 @@ Check out Reactors plugin in the `npm` registry. Look for packages starting by `
 Some plugins:
 
 - [reactors-form](https://www.npmjs.com/package/reactors-form)
+- [reactors-grid](https://www.npmjs.com/package/reactors-grid)
 - [reactors-http-request](https://www.npmjs.com/package/reactors-http-request)
 - [reactors-router](https://www.npmjs.com/package/reactors-router)
