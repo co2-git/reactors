@@ -1061,6 +1061,10 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
+electron-notifications@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/electron-notifications/-/electron-notifications-0.1.4.tgz#7ea96bd407b29e0e6b1753b4455bb5238504d87e"
+
 es5-ext@^0.10.7, es5-ext@^0.10.8, es5-ext@~0.10.11, es5-ext@~0.10.2, es5-ext@~0.10.7:
   version "0.10.12"
   resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.12.tgz#aa84641d4db76b62abba5e45fd805ecbab140047"
