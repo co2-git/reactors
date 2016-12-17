@@ -6,15 +6,15 @@
 **/
 
 import React, {PropTypes} from 'react';
+// $FlowFixMe This is by design
 import Reactors from 'reactors';
-import type {CORE_PROPS} from '../../config/types';
 
 export
-type PROPS = CORE_PROPS & {
+type $props = $reactors$Core$props & {
   href?: string,
 };
 
-export default function Link(props: PROPS) {
+export default function Link(props: $props) {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
@@ -28,6 +28,7 @@ export default function Link(props: PROPS) {
   case 'desktop': {
     const LinkWeb = require('./LinkWeb').default;
     return (
+      /* $FlowFixMe This is by design */
       <LinkWeb {...props} />
     );
   }

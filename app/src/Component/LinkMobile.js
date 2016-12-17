@@ -1,12 +1,21 @@
-// @flow
-import React from 'react';
-import Reactors from 'reactors';
-import {TouchableHighlight, Linking, View} from 'react-native';
-import type {PROPS} from './Link';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
-export default function ReactorsMobileLink(props: PROPS): TouchableHighlight {
+import React from 'react';
+// $FlowFixMe This is by design
+import Reactors from 'reactors';
+// $FlowFixMe This is by design
+import {TouchableHighlight, Linking, View} from 'react-native';
+import type {$props} from './Link';
+
+export default function ReactorsMobileLink(props: $props): TouchableHighlight {
   const mobileProps = Reactors.props(props);
   return (
+    /* $FlowFixMe This is by design */
     <TouchableHighlight
       onPress={() => Linking.openURL(props.href)}
       underlayColor="rgba(255, 255, 255, 0)"

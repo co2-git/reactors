@@ -1,8 +1,16 @@
-import React, {Element} from 'react';
-import Reactors from 'reactors';
-import type {CORE_PROPS} from '../../../config/types';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
-export default function ReactorsWebScrollView (props: CORE_PROPS): Element {
+import React, {Element} from 'react';
+// $FlowFixMe This is by design
+import Reactors from 'reactors';
+
+export default
+function ReactorsWebScrollView (props: $reactors$Core$props): Element<*> {
   const webProps = Reactors.props(props);
   const parentStyle = {
     overflow: 'auto',
@@ -10,6 +18,7 @@ export default function ReactorsWebScrollView (props: CORE_PROPS): Element {
   };
   delete webProps.style;
   return (
+    /* $FlowFixMe This is by design */
     <section style={parentStyle}>
       <section {...webProps}>
         {props.children}

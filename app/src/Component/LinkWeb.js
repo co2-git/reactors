@@ -1,11 +1,19 @@
-// @flow
-import React, {Element} from 'react';
-import Reactors from 'reactors';
-import type {PROPS} from './Link';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
-export default function ReactorsWebLink(props: PROPS): Element<*> {
+import React, {Element} from 'react';
+// $FlowFixMe This is by design
+import Reactors from 'reactors';
+import type {$props} from './Link';
+
+export default function ReactorsWebLink(props: $props): Element<*> {
   const webProps = Reactors.props(props);
   return (
+    /* $FlowFixMe This is by design */
     <a {...webProps}>
       {props.children}
     </a>

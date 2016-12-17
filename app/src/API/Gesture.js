@@ -5,16 +5,16 @@
   * @flow
 **/
 
+// $FlowFixMe This is by design
 import Reactors from 'reactors';
 import _ from 'lodash';
-import type {GESTURE_HANDLERS} from '../../config/types';
 
 export default class Gesture {
   static gestures = [
     'onEnter',
     'onPress',
   ];
-  static handlers(props: Object): GESTURE_HANDLERS & Object {
+  static handlers(props: Object): $reactors$Gesture$handlers & Object {
     const clone_props = {...props};
     switch (Reactors.platform) {
     case 'mobile':
@@ -24,7 +24,7 @@ export default class Gesture {
     }
     }
   }
-  static webHandlers(props: Object): GESTURE_HANDLERS & Object {
+  static webHandlers(props: Object): $reactors$Gesture$handlers & Object {
     const handlers = {};
     const click = [];
     const keyPress = [];

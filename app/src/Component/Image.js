@@ -4,17 +4,17 @@
   * @type Component
   * @flow
 **/
-import React, {Element} from 'react';
-import Reactors from 'reactors';
-import type {CORE_PROPS} from '../../config/types';
 
-export
-type PROPS = CORE_PROPS & {
+import React, {Element} from 'react';
+// $FlowFixMe This is by design
+import Reactors from 'reactors';
+
+export type $props = $reactors$Core$props & {
   source?: string | number | {uri: string},
   src?: string,
 };
 
-export default function ReactorsImage (props: CORE_PROPS): Element<*> {
+export default function ReactorsImage (props: $props): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
@@ -28,6 +28,7 @@ export default function ReactorsImage (props: CORE_PROPS): Element<*> {
   case 'desktop': {
     const ImageWeb = require('./ImageWeb').default;
     return (
+      /* $FlowFixMe This is by design */
       <ImageWeb {...props} />
     );
   }

@@ -1,4 +1,12 @@
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
+
 /* globals window */
+
 import {StyleRule} from './StyleSheet';
 
 function guessPlatform() {
@@ -11,10 +19,10 @@ function guessPlatform() {
   return 'mobile';
 }
 
-export
-class Core {
+export class Core {
   platform = guessPlatform();
-  props(incomingProps) {
+
+  props(incomingProps: $reactors$Core$props) {
     const _props = {...incomingProps};
     if (_props.style) {
       _props.style = new StyleRule(_props.style);
@@ -25,13 +33,6 @@ class Core {
       } else {
         _props.onClick = _props.onPress;
         delete _props.onPress;
-      }
-    }
-    if (_props.onTap) {
-      if (this.platform === 'mobile') {
-        _props.onStartShouldSetResponder = _props.onTap;
-      } else {
-        _props.onClick = _props.onTap;
       }
     }
     return _props;

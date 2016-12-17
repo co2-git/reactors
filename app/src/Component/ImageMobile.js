@@ -1,12 +1,22 @@
-import React from 'react';
-import {Image} from 'react-native';
-import Reactors from 'reactors';
-import type {PROPS} from '../Image';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
-export default function ReactorsMobileImage (props: PROPS): Image {
+import React from 'react';
+// $FlowFixMe This is by design
+import {Image} from 'react-native';
+// $FlowFixMe This is by design
+import Reactors from 'reactors';
+import type {$props} from './Image';
+
+export default function ReactorsMobileImage (props: $props): Image {
   const mobileProps = Reactors.props(props);
   if (typeof mobileProps.source === 'string') {
     mobileProps.source = {uri: mobileProps.source};
   }
+  // $FlowFixMe This is by design
   return <Image {...mobileProps} />;
 }

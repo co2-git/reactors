@@ -1,7 +1,15 @@
-import stringifyTransformers from './stringifyTransformers';
-import type {STYLE_RULE} from '../../../config/types';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
-export default function parseWeb(style: STYLE_RULE): STYLE_RULE {
+import stringifyTransformers from './stringifyTransformers';
+
+export default function parseWeb(
+  style: $reactors$StyleSheet$Rule
+): $reactors$StyleSheet$Rule {
   const webStyle = {};
 
   for (const attr in style) {

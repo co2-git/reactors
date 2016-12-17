@@ -1,6 +1,13 @@
-import type {STYLE_RULE} from '../../../config/types';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
-export default function parseForMobile(style: STYLE_RULE): STYLE_RULE {
+export default function parseForMobile(
+  style: $reactors$StyleSheet$Rule
+): $reactors$StyleSheet$Rule {
   const mobileStyle = {};
 
   for (const attr in style) {

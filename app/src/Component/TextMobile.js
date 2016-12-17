@@ -1,10 +1,19 @@
-// @flow
-import React from 'react';
-import {Text} from 'react-native';
-import Reactors from 'reactors';
-import type {PROPS} from '../Text';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
-export default function ReactorsMobileText(props: PROPS): Text {
+import React from 'react';
+// $FlowFixMe This is by design
+import {Text} from 'react-native';
+// $FlowFixMe This is by design
+import Reactors from 'reactors';
+import type {$props} from './Text';
+
+export default function ReactorsMobileText(props: $props): Text {
   const mobileProps = Reactors.props(props);
+  // $FlowFixMe This is by design
   return <Text {...mobileProps}>{props.children}</Text>;
 }

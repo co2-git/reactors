@@ -5,27 +5,33 @@
   * @flow
 **/
 
+// $FlowFixMe This is by design
 import Reactors from 'reactors';
 import _ from 'lodash';
 import createStyleSheet from './StyleSheet/createStyleSheet';
 import createStyleRule from './StyleSheet/createStyleRule';
-import type {STYLESHEET, STYLE_RULE} from '../../config/types';
 
 export default class ReactorsStyleSheetAPI {
-  static create(styleSheet: STYLESHEET) {
+  static create(styleSheet: $reactors$styleSheet) {
     return new this(styleSheet);
   }
-  constructor(styleSheet: STYLESHEET) {
+  constructor(styleSheet: $reactors$styleSheet) {
     Object.assign(this, createStyleSheet(styleSheet, Reactors.platform));
   }
 }
 
 class ReactorsStyleSheetAPIRule {
-  constructor(rule: STYLE_RULE | Array<STYLE_RULE>) {
+  constructor(
+    rule: $reactors$StyleSheet$Rule | $reactors$StyleSheet$Rule[]
+  ) {
     if (Array.isArray(rule)) {
       rule
-        .map((_rule: STYLE_RULE) => createStyleRule(_rule, Reactors.platform))
-        .forEach((_rule: STYLE_RULE) => Object.assign(this, _rule));
+        .map((_rule: $reactors$StyleSheet$Rule) =>
+          createStyleRule(_rule, Reactors.platform)
+        )
+        .forEach((_rule: $reactors$StyleSheet$Rule) =>
+          Object.assign(this, _rule)
+        );
     } else {
       Object.assign(this, createStyleRule(rule, Reactors.platform));
     }

@@ -1,10 +1,18 @@
-// @flow
-import React, {Element} from 'react';
-import {ListView} from 'react-native';
-import Reactors from 'reactors';
-import type {PROPS} from '../ListView';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
-export default function RectorsMobileListView(props: PROPS): Element<*> {
+import React, {Element} from 'react';
+// $FlowFixMe This is by design
+import {ListView} from 'react-native';
+// $FlowFixMe This is by design
+import Reactors from 'reactors';
+import type {$props} from './ListView';
+
+export default function RectorsMobileListView(props: $props): Element<*> {
   const mobileProps = Reactors.props(props);
   const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
@@ -13,6 +21,6 @@ export default function RectorsMobileListView(props: PROPS): Element<*> {
   if (!('enableEmptySections' in mobileProps)) {
     mobileProps.enableEmptySections = true;
   }
-
+  // $FlowFixMe This is by design
   return <ListView {...mobileProps} />;
 }

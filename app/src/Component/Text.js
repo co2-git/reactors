@@ -6,13 +6,13 @@
 **/
 
 import React, {Element} from 'react';
+// $FlowFixMe This is by design
 import Reactors from 'reactors';
-import type {CORE_PROPS} from '../../config/types';
 
 export
-type PROPS = CORE_PROPS & {};
+type $props = $reactors$Core$props & {};
 
-export default function ReactorsText(props: PROPS): Element<*> {
+export default function ReactorsText(props: $props): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
@@ -26,6 +26,7 @@ export default function ReactorsText(props: PROPS): Element<*> {
   case 'desktop': {
     const TextWeb = require('./TextWeb').default;
     return (
+      /* $FlowFixMe This is by design */
       <TextWeb {...props} />
     );
   }

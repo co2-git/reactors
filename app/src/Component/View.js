@@ -6,10 +6,10 @@
 **/
 
 import React, {Element} from 'react';
+// $FlowFixMe This is by design
 import Reactors from 'reactors';
-import type {CORE_PROPS} from '../../config/types';
 
-export default function ReactorsView (props: CORE_PROPS): Element<*> {
+export default function ReactorsView (props: $reactors$Core$props): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
@@ -23,6 +23,7 @@ export default function ReactorsView (props: CORE_PROPS): Element<*> {
   case 'desktop': {
     const ViewWeb = require('./ViewWeb').default;
     return (
+      /* $FlowFixMe This is by design */
       <ViewWeb {...props} />
     );
   }

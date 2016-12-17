@@ -6,12 +6,11 @@
 **/
 
 import createStyleRule from './createStyleRule';
-import type {STYLESHEET} from '../../../config/types';
 
 export default function createStyleSheet(
-    styleSheet: STYLESHEET,
-    platform: string
-  ): STYLESHEET {
+    styleSheet: $reactors$styleSheet,
+    platform: $reactors$platform
+  ): $reactors$styleSheet {
   const _styleSheet = {};
   switch (platform) {
   default:

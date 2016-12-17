@@ -1,10 +1,15 @@
-import type {STYLE_TRANSFORMER} from '../../../config/types';
+/**
+  * @module reactors
+  * @name ScrollView
+  * @type Component
+  * @flow
+**/
 
 export default function stringifyTransformers(
-  transformers: Array<STYLE_TRANSFORMER>
+  transformers: Array<$reactors$StyleSheet$Transformer>
 ): string {
   return transformers
-    .map((transformer: STYLE_TRANSFORMER): string =>
+    .map((transformer: $reactors$StyleSheet$Transformer): string =>
       Object
         .keys(transformer)
         .map(key => `${key}(${transformer[key]})`)

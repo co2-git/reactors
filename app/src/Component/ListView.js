@@ -6,16 +6,16 @@
 **/
 
 import React, {Element} from 'react';
+// $FlowFixMe This is by design
 import Reactors from 'reactors';
-import type {CORE_PROPS} from '../../config/types';
 
 export
-type PROPS = CORE_PROPS & {
+type $props = $reactors$Core$props & {
   dataSource: Array<any>,
-  renderRow: (data: any) => Element,
+  renderRow: (data: any) => Element<*>,
 };
 
-export default function ListView(props: PROPS): Element {
+export default function ListView(props: $props): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
@@ -29,6 +29,7 @@ export default function ListView(props: PROPS): Element {
   case 'desktop': {
     const ListViewWeb = require('./ListViewWeb').default;
     return (
+      /* $FlowFixMe This is by design */
       <ListViewWeb {...props} />
     );
   }
