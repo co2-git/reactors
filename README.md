@@ -9,7 +9,7 @@ reactors
 
 Framework based on [React](https://facebook.github.io/react/) to build cross-platform apps that run web, mobile and desktop.
 
-**To create and run reactors app, see [reactors-cli](https://github.com/co2-got/reactors-cli)**
+**To create and run reactors app, see [reactors-cli](https://github.com/co2-git/reactors-cli)**
 
 # Install
 
