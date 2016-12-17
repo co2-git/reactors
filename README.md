@@ -9,7 +9,7 @@ reactors
 
 Framework based on [React](https://facebook.github.io/react/) to build cross-platform apps that run web, mobile and desktop.
 
-**To create and run reactors app, see [reactors-cli](https://github.com/co2-git/reactors-cli)**
+**To create and run reactors apps, see [reactors-cli](https://github.com/co2-git/reactors-cli)**
 
 # Install
 
@@ -47,7 +47,7 @@ export default function MyAwesomeComponent() {
 }
 ```
 
-View a detailed example [here](templates/app/App.js).
+View a detailed example [here](https://github.com/co2-git/reactors-cli/blob/master/templates/app/App.js).
 
 # Core Components
 
