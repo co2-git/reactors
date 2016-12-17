@@ -1,6 +1,6 @@
 /**
   * @module reactors
-  * @name ListView
+  * @name Text
   * @type Component
   * @flow
 **/
@@ -10,27 +10,24 @@ import React, {Element} from 'react';
 import Reactors from 'reactors';
 
 export
-type $props = $reactors$Core$props & {
-  dataSource: Array<any>,
-  renderRow: (data: any) => Element<*>,
-};
+type $props = $reactors$Core$props & {};
 
-export default function ListView(props: $props): Element<*> {
+export default function ReactorsText(props: $props): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
   case 'mobile': {
-    const ListViewMobile = require('./ListViewMobile').default;
+    const TextMobile = require('./mobile').default;
     return (
-      <ListViewMobile {...props} />
+      <TextMobile {...props} />
     );
   }
   case 'web':
   case 'desktop': {
-    const ListViewWeb = require('./ListViewWeb').default;
+    const TextWeb = require('./web').default;
     return (
       /* $FlowFixMe This is by design */
-      <ListViewWeb {...props} />
+      <TextWeb {...props} />
     );
   }
   }

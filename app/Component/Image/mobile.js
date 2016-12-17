@@ -10,7 +10,7 @@ import React from 'react';
 import {Image} from 'react-native';
 // $FlowFixMe This is by design
 import Reactors from 'reactors';
-import type {$props} from './Image';
+import type {$props} from '.';
 
 export default function ReactorsMobileImage (props: $props): Image {
   const mobileProps = Reactors.props(props);

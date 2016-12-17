@@ -8,7 +8,7 @@
 import React, {Element} from 'react';
 // $FlowFixMe This is by design
 import Reactors from 'reactors';
-import type {$props} from './ListView';
+import type {$props} from '.';
 
 export default function ReactorsWebListView(props: $props): Element<*> {
   const webProps = Reactors.props(props);

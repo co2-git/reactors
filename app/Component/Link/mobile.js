@@ -10,7 +10,7 @@ import React from 'react';
 import Reactors from 'reactors';
 // $FlowFixMe This is by design
 import {TouchableHighlight, Linking, View} from 'react-native';
-import type {$props} from './Link';
+import type {$props} from '.';
 
 export default function ReactorsMobileLink(props: $props): TouchableHighlight {
   const mobileProps = Reactors.props(props);

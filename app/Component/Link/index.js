@@ -1,34 +1,38 @@
 /**
   * @module reactors
-  * @name Text
-  * @type Component
   * @flow
 **/
 
-import React, {Element} from 'react';
+import React, {PropTypes} from 'react';
 // $FlowFixMe This is by design
 import Reactors from 'reactors';
 
 export
-type $props = $reactors$Core$props & {};
+type $props = $reactors$Core$props & {
+  href?: string,
+};
 
-export default function ReactorsText(props: $props): Element<*> {
+export default function Link(props: $props) {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
   case 'mobile': {
-    const TextMobile = require('./TextMobile').default;
+    const LinkMobile = require('./mobile').default;
     return (
-      <TextMobile {...props} />
+      <LinkMobile {...props} />
     );
   }
   case 'web':
   case 'desktop': {
-    const TextWeb = require('./TextWeb').default;
+    const LinkWeb = require('./web').default;
     return (
       /* $FlowFixMe This is by design */
-      <TextWeb {...props} />
+      <LinkWeb {...props} />
     );
   }
   }
 }
+
+Link.propTypes = {
+  href: PropTypes.string,
+};

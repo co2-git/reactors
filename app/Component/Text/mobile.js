@@ -10,7 +10,7 @@ import React from 'react';
 import {Text} from 'react-native';
 // $FlowFixMe This is by design
 import Reactors from 'reactors';
-import type {$props} from './Text';
+import type {$props} from '.';
 
 export default function ReactorsMobileText(props: $props): Text {
   const mobileProps = Reactors.props(props);

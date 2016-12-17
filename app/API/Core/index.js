@@ -1,13 +1,11 @@
 /**
   * @module reactors
-  * @name ScrollView
-  * @type Component
   * @flow
 **/
 
 /* globals window */
 
-import {StyleRule} from './StyleSheet';
+import {StyleRule} from '../StyleSheet';
 
 function guessPlatform() {
   if (typeof window !== 'undefined' && window.DOMError) {

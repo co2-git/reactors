@@ -1,6 +1,6 @@
 /**
   * @module reactors
-  * @name ScrollView
+  * @name ListView
   * @type Component
   * @flow
 **/
@@ -10,24 +10,27 @@ import React, {Element} from 'react';
 import Reactors from 'reactors';
 
 export
-type $props = $reactors$Core$props & {};
+type $props = $reactors$Core$props & {
+  dataSource: Array<any>,
+  renderRow: (data: any) => Element<*>,
+};
 
-export default function ReactorsScrollView(props: $props): Element<*> {
+export default function ListView(props: $props): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
   case 'mobile': {
-    const ScrollViewMobile = require('./ScrollViewMobile').default;
+    const ListViewMobile = require('./mobile').default;
     return (
-      <ScrollViewMobile {...props} />
+      <ListViewMobile {...props} />
     );
   }
   case 'web':
   case 'desktop': {
-    const ScrollViewWeb = require('./ScrollViewWeb').default;
+    const ListViewWeb = require('./web').default;
     return (
       /* $FlowFixMe This is by design */
-      <ScrollViewWeb {...props} />
+      <ListViewWeb {...props} />
     );
   }
   }

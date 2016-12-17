@@ -8,8 +8,8 @@
 // $FlowFixMe This is by design
 import Reactors from 'reactors';
 import _ from 'lodash';
-import createStyleSheet from './StyleSheet/createStyleSheet';
-import createStyleRule from './StyleSheet/createStyleRule';
+import createStyleSheet from './createStyleSheet';
+import createStyleRule from './createStyleRule';
 
 export default class ReactorsStyleSheetAPI {
   static create(styleSheet: $reactors$styleSheet) {

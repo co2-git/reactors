@@ -1,3 +1,8 @@
+/**
+  * @module reactors
+  * @flow
+**/
+
 export {default} from './API/Core';
 
 export {default as Image} from './Component/Image';

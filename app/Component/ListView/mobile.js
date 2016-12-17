@@ -10,7 +10,7 @@ import React, {Element} from 'react';
 import {ListView} from 'react-native';
 // $FlowFixMe This is by design
 import Reactors from 'reactors';
-import type {$props} from './ListView';
+import type {$props} from '.';
 
 export default function RectorsMobileListView(props: $props): Element<*> {
   const mobileProps = Reactors.props(props);

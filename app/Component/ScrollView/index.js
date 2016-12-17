@@ -1,6 +1,6 @@
 /**
   * @module reactors
-  * @name Image
+  * @name ScrollView
   * @type Component
   * @flow
 **/
@@ -9,27 +9,25 @@ import React, {Element} from 'react';
 // $FlowFixMe This is by design
 import Reactors from 'reactors';
 
-export type $props = $reactors$Core$props & {
-  source?: string | number | {uri: string},
-  src?: string,
-};
+export
+type $props = $reactors$Core$props & {};
 
-export default function ReactorsImage (props: $props): Element<*> {
+export default function ReactorsScrollView(props: $props): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
   case 'mobile': {
-    const ImageMobile = require('./ImageMobile').default;
+    const ScrollViewMobile = require('./mobile').default;
     return (
-      <ImageMobile {...props} />
+      <ScrollViewMobile {...props} />
     );
   }
   case 'web':
   case 'desktop': {
-    const ImageWeb = require('./ImageWeb').default;
+    const ScrollViewWeb = require('./web').default;
     return (
       /* $FlowFixMe This is by design */
-      <ImageWeb {...props} />
+      <ScrollViewWeb {...props} />
     );
   }
   }

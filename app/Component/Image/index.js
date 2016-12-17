@@ -1,6 +1,6 @@
 /**
   * @module reactors
-  * @name View
+  * @name Image
   * @type Component
   * @flow
 **/
@@ -9,22 +9,27 @@ import React, {Element} from 'react';
 // $FlowFixMe This is by design
 import Reactors from 'reactors';
 
-export default function ReactorsView (props: $reactors$Core$props): Element<*> {
+export type $props = $reactors$Core$props & {
+  source?: string | number | {uri: string},
+  src?: string,
+};
+
+export default function ReactorsImage (props: $props): Element<*> {
   switch (Reactors.platform) {
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
   case 'mobile': {
-    const ViewMobile = require('./ViewMobile').default;
+    const ImageMobile = require('./mobile').default;
     return (
-      <ViewMobile {...props} />
+      <ImageMobile {...props} />
     );
   }
   case 'web':
   case 'desktop': {
-    const ViewWeb = require('./ViewWeb').default;
+    const ImageWeb = require('./web').default;
     return (
       /* $FlowFixMe This is by design */
-      <ViewWeb {...props} />
+      <ImageWeb {...props} />
     );
   }
   }
