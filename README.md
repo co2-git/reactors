@@ -64,6 +64,7 @@ View a detailed example [here](https://github.com/co2-git/reactors-cli/blob/mast
 - [Dimensions](doc/API/Dimensions.md)
 - [Gesture](doc/API/Gesture.md)
 - [Notifications](doc/Components/Notifications.md)
+- [Storage](doc/API/Storage.md)
 - [StyleSheet](doc/API/StyleSheet.md)
 
 # Platform dependent code
