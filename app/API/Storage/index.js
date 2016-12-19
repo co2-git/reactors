@@ -53,7 +53,7 @@ export default class Storage {
         switch (Reactors.platform) {
         case 'desktop': {
           if (_value) {
-            this.db.update({key}, {value}, (err) => {
+            this.db.update({key}, {key, value}, (err) => {
               if (err) {
                 return reject(err);
               }
