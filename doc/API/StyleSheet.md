@@ -12,7 +12,7 @@ import {StyleSheet} from 'reactors';
 
 const styles = new StyleSheet({
   text: {
-    color: 'grey',
+    color: 'blue',
   },
 });
 
@@ -22,5 +22,11 @@ const styles = new StyleSheet({
 # Rule
 
 ```javascript
-<View style={{color: 'grey'}} />
+<View style={{color: 'blue'}} />
+```
+
+You can pass arrays of style:
+
+```javascript
+<View style={[style1, style2, this.foo && style3]} />
 ```

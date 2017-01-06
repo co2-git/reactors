@@ -22,9 +22,11 @@ export class Core {
 
   props(incomingProps: $reactors$Core$props) {
     const _props = {...incomingProps};
+
     if (_props.style) {
       _props.style = new StyleRule(_props.style);
     }
+
     if (_props.onPress) {
       if (this.platform === 'mobile') {
         _props.onStartShouldSetResponder = _props.onPress;
