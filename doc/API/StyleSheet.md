@@ -5,15 +5,11 @@ StyleSheet
 
 All `reactors` core components already unify style.
 
-# Usage
-
-```javascript
-import {StyleSheet, StyleRule} from 'reactors';
-```
-
 # Stylesheet
 
 ```javascript
+import {StyleSheet} from 'reactors';
+
 const styles = new StyleSheet({
   text: {
     color: 'grey',
@@ -26,31 +22,5 @@ const styles = new StyleSheet({
 # Rule
 
 ```javascript
-<View style={new StyleRule({color: 'grey'})} />;
+<View style={{color: 'grey'}} />
 ```
-
-# Border
-
-In ReactNative, you don't need  to supply a borders style, unlike the web. `reactors` goes like ReactNative - you can omit style if it `solid`.
-
-```javascript
-new StyleRule({
-  borderWidth: 2, // default color is black, default style is solid
-});
-```
-
-# Flexbox
-
-In ReactNative, you can omit `display: flex`. Likewise with `reactors`.
-
-# Translate
-
-```javascript
-new StyleRule({
-  transform: [{scale: 2}, {translateX: -250}],
-});
-```
-
-# Transitions
-
-Transitions will be ignored on mobile. Use animations instead.

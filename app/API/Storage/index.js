@@ -50,6 +50,8 @@ export default class Storage {
         // Get eventually existing row
         const _value = await this.get(key);
 
+        console.log({_value});
+
         switch (Reactors.platform) {
         case 'desktop': {
           if (_value) {
