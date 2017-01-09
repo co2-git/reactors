@@ -20,6 +20,7 @@ export default class Storage {
     return new Promise(async (resolve, reject) => {
       try {
         switch (Reactors.platform) {
+
         case 'desktop': {
           // Connect to NeDB
           const DataStore = require('nedb');
@@ -28,11 +29,12 @@ export default class Storage {
             autoload: true,
           });
           resolve();
-        }
-          break;
+        } break;
+
         default: {
           throw new Error('Unknow Reactors platform');
         }
+
         }
       } catch (error) {
         reject(error);
