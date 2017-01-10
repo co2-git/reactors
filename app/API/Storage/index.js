@@ -1,6 +1,5 @@
 // @flow
 
-// $FlowFixMe This is by design
 import Reactors from 'reactors';
 import _ from 'lodash';
 
