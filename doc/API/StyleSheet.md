@@ -23,10 +23,49 @@ const styles = new StyleSheet({
 
 ```javascript
 <View style={{color: 'blue'}} />
+
+<View style={new StyleSheet.Rule({color: 'blue'})} />
 ```
 
 You can pass arrays of style:
 
 ```javascript
-<View style={[style1, style2, this.foo && style3]} />
+<View style={[
+  {width: 1},
+  hasHeight && {height: 1},
+  ]} />
+
+type $rule = {};
+
+class Rule {
+
+}
+
+type $styles = {
+  [selector: string]: $rule | $rule[],
+};
+
+class StyleSheet {
+  static Rule = Rule;
+
+  constructor(styles: $styles) {
+    for (const selector in styles) {
+      const _style = styles[selector];
+      const rules = isArray(_style) ? _style : [_style];
+
+      Object.assign(this, {
+        [selector]: map(
+          rule, (style) => style instanceOf Rule ?
+            style : new Rule(style),
+        ),
+      });
+    }
+  }
+}
+
+type $StyleSheet = {[selector: string]: StyleSheet.Rule[]}
+
+const style = new StyleSheet({
+  container: [new StyleSheet.Rule()],
+});
 ```

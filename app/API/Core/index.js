@@ -5,14 +5,17 @@
 
 /* globals window */
 
-import {StyleRule} from '../StyleSheet';
+import Declarations from '../StyleSheet/Declarations';
 
-function guessPlatform() {
+function guessPlatform(): $reactors$platform {
   if (typeof window !== 'undefined' && window.DOMError) {
     if (window.process) {
       return 'desktop';
     }
     return 'web';
+  }
+  if (process) {
+    return 'node';
   }
   return 'mobile';
 }
@@ -21,21 +24,22 @@ export class Core {
   platform = guessPlatform();
 
   props(incomingProps: $reactors$Core$props) {
-    const _props = {...incomingProps};
+    const reactorsProps = {...incomingProps};
 
-    if (_props.style) {
-      _props.style = new StyleRule(_props.style);
+    if (reactorsProps.style) {
+      reactorsProps.style = new Declarations(reactorsProps.style)
+        .toObject();
     }
 
-    if (_props.onPress) {
+    if (reactorsProps.onPress) {
       if (this.platform === 'mobile') {
-        _props.onStartShouldSetResponder = _props.onPress;
+        reactorsProps.onStartShouldSetResponder = reactorsProps.onPress;
       } else {
-        _props.onClick = _props.onPress;
-        delete _props.onPress;
+        reactorsProps.onClick = reactorsProps.onPress;
+        delete reactorsProps.onPress;
       }
     }
-    return _props;
+    return reactorsProps;
   }
 }
 

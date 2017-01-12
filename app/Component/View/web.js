@@ -1,12 +1,11 @@
 /**
   * @module reactors
-  * @name ScrollView
+  * @name ViewWeb
   * @type Component
   * @flow
 **/
 
 import React, {Element} from 'react';
-// $FlowFixMe This is by design
 import Reactors from 'reactors';
 
 export default

@@ -4,6 +4,7 @@
 
 [libs]
 flow.js
+flow/
 
 [options]
 module.system=haste

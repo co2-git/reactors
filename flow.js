@@ -7,6 +7,7 @@ import React from 'react';
 declare type $reactors$platform = 'desktop'
   | 'mobile'
   | 'web'
+  | 'node'
   ;
 
 declare type $reactors$Core$Event = {};
