@@ -14,9 +14,6 @@ function guessPlatform(): $reactors$platform {
     }
     return 'web';
   }
-  if (process) {
-    return 'node';
-  }
   return 'mobile';
 }
 
