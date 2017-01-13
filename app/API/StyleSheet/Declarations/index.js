@@ -26,7 +26,6 @@ export default class Declarations {
           );
         }
       }
-      console.log(require('util').inspect({declarations: this.declarations}, { depth: null }));
     }
   }
 
