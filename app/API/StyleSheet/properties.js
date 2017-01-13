@@ -37,6 +37,20 @@ function borderWidth_DOM(borderWidth: number, declarations) {
 }
 
 export default {
+  ['alignContent']: {
+    value: [
+      'stretch',
+      'flex-start',
+      'flex-end',
+      'center',
+      'space-around',
+      'space-between',
+    ],
+    mobile() {
+      return {};
+    }
+  },
+
   ['alignItems']: {
     value: [
       'flex-start',

@@ -1,6 +1,7 @@
 export default class Notifications {
   static push(title) {
-    const notifier = require('electron-notifications');
+    const electronNotifications = 'electron-notifications';
+    const notifier = require(electronNotifications);
     notifier.notify(title);
   }
 }

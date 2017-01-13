@@ -37,8 +37,6 @@ export class Core {
       }
     }
 
-    console.info({reactorsProps});
-
     return reactorsProps;
   }
 }
