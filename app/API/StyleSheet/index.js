@@ -18,9 +18,3 @@ export default class StyleSheet {
     }
   }
 }
-
-const styles = new StyleSheet({foo: {
-  transform: [{rotate: '90deg'}]
-}});
-
-const rule = new Declarations(styles.foo).toObject();
