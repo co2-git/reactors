@@ -24,5 +24,3 @@ const styles = new StyleSheet({foo: {
 }});
 
 const rule = new Declarations(styles.foo).toObject();
-
-console.log(require('util').inspect({styles, rule}, {depth: null}));
