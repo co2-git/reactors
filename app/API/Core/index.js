@@ -36,6 +36,9 @@ export class Core {
         delete reactorsProps.onPress;
       }
     }
+
+    console.info({reactorsProps});
+
     return reactorsProps;
   }
 }

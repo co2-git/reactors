@@ -64,6 +64,10 @@ export default {
     value: Number,
   },
 
+  ['marginTop']: {
+    value: Number,
+  },
+
   ['marginVertical']: {
     desktop: (marginVertical) => ({
       marginTop: marginVertical,

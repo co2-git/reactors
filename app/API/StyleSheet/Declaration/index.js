@@ -24,10 +24,9 @@ export default class Declaration {
 
   toObject(styles = {}) {
     if (!this.style) {
-      console.log('not style', this);
-      if (this.platform === 'mobile') {
-        return {};
-      }
+      // if (this.platform === 'mobile') {
+      //   return {};
+      // }
       return {[this.property]: this.value};
     }
     return this.format(styles);

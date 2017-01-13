@@ -9,7 +9,6 @@ export default class Declarations {
 
   constructor(declarations: $declarationParam | $declarationParam[]) {
     if (declarations instanceof Declarations) {
-      console.log('....');
       Object.assign(this, declarations);
     } else {
       let set = declarations;
