@@ -15,4 +15,4 @@ export {default as View} from './Component/View';
 export {default as Dimensions} from './API/Dimensions';
 export {default as Gesture} from './API/Gesture';
 export {default as Notifications} from './API/Notifications';
-export {default as StyleSheet, StyleRule} from './API/StyleSheet';
+export {default as StyleSheet} from './API/StyleSheet';
