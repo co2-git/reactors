@@ -1,10 +1,13 @@
 import Declarations from './Declarations';
 import isArray from 'lodash/isArray';
+import Style from './Style';
 
 export default class StyleSheet {
   static create(styles: $ReactorsStyleSheet) {
     return new this(styles);
   }
+
+  static Style = Style;
 
   constructor(rules: {}) {
     for (const selector in rules) {

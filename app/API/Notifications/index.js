@@ -17,7 +17,8 @@ function notifyByPlatform() {
   }
 
   case 'desktop': {
-    return require('./desktop').default;
+    const desktopPath = 'desktop';
+    return require(`./${desktopPath}`).default;
   }
 
   }

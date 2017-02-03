@@ -37,7 +37,7 @@ export default class Declaration {
 
     if (this.style) {
       if (this.style.value === Number) {
-        value = parseInt(value);
+        value = parseInt(value, 10);
       }
 
       if (isFunction(this.style[this.platform])) {

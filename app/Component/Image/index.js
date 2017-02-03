@@ -6,7 +6,6 @@
 **/
 
 import React, {Element} from 'react';
-// $FlowFixMe This is by design
 import Reactors from 'reactors';
 
 export type $props = $reactors$Core$props & {
@@ -16,14 +15,17 @@ export type $props = $reactors$Core$props & {
 
 export default function ReactorsImage (props: $props): Element<*> {
   switch (Reactors.platform) {
+
   default:
     throw new Error('Unknown platform: ' + Reactors.platform);
+
   case 'mobile': {
     const ImageMobile = require('./mobile').default;
     return (
       <ImageMobile {...props} />
     );
   }
+
   case 'web':
   case 'desktop': {
     const ImageWeb = require('./web').default;
@@ -32,5 +34,6 @@ export default function ReactorsImage (props: $props): Element<*> {
       <ImageWeb {...props} />
     );
   }
+
   }
 }

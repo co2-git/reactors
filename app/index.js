@@ -1,7 +1,7 @@
 /**
-  * @module reactors
-  * @flow
-**/
+ ** @module reactors
+ ** @flow
+ **/
 
 export {default} from './API/Core';
 

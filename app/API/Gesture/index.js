@@ -5,9 +5,8 @@
   * @flow
 **/
 
-// $FlowFixMe This is by design
 import Reactors from 'reactors';
-import _ from 'lodash';
+import omit from 'lodash/omit';
 
 export default class Gesture {
   static gestures = [
@@ -49,7 +48,7 @@ export default class Gesture {
       };
     }
     return {
-      ..._.omit(props, this.gestures),
+      ...omit(props, this.gestures),
       ...handlers,
     };
   }

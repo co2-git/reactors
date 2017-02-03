@@ -19,53 +19,27 @@ const styles = new StyleSheet({
 <View style={styles.text} />;
 ```
 
-# Rule
+# Mixins
 
 ```javascript
-<View style={{color: 'blue'}} />
+import {StyleSheet} from 'reactors';
 
-<View style={new StyleSheet.Rule({color: 'blue'})} />
-```
+const {
+  Style,
+  color,
+  font,
+  line,
+} = StyleSheet;
 
-You can pass arrays of style:
-
-```javascript
-<View style={[
-  {width: 1},
-  hasHeight && {height: 1},
-  ]} />
-
-type $rule = {};
-
-class Rule {
-
-}
-
-type $styles = {
-  [selector: string]: $rule | $rule[],
-};
-
-class StyleSheet {
-  static Rule = Rule;
-
-  constructor(styles: $styles) {
-    for (const selector in styles) {
-      const _style = styles[selector];
-      const rules = isArray(_style) ? _style : [_style];
-
-      Object.assign(this, {
-        [selector]: map(
-          rule, (style) => style instanceOf Rule ?
-            style : new Rule(style),
-        ),
-      });
-    }
-  }
-}
-
-type $StyleSheet = {[selector: string]: StyleSheet.Rule[]}
-
-const style = new StyleSheet({
-  container: [new StyleSheet.Rule()],
+const styles = new StyleSheet({
+  container: {
+    ...new Style.Dimensions(300, 150),
+    ...new Style.Border(2, color('red'), line('solid')),
+    ...new Style.Margin(10),
+  },
+  text: {
+    ...new Style.Font(14, font('trebuchet'), color('orange')),
+    ...new Style.Margin(10, 20),
+  },
 });
 ```

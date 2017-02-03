@@ -4,7 +4,6 @@
 **/
 
 import React, {Element} from 'react';
-// $FlowFixMe This is by design
 import Reactors from 'reactors';
 import type {$props} from '.';
 
