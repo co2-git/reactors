@@ -26,12 +26,19 @@ export default function ReactorsImage (props: $props): Element<*> {
     );
   }
 
-  case 'web':
-  case 'desktop': {
+  case 'web': {
     const ImageWeb = require('./web').default;
     return (
       /* $FlowFixMe This is by design */
       <ImageWeb {...props} />
+    );
+  }
+
+  case 'desktop': {
+    const ImageDesktop = require('./desktop').default;
+    return (
+      /* $FlowFixMe This is by design */
+      <ImageDesktop {...props} />
     );
   }
 
