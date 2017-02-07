@@ -12,6 +12,8 @@ export default function ReactorsImageDesktop (props: $props): Element<*> {
   webProps.src = webProps.source;
   if (typeof webProps.src === 'object' && webProps.src.uri) {
     webProps.src = webProps.src.uri.replace(/^\.\./, '.');
+  } else if (typeof webProps.src === 'string') {
+    webProps.src = webProps.src.replace(/^\.\./, '.');
   }
   delete webProps.source;
   // $FlowFixMe This is by design
