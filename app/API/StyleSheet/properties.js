@@ -36,6 +36,14 @@ function borderWidth_DOM(borderWidth: number, declarations) {
   return style;
 }
 
+function flexDirectionMissingDisplayOnDOM(flexDirection: string, declarations) {
+  const style = {flexDirection};
+  if (!find(declarations, {property: 'display'})) {
+    style.display = 'flex';
+  }
+  return style;
+}
+
 export default {
   ['alignContent']: {
     value: [
@@ -72,6 +80,22 @@ export default {
     value: Number,
     desktop: borderWidth_DOM,
     web: borderWidth_DOM,
+  },
+
+  ['display']: {
+    value: ['flex', 'inline', 'block'],
+    mobile(display) {
+      if (display === 'flex') {
+        return {};
+      }
+      return {display};
+    }
+  },
+
+  ['flexDirection']: {
+    value: ['row', 'column'],
+    desktop: flexDirectionMissingDisplayOnDOM,
+    web: flexDirectionMissingDisplayOnDOM,
   },
 
   ['marginBottom']: {

@@ -6,16 +6,14 @@
 **/
 
 /* globals window */
-
-// $FlowFixMe This is by design
 import Reactors from 'reactors';
 
 export default class Dimensions {
   static get() {
     if (Reactors.platform === 'mobile') {
-      // $FlowFixMe This is by design
       const ReactNative = require('react-native');
-      const {Dimensions: RNDimensions} = ReactNative.default;
+      const RN = ReactNative.default || ReactNative;
+      const {Dimensions: RNDimensions} = RN;
       return RNDimensions.get('window');
     }
     return {

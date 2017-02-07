@@ -13,7 +13,7 @@ export type $props = $reactors$Core$props & {
   src?: string,
 };
 
-export default function ReactorsImage (props: $props): Element<*> {
+export default function ReactorsImage(props: $props): Element<*> {
   switch (Reactors.platform) {
 
   default:
@@ -29,7 +29,6 @@ export default function ReactorsImage (props: $props): Element<*> {
   case 'web': {
     const ImageWeb = require('./web').default;
     return (
-      /* $FlowFixMe This is by design */
       <ImageWeb {...props} />
     );
   }
