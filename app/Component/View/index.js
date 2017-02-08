@@ -23,7 +23,6 @@ export default class ReactorsView extends Component {
       throw new Error('Unknown platform: ' + Reactors.platform);
 
     case 'mobile': {
-      console.log(this.refs);
       return this.refs.__internalView.measure(cb);
     }
 
