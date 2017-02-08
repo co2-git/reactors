@@ -3,7 +3,9 @@
  ** @flow
  **/
 
-export {default} from './API/Core';
+import Reactors from './API/Core';
+
+export {Reactors as default};
 
 export {default as Image} from './Component/Image';
 export {default as Link} from './Component/Link';
@@ -14,5 +16,9 @@ export {default as View} from './Component/View';
 
 export {default as Dimensions} from './API/Dimensions';
 export {default as Gesture} from './API/Gesture';
-export {default as Notifications} from './API/Notifications';
+// export {default as Notifications} from './API/Notifications';
 export {default as StyleSheet} from './API/StyleSheet';
+
+const Platform = {OS: Reactors.getOS()};
+
+export {Platform};

@@ -20,6 +20,14 @@ function guessPlatform(): $reactors$platform {
 export class Core {
   platform = guessPlatform();
 
+  getOS() {
+    if (this.platform === 'mobile') {
+      const RN = require('react-native');
+      return RN.Platform;
+    }
+    return {OS: this.platform};
+  }
+
   props(incomingProps: $reactors$Core$props) {
     const reactorsProps = {...incomingProps};
 
