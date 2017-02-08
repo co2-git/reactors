@@ -23,11 +23,19 @@ export class Core {
   props(incomingProps: $reactors$Core$props) {
     const reactorsProps = {...incomingProps};
 
+    // accessibility
+    if (reactorsProps.accessibilityLabel && this.platform !== 'mobile') {
+      reactorsProps.ariaLabelledby = reactorsProps.accessibilityLabel;
+      delete reactorsProps.accessibilityLabel;
+    }
+
+    // style
     if (reactorsProps.style) {
       reactorsProps.style = new Declarations(reactorsProps.style)
         .toObject();
     }
 
+    // gesture
     if (reactorsProps.onPress) {
       if (this.platform === 'mobile') {
         reactorsProps.onStartShouldSetResponder = reactorsProps.onPress;
