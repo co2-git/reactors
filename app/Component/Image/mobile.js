@@ -15,7 +15,6 @@ export default function ReactorsMobileImage (props: $props): Image {
   if (typeof mobileProps.source === 'string') {
     mobileProps.source = {uri: mobileProps.source};
   }
-  console.log({mobileProps});
   // $FlowFixMe This is by design
   return <Image {...mobileProps} />;
 }
