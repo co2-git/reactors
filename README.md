@@ -91,6 +91,7 @@ Check out Reactors plugin in the `npm` registry. Look for packages starting by `
 
 Some plugins:
 
+- [reactors-file-dialog](https://www.npmjs.com/package/reactors-file-dialog)
 - [reactors-form](https://www.npmjs.com/package/reactors-form)
 - [reactors-grid](https://www.npmjs.com/package/reactors-grid)
 - [reactors-http-request](https://www.npmjs.com/package/reactors-http-request)
