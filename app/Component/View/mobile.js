@@ -1,22 +1,26 @@
 /**
   * @module reactors
-  * @name ScrollView
-  * @type Component
   * @flow
 **/
 
-import React from 'react';
-// $FlowFixMe This is by design
+import React, {Component} from 'react';
 import {View} from 'react-native';
-// $FlowFixMe This is by design
 import Reactors from 'reactors';
 
-export default function ReactorsMobileView (props: $reactors$Core$props): View {
-  const mobileProps = Reactors.props(props);
-  return (
-    /* $FlowFixMe This is by design */
-    <View {...mobileProps}>
-      {props.children}
-    </View>
-  );
+export default class ReactorsViewMobile extends Component {
+  props: $reactors$Core$props;
+
+  measure(cb: Function) {
+    return this.refs.__internalView.measure(cb);
+  }
+
+  render() {
+    const mobileProps = Reactors.props(this.props);
+    return (
+      /* $FlowFixMe This is by design */
+      <View ref="__internalView" {...mobileProps}>
+        {this.props.children}
+      </View>
+    );
+  }
 }
