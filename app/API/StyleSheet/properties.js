@@ -1,13 +1,10 @@
 import keys from 'lodash/keys';
 import isArray from 'lodash/isArray';
 import find from 'lodash/find';
+import pick from 'lodash/pick';
+import Dimensions from '../Dimensions';
 
 class Color {}
-
-class Transformer {
-  property: string;
-  value: any;
-}
 
 const transforms = new Set();
 
@@ -42,6 +39,20 @@ function flexDirectionMissingDisplayOnDOM(flexDirection: string, declarations) {
     style.display = 'flex';
   }
   return style;
+}
+
+function resizeModeForDOM(resizeMode: string) {
+  switch (resizeMode) {
+
+  default: {
+    return {};
+  }
+
+  case 'cover': {
+    return pick(Dimensions.get('window'), ['width', 'height']);
+  }
+
+  }
 }
 
 export default {
@@ -120,6 +131,12 @@ export default {
 
   ['overflow']: {
     value: ['hidden'],
+  },
+
+  ['resizeMode']: {
+    desktop: resizeModeForDOM,
+    value: ['cover', 'contain', 'stretch', 'repeat', 'center'],
+    web: resizeModeForDOM,
   },
 
   ['transform']: {

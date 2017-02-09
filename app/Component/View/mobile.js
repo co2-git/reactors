@@ -4,7 +4,7 @@
 **/
 
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import Reactors from 'reactors';
 
 export default class ReactorsViewMobile extends Component {
@@ -16,6 +16,17 @@ export default class ReactorsViewMobile extends Component {
 
   render() {
     const mobileProps = Reactors.props(this.props);
+    const props = {
+      ref: '__internalView',
+      ...mobileProps,
+    };
+    if (props.scroll) {
+      return (
+        <ScrollView ref="__internalView" {...mobileProps}>
+          {this.props.children}
+        </ScrollView>
+      );
+    }
     return (
       /* $FlowFixMe This is by design */
       <View ref="__internalView" {...mobileProps}>
