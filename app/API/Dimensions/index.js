@@ -4,7 +4,7 @@
 **/
 
 /* globals CustomEvent requestAnimationFrame window */
-import Reactors from 'reactors';
+import Reactors from '../Core';
 
 export default class Dimensions {
   static __onResize = [];

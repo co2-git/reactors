@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.19
+
+- Fix 'Reactors not found' in Dimensions
+
 ## v1.5.18
 
 - Add 'resize="cover"' style support for DOM-based platforms
