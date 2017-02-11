@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.21
+
+- Add accessibility support for DOM
+
 ## v1.5.20
 
 - Update Doc about Dimensions resize

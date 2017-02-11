@@ -33,8 +33,17 @@ export class Core {
 
     // accessibility
     if (reactorsProps.accessibilityLabel && this.platform !== 'mobile') {
-      reactorsProps.ariaLabelledby = reactorsProps.accessibilityLabel;
+      reactorsProps['aria-labelledby'] = reactorsProps.accessibilityLabel;
       delete reactorsProps.accessibilityLabel;
+    }
+
+    if (reactorsProps.accessibilityTraits && this.platform !== 'mobile') {
+      reactorsProps.role = reactorsProps.accessibilityTraits;
+      delete reactorsProps.accessibilityTraits;
+    }
+
+    if (reactorsProps.accessible && this.platform !== 'mobile') {
+      delete reactorsProps.accessible;
     }
 
     // style
