@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.20
+
+- Update Doc about Dimensions resize
+
 ## v1.5.19
 
 - Fix 'Reactors not found' in Dimensions
