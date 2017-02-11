@@ -1,8 +1,7 @@
+// @flow
 import keys from 'lodash/keys';
 import isArray from 'lodash/isArray';
 import find from 'lodash/find';
-import pick from 'lodash/pick';
-import Dimensions from '../Dimensions';
 
 class Color {}
 
@@ -49,7 +48,10 @@ function resizeModeForDOM(resizeMode: string) {
   }
 
   case 'cover': {
-    return pick(Dimensions.get('window'), ['width', 'height']);
+    return {
+      width: '100%',
+      height: '100%',
+    };
   }
 
   }

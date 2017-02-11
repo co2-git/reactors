@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.18
+
+- Add 'resize="cover"' style support for DOM-based platforms
+
 ## v1.5.17
 
 - Add 'window.resize' listeners on `Dimensions` for DOM-based platforms
