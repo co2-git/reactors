@@ -1,20 +1,19 @@
 /**
   * @module reactors
-  * @name ViewWeb
-  * @type Component
   * @flow
 **/
 
-import React, {Element} from 'react';
+import React, {Component} from 'react';
 import Reactors from 'reactors';
 
-export default
-function ReactorsWebView (props: $reactors$Core$props): Element<*> {
-  const webProps = Reactors.props(props);
-  return (
-    /* $FlowFixMe This is by design */
-    <section {...webProps}>
-      {props.children}
-    </section>
-  );
+export default class ReactorsViewWeb extends Component {
+  render() {
+    const webProps = Reactors.props(this.props);
+    return (
+      /* $FlowFixMe This is by design */
+      <section {...webProps}>
+        {this.props.children}
+      </section>
+    );
+  }
 }

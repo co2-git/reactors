@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.22
+
+- View for DOM is now a state component
+
 ## v1.5.21
 
 - Add accessibility support for DOM
