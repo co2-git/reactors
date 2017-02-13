@@ -3,34 +3,30 @@
   * @flow
 **/
 
-import Reactors from 'reactors';
+import Reactors from '../Core';
 
 export default class ReactorsStorage {
-  static getItem(itemTitle: string) {
-    switch (Reactors.platform) {
-
-    default:
-      throw new Error('Unknown platform: ' + Reactors.platform);
-
-    case 'mobile': {
+  static getPlatform() {
+    if (Reactors.isMobile()) {
       const ReactorsStorageMobile = require('./mobile').default;
-      return ReactorsStorageMobile.getItem(itemTitle);
+      return ReactorsStorageMobile;
     }
 
+    if (Reactors.isDOM()) {
+      const ReactorsStorageDOM = require('./web').default;
+      return ReactorsStorageDOM;
     }
+
+    throw new Error(`Unknown platform: ${Reactors.platform}`);
+  }
+
+  static getItem(itemTitle: string) {
+    const Platform = this.getPlatform();
+    return Platform.getItem(itemTitle);
   }
 
   static setItem(itemTitle: string, item: string) {
-    switch (Reactors.platform) {
-
-    default:
-      throw new Error('Unknown platform: ' + Reactors.platform);
-
-    case 'mobile': {
-      const ReactorsStorageMobile = require('./mobile').default;
-      return ReactorsStorageMobile.setItem(itemTitle, item);
-    }
-
-    }
+    const Platform = this.getPlatform();
+    return Platform.setItem(itemTitle, item);
   }
 }

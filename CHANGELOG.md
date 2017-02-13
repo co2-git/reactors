@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.28
+
+- Add Storage support for web
+
 ## v1.5.27
 
 - Add `boolean View#scrollable` to mobile view to get ScrollView

@@ -1,6 +1,6 @@
 {
   "name": "reactors",
-  "version": "1.5.27",
+  "version": "1.5.28",
   "description": "View components and APIs that work web, mobile and desktop!",
   "main": "dist/index.js",
   "keywords": [
