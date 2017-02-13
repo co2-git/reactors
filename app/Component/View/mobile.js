@@ -4,7 +4,7 @@
 **/
 
 import React, {Component} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import omit from 'lodash/omit';
 
 export default class ReactorsViewMobile extends Component {
@@ -17,15 +17,27 @@ export default class ReactorsViewMobile extends Component {
   render() {
     const props = omit(this.props.style);
 
+    if (props.scrollable) {
+      return (
+        <ScrollView
+          ref="__internalView"
+          {...props}
+          contentContainerStyle={this.props.style}
+          >
+          {this.props.children}
+        </ScrollView>
+      );
+    }
+
     return (
       /* $FlowFixMe - we don't have react */
-      <ScrollView
+      <View
         ref="__internalView"
         {...props}
-        contentContainerStyle={this.props.style}
+        style={this.props.style}
         >
         {this.props.children}
-      </ScrollView>
+      </View>
     );
   }
 }

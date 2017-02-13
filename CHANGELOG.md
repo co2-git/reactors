@@ -3,6 +3,14 @@ reactors change log
 
 # Versions
 
+## v1.5.32
+
+- `ListView` is now a class
+
+## v1.5.31
+
+- Reinstall View if not scrollable for mobile
+
 ## v1.5.30
 
 - `mergeStyles(...styles)`

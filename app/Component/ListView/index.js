@@ -1,37 +1,36 @@
 /**
   * @module reactors
-  * @name ListView
-  * @type Component
   * @flow
 **/
 
-import React, {Element} from 'react';
-// $FlowFixMe This is by design
+import React, {Component} from 'react';
 import Reactors from 'reactors';
 
 export
 type $props = $reactors$Core$props & {
   dataSource: Array<any>,
-  renderRow: (data: any) => Element<*>,
+  renderRow: (data: any) => React.Element<*>,
 };
 
-export default function ListView(props: $props): Element<*> {
-  switch (Reactors.platform) {
-  default:
+export default class ReactorsListView extends Component {
+  render() {
+    const props = Reactors.props(this.props);
+
+    if (Reactors.isMobile()) {
+      const ListViewMobile = require('./mobile').default;
+      return (
+        <ListViewMobile {...props} />
+      );
+    }
+
+    if (Reactors.isDOM()) {
+      const ListViewWeb = require('./web').default;
+      return (
+        /* $FlowFixMe This is by design */
+        <ListViewWeb {...props} />
+      );
+    }
+
     throw new Error('Unknown platform: ' + Reactors.platform);
-  case 'mobile': {
-    const ListViewMobile = require('./mobile').default;
-    return (
-      <ListViewMobile {...props} />
-    );
-  }
-  case 'web':
-  case 'desktop': {
-    const ListViewWeb = require('./web').default;
-    return (
-      /* $FlowFixMe This is by design */
-      <ListViewWeb {...props} />
-    );
-  }
   }
 }
