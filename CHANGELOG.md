@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.27
+
+- Add `boolean View#scrollable` to mobile view to get ScrollView
+
 ## v1.5.26
 
 - Add `paddingHorizontal`, `paddingVertical`

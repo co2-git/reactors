@@ -28,6 +28,7 @@ export default class ReactorsViewWeb extends Component {
         'onStartShouldSetResponderCapture',
         'pointerEvents',
         'removeClippedSubviews',
+        'scrollable',
         'testID',
       ]
     );
