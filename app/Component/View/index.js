@@ -38,6 +38,8 @@ export default class ReactorsView extends Component {
   }
 
   render() {
+    const props = Reactors.props(this.props);
+
     switch (Reactors.platform) {
 
     default:
@@ -46,7 +48,7 @@ export default class ReactorsView extends Component {
     case 'mobile': {
       const ViewMobile = require('./mobile').default;
       return (
-        <ViewMobile ref="__internalView" {...this.props} />
+        <ViewMobile ref="__internalView" {...props} />
       );
     }
 
@@ -55,7 +57,7 @@ export default class ReactorsView extends Component {
       const ViewWeb = require('./web').default;
       return (
         /* $FlowFixMe This is by design */
-        <ViewWeb ref="__internalView" {...this.props} />
+        <ViewWeb ref="__internalView" {...props} />
       );
     }
 

@@ -5,7 +5,6 @@
 
 import React, {Component} from 'react';
 import {ScrollView, View} from 'react-native';
-import Reactors from 'reactors';
 
 export default class ReactorsViewMobile extends Component {
   props: $reactors$Core$props;
@@ -15,21 +14,20 @@ export default class ReactorsViewMobile extends Component {
   }
 
   render() {
-    const mobileProps = Reactors.props(this.props);
     const props = {
       ref: '__internalView',
-      ...mobileProps,
+      ...this.props,
     };
     if (props.scroll) {
       return (
-        <ScrollView ref="__internalView" {...mobileProps}>
+        <ScrollView ref="__internalView" {...this.props}>
           {this.props.children}
         </ScrollView>
       );
     }
     return (
       /* $FlowFixMe This is by design */
-      <View ref="__internalView" {...mobileProps}>
+      <View ref="__internalView" {...this.props}>
         {this.props.children}
       </View>
     );

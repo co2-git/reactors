@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.24
+
+- Remove RN properties on DOM View
+
 ## v1.5.23
 
 - Add `isMobile`, `isWeb`, `isDesktop`, `isDOM`

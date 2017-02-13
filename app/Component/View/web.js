@@ -4,11 +4,32 @@
 **/
 
 import React, {Component} from 'react';
-import Reactors from 'reactors';
+import omit from 'lodash/omit';
 
 export default class ReactorsViewWeb extends Component {
   render() {
-    const webProps = Reactors.props(this.props);
+    const webProps = omit(
+      this.props,
+      [
+        'hitSlop',
+        'onAccessibilityTap',
+        'onLayout',
+        'onMagicTap',
+        'onMoveShouldSetResponder',
+        'onMoveShouldSetResponderCapture',
+        'onResponderGrant',
+        'onResponderMove',
+        'onResponderReject',
+        'onResponderRelease',
+        'onResponderTerminate',
+        'onResponderTerminationRequest',
+        'onStartShouldSetResponder',
+        'onStartShouldSetResponderCapture',
+        'pointerEvents',
+        'removeClippedSubviews',
+        'testID',
+      ]
+    );
     return (
       /* $FlowFixMe This is by design */
       <section {...webProps}>
