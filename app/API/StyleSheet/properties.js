@@ -111,6 +111,38 @@ export default {
     web: flexDirectionMissingDisplayOnDOM,
   },
 
+  ['paddingHorizontal']: {
+    value: Number,
+    desktop: (paddingHorizontal: number) => {
+      return {
+        paddingLeft: paddingHorizontal,
+        paddingRight: paddingHorizontal,
+      };
+    },
+    web: (paddingHorizontal: number) => {
+      return {
+        paddingLeft: paddingHorizontal,
+        paddingRight: paddingHorizontal,
+      };
+    },
+  },
+
+  ['paddingVertical']: {
+    value: Number,
+    desktop: (paddingVertical: number) => {
+      return {
+        paddingTop: paddingVertical,
+        paddingBottom: paddingVertical,
+      };
+    },
+    web: (paddingVertical: number) => {
+      return {
+        paddingTop: paddingVertical,
+        paddingBottom: paddingVertical,
+      };
+    },
+  },
+
   ['marginBottom']: {
     value: Number,
   },

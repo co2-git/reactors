@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.26
+
+- Add `paddingHorizontal`, `paddingVertical`
+
 ## v1.5.25
 
 - Add `isAndroid`, `isios`
