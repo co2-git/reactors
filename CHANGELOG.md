@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.23
+
+- Add `isMobile`, `isWeb`, `isDesktop`, `isDOM`
+
 ## v1.5.22
 
 - View for DOM is now a state component

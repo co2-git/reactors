@@ -6,6 +6,7 @@
 /* globals window */
 
 import Declarations from '../StyleSheet/Declarations';
+import includes from 'lodash/includes';
 
 function guessPlatform(): $reactors$platform {
   if (typeof window !== 'undefined' && window.DOMError) {
@@ -26,6 +27,22 @@ export class Core {
       return RN.Platform;
     }
     return {OS: this.platform};
+  }
+
+  isDOM() {
+    return includes(['desktop', 'web'], this.platform);
+  }
+
+  isMobile() {
+    return this.platform === 'mobile';
+  }
+
+  isDesktop() {
+    return this.platform === 'desktop';
+  }
+
+  isWeb() {
+    return this.platform === 'web';
   }
 
   props(incomingProps: $reactors$Core$props) {
