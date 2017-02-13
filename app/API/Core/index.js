@@ -61,6 +61,50 @@ export class Core {
     return RN.Platform.OS === 'ios';
   }
 
+  mergeStyles(...styles: any[]) {
+    if (this.isMobile()) {
+      const merged = [];
+
+      for (const style of styles) {
+        if (Array.isArray(style)) {
+          merged.push(...style);
+        } else if (style && typeof style === 'object') {
+          // List style (from StyleSheet.create)
+          if (style[0]) {
+            merged.push(...Array.from(style));
+          } else {
+            merged.push(style);
+          }
+        }
+      }
+
+      return merged;
+    }
+
+    let merged = {};
+
+    for (const style of styles) {
+      if (Array.isArray(style)) {
+        for (const item of style) {
+          merged = {...merged, item};
+        }
+      } else if (style && typeof style === 'object') {
+        // List style (from StyleSheet.create)
+        if (style[0]) {
+          const arr = Array.from(style);
+
+          for (const item of arr) {
+            merged = {...merged, item};
+          }
+        } else {
+          merged = {...merged, ...style};
+        }
+      }
+    }
+
+    return merged;
+  }
+
   props(incomingProps: $reactors$Core$props) {
     const reactorsProps = {...incomingProps};
 

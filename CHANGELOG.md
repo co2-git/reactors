@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.30
+
+- `mergeStyles(...styles)`
+
 ## v1.5.29
 
 - Pass mobile View style to `contentContainerStyle`
