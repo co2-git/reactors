@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.25
+
+- Add `isAndroid`, `isios`
+
 ## v1.5.24
 
 - Remove RN properties on DOM View

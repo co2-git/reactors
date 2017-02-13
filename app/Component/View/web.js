@@ -12,6 +12,7 @@ export default class ReactorsViewWeb extends Component {
       this.props,
       [
         'hitSlop',
+        'keyboardShouldPersistTaps',
         'onAccessibilityTap',
         'onLayout',
         'onMagicTap',

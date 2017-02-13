@@ -45,6 +45,22 @@ export class Core {
     return this.platform === 'web';
   }
 
+  isAndroid() {
+    if (!this.isMobile()) {
+      return false;
+    }
+    const RN = require('react-native');
+    return RN.Platform.OS === 'android';
+  }
+
+  isiOS() {
+    if (!this.isMobile()) {
+      return false;
+    }
+    const RN = require('react-native');
+    return RN.Platform.OS === 'ios';
+  }
+
   props(incomingProps: $reactors$Core$props) {
     const reactorsProps = {...incomingProps};
 
