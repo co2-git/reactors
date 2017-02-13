@@ -3,6 +3,11 @@ reactors change log
 
 # Versions
 
+## v1.5.29
+
+- Pass mobile View style to `contentContainerStyle`
+- Skip `cursor` and `borderBottomStyle` for mobile
+
 ## v1.5.28
 
 - Add Storage support for web

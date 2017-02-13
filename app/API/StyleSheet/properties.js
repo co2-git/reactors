@@ -95,9 +95,21 @@ export default {
     web: borderWidth_DOM,
   },
 
+  ['borderBottomStyle']: {
+    mobile() {
+      return {};
+    },
+  },
+
+  ['cursor']: {
+    mobile() {
+      return {};
+    },
+  },
+
   ['display']: {
     value: ['flex', 'inline', 'block'],
-    mobile(display) {
+    mobile(display: string) {
       if (display === 'flex') {
         return {};
       }
