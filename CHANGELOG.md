@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v1.5.33
+
+- `ListView` mobile refresh
+
 ## v1.5.32
 
 - `ListView` is now a class
