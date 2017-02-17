@@ -8,36 +8,32 @@ import {ScrollView, View} from 'react-native';
 import omit from 'lodash/omit';
 
 export default class ReactorsViewMobile extends Component {
-  props: $reactors$Core$props;
 
-  measure(cb: Function) {
+  measure(cb: $ReactorsViewMeasureCallback) {
     return this.refs.__internalView.measure(cb);
   }
 
   render() {
-    const props = omit(this.props.style);
-
-    if (props.scrollable) {
+    if (this.props.scrollable) {
       return (
         <ScrollView
           ref="__internalView"
-          {...props}
+          {...this.props}
           contentContainerStyle={this.props.style}
           >
-          {this.props.children}
+          {this.props.children || false}
         </ScrollView>
       );
     }
 
     return (
-      /* $FlowFixMe - we don't have react */
       <View
         ref="__internalView"
-        {...props}
-        style={this.props.style}
+        {...this.props}
         >
         {this.props.children}
       </View>
     );
   }
+
 }

@@ -4,21 +4,11 @@
   * @flow
 **/
 
-/* globals window */
-
 import Accessibility from '../Accessibility';
 import Declarations from '../StyleSheet/Declarations';
 import includes from 'lodash/includes';
-
-function guessPlatform(): $reactors$platform {
-  if (typeof window !== 'undefined' && window.DOMError) {
-    if (window.process) {
-      return 'desktop';
-    }
-    return 'web';
-  }
-  return 'mobile';
-}
+import guessPlatform from './guessPlatform';
+import props from './props';
 
 export class Core {
   platform = guessPlatform();
@@ -149,7 +139,9 @@ export class Core {
     return merged;
   }
 
-  props(incomingProps: $reactors$Core$props) {
+  props = props.bind(this);
+
+  props2(incomingProps: $reactors$Core$props) {
     const reactorsProps = {...incomingProps};
 
     // accessibility

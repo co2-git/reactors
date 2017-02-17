@@ -11,6 +11,8 @@ declare type $ReactorsStyleSheet = {
 
 declare type $ReactorsStyleSheetProperty = {
   value: any[] | Function,
+  desktop: (value: any) => {[property: string]: any},
+  mobile: (value: any) => {[property: string]: any},
   web: (value: any) => {[property: string]: any},
 };
 

@@ -1,16 +1,14 @@
 // @flow
 import clone from 'lodash/clone';
-import includes from 'lodash/includes';
-import isArray from 'lodash/isArray';
 import isFunction from 'lodash/isFunction';
-import properties from '../properties';
+import * as properties from '../Properties';
 import Reactors from '../../Core';
 
 export default class Declaration {
   platform: $ReactorsPlatform;
   property: string;
   value: any;
-  style: {value: Function | any[], web?: Function};
+  style: $ReactorsStyleSheetProperty;
 
   constructor(
     property: string,
@@ -23,32 +21,19 @@ export default class Declaration {
     this.style = properties[this.property];
   }
 
-  toObject(styles = {}) {
+  toObject(styles: Declaration[] = []) {
     if (!this.style) {
-      // if (this.platform === 'mobile') {
-      //   return {};
-      // }
       return {[this.property]: this.value};
     }
     return this.format(styles);
   }
 
-  format(styles = {}): any {
+  format(styles: Declaration[] = []): any {
     let value = clone(this.value);
 
     if (this.style) {
-      if (this.style.value === Number) {
-        value = parseInt(value, 10);
-      }
-
       if (isFunction(this.style[this.platform])) {
         return this.style[this.platform](value, styles);
-      }
-
-      if (isArray(this.style[this.platform])) {
-        if (!includes(this.style[this.platform], this.value)) {
-          return {};
-        }
       }
     }
 

@@ -4,64 +4,38 @@
 **/
 
 import React, {Component} from 'react';
-import Reactors from 'reactors';
+import Reactors from '../../API/Core';
 
-export default Reactors.compose(
-  class ReactorsView extends Component {
-    props: $reactors$Core$props;
+export default class ReactorsView extends Component {
 
-    measure(cb: (
-      x: number,
-      y: number,
-      width: number,
-      height: number,
-      pageX: number,
-      pageY: number,
-    ) => void) {
-      switch (Reactors.platform) {
+  __reactorsPlatform = this.props.reactorsPlatform || Reactors.platform;
 
-      default:
-        throw new Error('Unknown platform: ' + Reactors.platform);
+  measure(cb: $ReactorsViewMeasureCallback) {
+    return this.refs.__internalView.measure(cb);
+  }
 
-      case 'mobile': {
-        return this.refs.__internalView.measure(cb);
-      }
+  render() {
+    const props = Reactors.props(props);
 
-      case 'web':
-      case 'desktop': {
-        const ViewWeb = require('./web').default;
-        return (
-          <ViewWeb ref="__internalView" {...this.props} />
-        );
-      }
+    switch (this.__reactorsPlatform) {
 
-      }
+    default: {
+      throw new Error(`Unknown Reactors Platform: ${this.__reactorsPlatform}`);
     }
 
-    render() {
-      const props = this.props;
-      switch (Reactors.platform) {
+    case 'mobile': {
+      const ReactorsViewMobile = require('./Mobile').default;
+      return <ReactorsViewMobile {...props} />;
+    }
 
-      default:
-        throw new Error('Unknown platform: ' + Reactors.platform);
+    case 'web':
+    case 'desktop':
+    case 'node': {
+      const ReactorsViewDOM = require('./DOM').default;
+      return <ReactorsViewDOM {...props} />;
+    }
 
-      case 'mobile': {
-        const ViewMobile = require('./mobile').default;
-        return (
-          <ViewMobile ref="__internalView" {...props} />
-        );
-      }
-
-      case 'web':
-      case 'desktop': {
-        const ViewWeb = require('./web').default;
-        return (
-          /* $FlowFixMe This is by design */
-          <ViewWeb ref="__internalView" {...props} />
-        );
-      }
-
-      }
     }
   }
-);
+
+}
