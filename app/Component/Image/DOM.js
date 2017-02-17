@@ -4,7 +4,8 @@
 **/
 import React, {Component} from 'react';
 
-export default class ReactorsImageDesktop extends Component {
+export default class ReactorsImageDOM extends Component {
+  props: $ReactorsImageProps;
 
   render() {
     const webProps = {...this.props};
@@ -12,9 +13,7 @@ export default class ReactorsImageDesktop extends Component {
     webProps.src = webProps.source;
 
     if (typeof webProps.src === 'object' && webProps.src.uri) {
-      webProps.src = webProps.src.uri.replace(/^\.\./, '.');
-    } else if (typeof webProps.src === 'string') {
-      webProps.src = webProps.src.replace(/^\.\./, '.');
+      webProps.src = webProps.src.uri;
     }
 
     delete webProps.source;

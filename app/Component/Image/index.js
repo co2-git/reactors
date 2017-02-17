@@ -1,45 +1,47 @@
 /**
   * @module reactors
-  * @name Image
-  * @type Component
   * @flow
 **/
 
-import React, {Element} from 'react';
-import Reactors from 'reactors';
+import React, {Component} from 'react';
+import Reactors from '../../API/Core';
 
-export type $props = $reactors$Core$props & {
-  source?: string | number | {uri: string},
-  src?: string,
-};
+export default class ReactorsImage extends Component {
 
-export default function ReactorsImage(props: $props): Element<*> {
-  switch (Reactors.platform) {
+  __reactorsPlatform = this.props.reactorsPlatform || Reactors.platform;
 
-  default:
-    throw new Error('Unknown platform: ' + Reactors.platform);
+  props: $ReactorsImageProps;
 
-  case 'mobile': {
-    const ImageMobile = require('./mobile').default;
-    return (
-      <ImageMobile {...props} />
-    );
-  }
+  render() {
+    const props = Reactors.props(this.props);
 
-  case 'web': {
-    const ImageWeb = require('./web').default;
-    return (
-      <ImageWeb {...props} />
-    );
-  }
+    switch (this.__reactorsPlatform) {
 
-  case 'desktop': {
-    const ImageDesktop = require('./desktop').default;
-    return (
-      /* $FlowFixMe This is by design */
-      <ImageDesktop {...props} />
-    );
-  }
+    default:
+      throw new Error('Unknown platform: ' + this.__reactorsPlatform);
 
+    case 'mobile': {
+      const ImageMobile = require('./Mobile').default;
+      return (
+        <ImageMobile {...props} />
+      );
+    }
+
+    case 'web':
+    case 'node': {
+      const ImageWeb = require('./DOM').default;
+      return (
+        <ImageWeb {...props} />
+      );
+    }
+
+    case 'desktop': {
+      const ImageDesktop = require('./Desktop').default;
+      return (
+        <ImageDesktop {...props} />
+      );
+    }
+
+    }
   }
 }

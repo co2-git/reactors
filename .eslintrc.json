@@ -34,7 +34,7 @@
       "self"
     ],
     "curly": 2,
-    "default-case": 1,
+    "default-case": 0,
     "dot-location": [
       2,
       "property"

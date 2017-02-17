@@ -2,7 +2,7 @@
 import Reactors from '../Core';
 
 type $transformers = {
-  added: {[prop: string]: any},
+  added: {[prop: string]: any}[],
   removed: string[],
 };
 
@@ -14,24 +14,38 @@ export default class ReactorsAccessibility {
     );
   }
 
-  static transform(component: $React$Element): $transformers {
-    if (Reactors.isMobile()) {
-      return this.transformMobile(component);
+  static transform(
+    props: {[prop: string]: any},
+    platform: $ReactorsPlatform = Reactors.platform
+  ): $transformers {
+    switch (platform) {
+
+    default: {
+      return {
+        added: [],
+        removed: [],
+      };
+    }
+
+    case 'mobile': {
+      return this.transformMobile(props);
+    }
+
     }
   }
 
-  static transformMobile(component: $React$Element): $transformers {
+  static transformMobile(props: {[prop: string]: any}): $transformers {
     const transformers = {
       added: [],
       removed: [],
     };
 
-    for (const prop in component.props) {
+    for (const prop in props) {
       switch (prop) {
 
       case 'aria-labelledby': {
         this.warn('aria-labelledby', 'accessibilityLabel');
-        transformers.added.push({accessibilityLabel: component.props[prop]});
+        transformers.added.push({accessibilityLabel: props[prop]});
         transformers.removed.push('aria-labelledby');
       } break;
 

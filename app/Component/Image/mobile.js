@@ -5,17 +5,13 @@
   * @flow
 **/
 
-import React from 'react';
+import React, {Component} from 'react';
 import {Image} from 'react-native';
-import Reactors from 'reactors';
-import type {$props} from '.';
 
-export default function ReactorsMobileImage (props: $props): Image {
-  const mobileProps = Reactors.props(props);
+export default class ReactorsImageMobile extends Component {
+  props: $ReactorsImageProps;
 
-  if (typeof mobileProps.source === 'string') {
-    mobileProps.source = {uri: mobileProps.source};
+  render() {
+    return <Image {...this.props} />;
   }
-  // $FlowFixMe This is by design
-  return <Image {...mobileProps} />;
 }

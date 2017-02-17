@@ -5,7 +5,6 @@
 
 import React, {Component} from 'react';
 import {ScrollView, View} from 'react-native';
-import omit from 'lodash/omit';
 
 export default class ReactorsViewMobile extends Component {
 
@@ -21,7 +20,7 @@ export default class ReactorsViewMobile extends Component {
           {...this.props}
           contentContainerStyle={this.props.style}
           >
-          {this.props.children || false}
+          {this.props.children}
         </ScrollView>
       );
     }
