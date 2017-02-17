@@ -1,3 +1,4 @@
+// @flow
 import clone from 'lodash/clone';
 import includes from 'lodash/includes';
 import isArray from 'lodash/isArray';
@@ -6,7 +7,7 @@ import properties from '../properties';
 import Reactors from '../../Core';
 
 export default class Declaration {
-  platform: string;
+  platform: $ReactorsPlatform;
   property: string;
   value: any;
   style: {value: Function | any[], web?: Function};
@@ -14,7 +15,7 @@ export default class Declaration {
   constructor(
     property: string,
     value: any,
-    platform = Reactors.platform,
+    platform: $ReactorsPlatform = Reactors.platform,
   ) {
     this.platform = platform;
     this.property = property;

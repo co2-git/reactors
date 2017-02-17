@@ -6,61 +6,62 @@
 import React, {Component} from 'react';
 import Reactors from 'reactors';
 
-export default class ReactorsView extends Component {
-  props: $reactors$Core$props;
+export default Reactors.compose(
+  class ReactorsView extends Component {
+    props: $reactors$Core$props;
 
-  measure(cb: (
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    pageX: number,
-    pageY: number,
-  ) => void) {
-    switch (Reactors.platform) {
+    measure(cb: (
+      x: number,
+      y: number,
+      width: number,
+      height: number,
+      pageX: number,
+      pageY: number,
+    ) => void) {
+      switch (Reactors.platform) {
 
-    default:
-      throw new Error('Unknown platform: ' + Reactors.platform);
+      default:
+        throw new Error('Unknown platform: ' + Reactors.platform);
 
-    case 'mobile': {
-      return this.refs.__internalView.measure(cb);
+      case 'mobile': {
+        return this.refs.__internalView.measure(cb);
+      }
+
+      case 'web':
+      case 'desktop': {
+        const ViewWeb = require('./web').default;
+        return (
+          <ViewWeb ref="__internalView" {...this.props} />
+        );
+      }
+
+      }
     }
 
-    case 'web':
-    case 'desktop': {
-      const ViewWeb = require('./web').default;
-      return (
-        <ViewWeb ref="__internalView" {...this.props} />
-      );
-    }
+    render() {
+      const props = this.props;
+      switch (Reactors.platform) {
 
+      default:
+        throw new Error('Unknown platform: ' + Reactors.platform);
+
+      case 'mobile': {
+        const ViewMobile = require('./mobile').default;
+        return (
+          <ViewMobile ref="__internalView" {...props} />
+        );
+      }
+
+      case 'web':
+      case 'desktop': {
+        const ViewWeb = require('./web').default;
+        return (
+          /* $FlowFixMe This is by design */
+          <ViewWeb ref="__internalView" {...props} />
+        );
+      }
+
+      }
     }
   }
-
-  render() {
-    const props = Reactors.props(this.props);
-
-    switch (Reactors.platform) {
-
-    default:
-      throw new Error('Unknown platform: ' + Reactors.platform);
-
-    case 'mobile': {
-      const ViewMobile = require('./mobile').default;
-      return (
-        <ViewMobile ref="__internalView" {...props} />
-      );
-    }
-
-    case 'web':
-    case 'desktop': {
-      const ViewWeb = require('./web').default;
-      return (
-        /* $FlowFixMe This is by design */
-        <ViewWeb ref="__internalView" {...props} />
-      );
-    }
-
-    }
-  }
-}
+);
