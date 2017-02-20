@@ -8,7 +8,7 @@ describe('Component / View / Desktop', () => {
   test('it should return a section', () => {
     Reactors.platform = 'desktop';
     const view = shallow(
-      <ReactorsViewDOM reactorsPlatform="desktop" />
+      <ReactorsViewDOM />
     );
     expect(view.find('section')).toHaveLength(1);
   });

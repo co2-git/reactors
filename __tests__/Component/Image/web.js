@@ -8,7 +8,7 @@ describe('Component / Image / Web', () => {
   test('it should return a section', () => {
     Reactors.platform = 'web';
     const view = shallow(
-      <ReactorsImageDOM reactorsPlatform="web" />
+      <ReactorsImageDOM />
     );
     expect(view.find('img')).toHaveLength(1);
   });

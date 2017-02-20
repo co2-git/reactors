@@ -9,7 +9,7 @@ describe('Component / Image / Mobile', () => {
   test('it should return a Image', () => {
     Reactors.platform = 'mobile';
     const view = shallow(
-      <ReactorsImageMobile reactorsPlatform="mobile" />
+      <ReactorsImageMobile />
     );
     expect(view.type()).toEqual(Image);
   });

@@ -8,7 +8,7 @@ describe('Component / View / Web', () => {
   test('it should return a section', () => {
     Reactors.platform = 'web';
     const view = shallow(
-      <ReactorsViewDOM reactorsPlatform="web" />
+      <ReactorsViewDOM />
     );
     expect(view.find('section')).toHaveLength(1);
   });

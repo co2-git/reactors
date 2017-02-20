@@ -20,20 +20,14 @@ export default class Gesture {
     // const click = [];
     // const keyPress = [];
 
-    // console.log({props});
-
     for (const handler in props) {
-      // console.log({handler});
       switch (handler) {
 
       case 'onPress': {
-        // console.log('ONPRESS');
-        if (Reactors.platform === 'mobile') {
-          handlers.added.push({onStartShouldSetResponder: props.onPress});
-        } else {
+        if (Reactors.isDOM()) {
           handlers.added.push({onClick: props.onPress});
+          handlers.removed.push('onPress');
         }
-        handlers.removed.push('onPress');
       } break;
 
       case 'onEnter': {
@@ -49,17 +43,6 @@ export default class Gesture {
     }
 
     return handlers;
-  }
-
-  static handlers(props: Object): $reactors$Gesture$handlers & Object {
-    const clone_props = {...props};
-    switch (Reactors.platform) {
-    case 'mobile':
-      return clone_props;
-    default: {
-      return this.webHandlers(props);
-    }
-    }
   }
 
   static webHandlers(props: Object): $reactors$Gesture$handlers & Object {

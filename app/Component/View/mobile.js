@@ -13,11 +13,17 @@ export default class ReactorsViewMobile extends Component {
   }
 
   render() {
+    const props = {...this.props};
+
+    if (props.onPress) {
+      props.onStartShouldSetResponder = props.onPress;
+    }
+
     if (this.props.scrollable) {
       return (
         <ScrollView
           ref="__internalView"
-          {...this.props}
+          {...props}
           contentContainerStyle={this.props.style}
           >
           {this.props.children}
@@ -28,7 +34,7 @@ export default class ReactorsViewMobile extends Component {
     return (
       <View
         ref="__internalView"
-        {...this.props}
+        {...props}
         >
         {this.props.children}
       </View>

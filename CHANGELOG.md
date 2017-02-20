@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v2.1.1
+
+- Remove `onPress` filter for mobile on Gesture
+
 ## v2.0.1
 
 - Reinstate gesture on props (+ tests)

@@ -9,16 +9,14 @@ describe('Component / View / Mobile', () => {
   test('it should return a View', () => {
     Reactors.platform = 'mobile';
     const view = shallow(
-      <ReactorsViewMobile reactorsPlatform="mobile" />
+      <ReactorsViewMobile />
     );
     expect(view.type()).toEqual(View);
   });
 
   test('it should return a ScrollView if scrollable', () => {
     const view = shallow(
-      <ReactorsViewMobile
-        reactorsPlatform="mobile"
-        scrollable />
+      <ReactorsViewMobile scrollable />
     );
     expect(view.type()).toEqual(ScrollView);
   });
