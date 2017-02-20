@@ -8,20 +8,6 @@ function onPress() {
 
 describe('API / Gesture', () => {
   test(
-    'it should transform onPress on mobile',
-    () => {
-      Reactors.platform = 'mobile';
-      expect(
-        Gesture.transform({onPress})
-      )
-      .toMatchObject({
-        added: [{onStartShouldSetResponder: onPress}],
-        removed: ['onPress'],
-      });
-    },
-  );
-
-  test(
     'it should transform onPress on web',
     () => {
       Reactors.platform = 'web';

@@ -44,23 +44,13 @@ describe('API / Core / props', () => {
     });
   });
 
-  test('it should transform onPress gesture to responder on mobile', () => {
-    Reactors.platform = 'mobile';
-    const onPress = props({
-      onPress: 123,
-    });
-    expect(onPress).toEqual({
-      ['onStartShouldSetResponder']: 123,
-    });
-  });
-
-  test('it should transform onPress gesture to onClick on mobile', () => {
-    Reactors.platform = 'mobile';
+  test('it should transform onPress gesture to onClick on web', () => {
+    Reactors.platform = 'web';
     const onClick = props({
       onPress: 123,
     });
     expect(onClick).toEqual({
-      ['onStartShouldSetResponder']: 123,
+      ['onClick']: 123,
     });
   });
 });
