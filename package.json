@@ -1,6 +1,6 @@
 {
   "name": "reactors",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "View components and APIs that work web, mobile and desktop!",
   "main": "dist/index.js",
   "keywords": [
@@ -32,7 +32,7 @@
     "eslint": "eslint app",
     "flow": "flow",
     "prepush": "npm run eslint && npm test",
-    "up": "npm run babel && npm prepush && npm publish",
+    "push": "npm run babel && npm run prepush && npm publish",
     "test": "jest --colors --debug --notify --verbose"
   },
   "author": {

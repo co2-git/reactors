@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v2.1.3
+
+- Omit style on View if scrollable since style is passed down to container style
+
 ## v2.1.2
 
 - Remove `onPress` prop to mobile View
