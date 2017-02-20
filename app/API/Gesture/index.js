@@ -6,61 +6,49 @@
 import Reactors from '../Core';
 import omit from 'lodash/omit';
 
-type $handlers = {
-  added: {[name: string]: Function}[],
-  removed: string[],
-};
-
 // This function takes props and return an array of new props
 
 export default class Gesture {
-  static gestures = [
-    'onEnter',
-    'onPress',
-  ];
-
-  static mock(Component) {
-    return <Component />;
-  }
-
-  static getHandlers(
-    props: {[name: string]: Function},
-    Component: React.Element,
-  ): $handlers {
-    if (Reactors.isMobile()) {
-      return this.getMobileHandlers(props, Component);
-    }
-    return this.getWebHandlers(props, Component);
-  }
-
-  static getMobileHandlers(
-    props: {[name: string]: Function},
-    Component: React.Element,
-  ): $handlers {
+  static transform(
+    props: {[name: string]: Function}
+  ): $ReactorsPropsTransformers {
     const handlers = {
       added: [],
       removed: [],
     };
 
+    // const click = [];
+    // const keyPress = [];
+
+    // console.log({props});
+
     for (const handler in props) {
+      // console.log({handler});
       switch (handler) {
 
       case 'onPress': {
-        const mock = this.mock(Component);
-        if (typeof mock.onPress !== 'function') {
+        // console.log('ONPRESS');
+        if (Reactors.platform === 'mobile') {
           handlers.added.push({onStartShouldSetResponder: props.onPress});
-          handlers.removed.push('onPress');
+        } else {
+          handlers.added.push({onClick: props.onPress});
         }
+        handlers.removed.push('onPress');
+      } break;
+
+      case 'onEnter': {
+        if (Reactors.platform === 'mobile') {
+          handlers.added.push({onStartShouldSetResponder: props.onPress});
+        } else {
+          handlers.added.push({onClick: props.onPress});
+        }
+        handlers.removed.push('onPress');
       } break;
 
       }
     }
 
     return handlers;
-  }
-
-  static getWebHandlers(props: {[name: string]: Function}): $handlers {
-
   }
 
   static handlers(props: Object): $reactors$Gesture$handlers & Object {

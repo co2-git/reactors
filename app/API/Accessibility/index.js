@@ -1,24 +1,10 @@
 // @flow
 import Reactors from '../Core';
 
-type $transformers = {
-  added: {[prop: string]: any}[],
-  removed: string[],
-};
-
 export default class ReactorsAccessibility {
-  static warn(deprecated: string, use: string) {
-    console.warn(
-      `Reactors/Accessibility: deprecated warning!
-      "${deprecated}" is deprecated, instead use "${use}"`,
-    );
-  }
 
-  static transform(
-    props: {[prop: string]: any},
-    platform: $ReactorsPlatform = Reactors.platform
-  ): $transformers {
-    switch (platform) {
+  static transform(props: {[prop: string]: any}): $ReactorsPropsTransformers {
+    switch (Reactors.platform) {
 
     default: {
       return {
@@ -31,10 +17,18 @@ export default class ReactorsAccessibility {
       return this.transformMobile(props);
     }
 
+    case 'desktop':
+    case 'web':
+    case 'node': {
+      return this.transformWeb(props);
+    }
+
     }
   }
 
-  static transformMobile(props: {[prop: string]: any}): $transformers {
+  static transformMobile(
+    props: {[prop: string]: any},
+  ): $ReactorsPropsTransformers {
     const transformers = {
       added: [],
       removed: [],
@@ -44,7 +38,6 @@ export default class ReactorsAccessibility {
       switch (prop) {
 
       case 'aria-labelledby': {
-        this.warn('aria-labelledby', 'accessibilityLabel');
         transformers.added.push({accessibilityLabel: props[prop]});
         transformers.removed.push('aria-labelledby');
       } break;
@@ -54,4 +47,27 @@ export default class ReactorsAccessibility {
 
     return transformers;
   }
+
+  static transformWeb(
+    props: {[prop: string]: any},
+  ): $ReactorsPropsTransformers {
+    const transformers = {
+      added: [],
+      removed: [],
+    };
+
+    for (const prop in props) {
+      switch (prop) {
+
+      case 'accessibilityLabel': {
+        transformers.added.push({['aria-labelledby']: props[prop]});
+        transformers.removed.push('accessibilityLabel');
+      } break;
+
+      }
+    }
+
+    return transformers;
+  }
+
 }

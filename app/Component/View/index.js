@@ -8,19 +8,17 @@ import Reactors from '../../API/Core';
 
 export default class ReactorsView extends Component {
 
-  __reactorsPlatform = this.props.reactorsPlatform || Reactors.platform;
-
   measure(cb: $ReactorsViewMeasureCallback) {
     return this.refs.__internalView.measure(cb);
   }
 
   render() {
-    const props = Reactors.props(props);
+    const props = Reactors.props(this.props);
 
-    switch (this.__reactorsPlatform) {
+    switch (Reactors.platform) {
 
     default: {
-      throw new Error(`Unknown Reactors Platform: ${this.__reactorsPlatform}`);
+      throw new Error(`Unknown Reactors Platform: ${Reactors.platform}`);
     }
 
     case 'mobile': {

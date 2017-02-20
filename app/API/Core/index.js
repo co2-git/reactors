@@ -1,59 +1,14 @@
-
 /**
   * @module reactors
   * @flow
 **/
 
-import Accessibility from '../Accessibility';
-import Declarations from '../StyleSheet/Declarations';
 import includes from 'lodash/includes';
 import guessPlatform from './guessPlatform';
 import props from './props';
 
 export class Core {
   platform = guessPlatform();
-
-  compose(component: React.Element) {
-    const props = {...component.props};
-
-    if (props.style) {
-      props.style = new Declarations(props.style).toObject();
-    }
-
-    const accessibilityProps = Accessibility.transform(component);
-
-    console.log();
-
-    console.log(require('util').inspect({accessibilityProps}, { depth: null }));
-    console.log();
-
-    const added = [
-      accessibilityProps,
-    ].map(prop => prop.added);
-
-    const removed = [
-      accessibilityProps,
-    ].map(prop => prop.removed);
-
-    console.log(require('util').inspect({added, removed}, { depth: null }));
-    console.log();
-
-    for (const _added of added) {
-      for (const __added of _added) {
-        for (const name in __added) {
-          props[name] = __added[name];
-        }
-      }
-    }
-
-    for (const _removed of removed) {
-      for (const __removed of _removed) {
-        delete props[__removed];
-      }
-    }
-
-    console.log(require('util').inspect({props}, { depth: null }));
-  }
 
   getOS() {
     if (this.platform === 'mobile') {
@@ -141,44 +96,6 @@ export class Core {
 
   props = props.bind(this);
 
-  props2(incomingProps: $reactors$Core$props) {
-    const reactorsProps = {...incomingProps};
-
-    // accessibility
-    if (reactorsProps.accessibilityLabel && this.platform !== 'mobile') {
-      reactorsProps['aria-labelledby'] = reactorsProps.accessibilityLabel;
-      delete reactorsProps.accessibilityLabel;
-    }
-
-    if (reactorsProps.accessibilityTraits && this.platform !== 'mobile') {
-      reactorsProps.role = reactorsProps.accessibilityTraits;
-      delete reactorsProps.accessibilityTraits;
-    }
-
-    if (reactorsProps.accessible && this.platform !== 'mobile') {
-      delete reactorsProps.accessible;
-    }
-
-    // style
-    if (reactorsProps.style) {
-      reactorsProps.style = new Declarations(reactorsProps.style)
-        .toObject();
-    }
-
-    // gesture
-    if (reactorsProps.onPress) {
-      if (this.platform === 'mobile') {
-        reactorsProps.onStartShouldSetResponder = reactorsProps.onPress;
-      } else {
-        reactorsProps.onClick = reactorsProps.onPress;
-        delete reactorsProps.onPress;
-      }
-    }
-
-    return reactorsProps;
-  }
 }
 
-const core = new Core();
-
-export default core;
+export default new Core();

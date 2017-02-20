@@ -2,7 +2,6 @@
   * @module reactors
   * @flow
 **/
-
 /* globals CustomEvent requestAnimationFrame window */
 import Reactors from '../Core';
 
@@ -51,6 +50,6 @@ export default class Dimensions {
   }
 }
 
-if (Reactors.platform !== 'mobile') {
+if (Reactors.isDOM()) {
   Dimensions.resize();
 }

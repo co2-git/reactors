@@ -1,15 +1,16 @@
 /* globals describe expect test */
 import React from 'react';
 import {shallow} from 'enzyme';
-import sinon from 'sinon';
 import ReactorsView from '../../../app/Component/View';
+import Reactors from '../../../app/API/Core';
 
 describe('Component / View', () => {
   // WEB
 
   test('it should return DOM View for web', () => {
+    Reactors.platform = 'web';
     const view = shallow(
-      <ReactorsView reactorsPlatform="web" />
+      <ReactorsView />
     );
     expect(view.find('ReactorsViewDOM')).toHaveLength(1);
   });
@@ -17,8 +18,9 @@ describe('Component / View', () => {
   // DESKTOP
 
   test('it should return DOM View for desktop', () => {
+    Reactors.platform = 'desktop';
     const view = shallow(
-      <ReactorsView reactorsPlatform="desktop" />
+      <ReactorsView />
     );
     expect(view.find('ReactorsViewDOM')).toHaveLength(1);
   });
@@ -26,8 +28,9 @@ describe('Component / View', () => {
   // MOBILE
 
   test('it should return Mobile View for mobile', () => {
+    Reactors.platform = 'mobile';
     const view = shallow(
-      <ReactorsView reactorsPlatform="mobile" />
+      <ReactorsView />
     );
     expect(view.find('ReactorsViewMobile')).toHaveLength(1);
   });
@@ -35,8 +38,9 @@ describe('Component / View', () => {
   // NODE
 
   test('it should return DOM View for node', () => {
+    Reactors.platform = 'node';
     const view = shallow(
-      <ReactorsView reactorsPlatform="node" />
+      <ReactorsView />
     );
     expect(view.find('ReactorsViewDOM')).toHaveLength(1);
   });

@@ -1,4 +1,5 @@
 /* globals global describe expect test */
+import Reactors from '../../../app/API/Core';
 import props from '../../../app/API/Core/props';
 
 describe('API / Core / props', () => {
@@ -10,7 +11,56 @@ describe('API / Core / props', () => {
     expect(props({foo: 1})).toEqual({foo: 1});
   });
 
-  test('it should remove reactorsPlatform', () => {
-    expect(props({reactorsPlatform: 'web'})).toEqual({});
+  test('it should transform styles', () => {
+    Reactors.platform = 'mobile';
+    const styles = props({
+      style: {
+        display: 'flex',
+        flexDirection: 'row',
+      },
+    });
+    expect(styles.style).toEqual({
+      flexDirection: 'row',
+    });
+  });
+
+  test('it should apply accessibility to mobile', () => {
+    Reactors.platform = 'mobile';
+    const aria = props({
+      ['aria-labelledby']: 'hello',
+    });
+    expect(aria).toEqual({
+      accessibilityLabel: 'hello',
+    });
+  });
+
+  test('it should apply accessibility to web', () => {
+    Reactors.platform = 'web';
+    const aria = props({
+      accessibilityLabel: 'hello',
+    });
+    expect(aria).toEqual({
+      ['aria-labelledby']: 'hello',
+    });
+  });
+
+  test('it should transform onPress gesture to responder on mobile', () => {
+    Reactors.platform = 'mobile';
+    const onPress = props({
+      onPress: 123,
+    });
+    expect(onPress).toEqual({
+      ['onStartShouldSetResponder']: 123,
+    });
+  });
+
+  test('it should transform onPress gesture to onClick on mobile', () => {
+    Reactors.platform = 'mobile';
+    const onClick = props({
+      onPress: 123,
+    });
+    expect(onClick).toEqual({
+      ['onStartShouldSetResponder']: 123,
+    });
   });
 });

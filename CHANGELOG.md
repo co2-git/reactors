@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v2.0.1
+
+- Reinstate gesture on props (+ tests)
+
 ## v1.5.33
 
 - `ListView` mobile refresh

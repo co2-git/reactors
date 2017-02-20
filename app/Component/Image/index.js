@@ -8,17 +8,15 @@ import Reactors from '../../API/Core';
 
 export default class ReactorsImage extends Component {
 
-  __reactorsPlatform = this.props.reactorsPlatform || Reactors.platform;
-
   props: $ReactorsImageProps;
 
   render() {
     const props = Reactors.props(this.props);
 
-    switch (this.__reactorsPlatform) {
+    switch (Reactors.platform) {
 
     default:
-      throw new Error('Unknown platform: ' + this.__reactorsPlatform);
+      throw new Error('Unknown platform: ' + Reactors.platform);
 
     case 'mobile': {
       const ImageMobile = require('./Mobile').default;
