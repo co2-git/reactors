@@ -17,6 +17,7 @@ export default class ReactorsViewMobile extends Component {
 
     if (props.onPress) {
       props.onStartShouldSetResponder = props.onPress;
+      delete props.onPress;
     }
 
     if (this.props.scrollable) {

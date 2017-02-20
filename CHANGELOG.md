@@ -3,6 +3,10 @@ reactors change log
 
 # Versions
 
+## v2.1.2
+
+- Remove `onPress` prop to mobile View
+
 ## v2.1.1
 
 - Remove `onPress` filter for mobile on Gesture
