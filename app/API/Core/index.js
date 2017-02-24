@@ -9,7 +9,7 @@ import Declarations from '../StyleSheet/Declarations';
 import includes from 'lodash/includes';
 
 function guessPlatform(): $reactors$platform {
-  if (typeof window !== 'undefined' && window.DOMError) {
+  if (typeof window !== 'undefined') {
     if (window.process) {
       return 'desktop';
     }
