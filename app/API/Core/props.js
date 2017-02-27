@@ -3,7 +3,7 @@ import Accessibility from '../Accessibility';
 import Declarations from '../StyleSheet/Declarations';
 import Gesture from '../Gesture';
 
-export default function props(defaultProps: Object) {
+export default function makeReactorsProps(defaultProps: Object) {
   const reactorsProps = {...defaultProps};
 
   // Styles

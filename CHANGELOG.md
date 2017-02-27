@@ -3,6 +3,8 @@ reactors change log
 
 # Versions
 
+## v2.1.4 #202 Does not work on safari
+
 ## v2.1.3
 
 - Omit style on View if scrollable since style is passed down to container style

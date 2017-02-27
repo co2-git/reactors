@@ -2,7 +2,11 @@
 /* globals process window */
 
 export default function guessPlatform(): $ReactorsPlatform {
-  if (typeof window !== 'undefined' && window.DOMError) {
+  if (
+    typeof window !== 'undefined' &&
+    typeof window.document !== 'undefined' &&
+    window.document.body
+  ) {
     if (window.process) {
       return 'desktop';
     }
