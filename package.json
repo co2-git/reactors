@@ -1,6 +1,6 @@
 {
   "name": "reactors",
-  "version": "2.1.4",
+  "version": "4.0.1",
   "description": "View components and APIs that work web, mobile and desktop!",
   "main": "dist/index.js",
   "keywords": [
@@ -27,8 +27,8 @@
     "url": "https://github.com/co2-git/reactors"
   },
   "scripts": {
-    "babel": "babel --out-dir dist/ app/",
-    "babel:watch": "babel --watch --out-dir dist/ app/",
+    "babel": "rm -rf dist; babel --out-dir dist/ app/",
+    "babel:watch": "rm -rf dist; babel --watch --out-dir dist/ app/",
     "eslint": "eslint app",
     "flow": "flow",
     "prepush": "npm run eslint && npm test",

@@ -32,7 +32,3 @@ export default function Link(props: $props) {
   }
   }
 }
-
-Link.propTypes = {
-  href: PropTypes.string,
-};
