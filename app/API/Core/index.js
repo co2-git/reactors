@@ -7,6 +7,10 @@ import includes from 'lodash/includes';
 import guessPlatform from './guessPlatform';
 import props from './props';
 
+if (typeof __DEV__ === 'undefined') {
+  global.__DEV__ = process.env.NODE_ENV !== 'production';
+}
+
 export class Core {
   platform = guessPlatform();
 
