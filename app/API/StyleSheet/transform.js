@@ -69,74 +69,76 @@ const transformStyle = (styles) => {
       if (platform === 'mobile') {
         if (typeof transformed.transform === 'string') {
           const transformations = transformed.transform.split(/\)\s+/);
-          transformed.transform = compact(transformations.map(transformation => {
-            if (!/\)$/.test(transformation)) {
-              transformation += ')';
-            }
-            const bits = transformation.split(/\(/);
-            const key = bits.shift();
-            const values = bits.join('').replace(/\)$/, '');
-            switch (key) {
-            case 'matrix':
-              return null;
-            case 'translate': {
-              const bits2 = values.split(/,\s+/);
-              let translateX = bits2[0];
-              if (typeof translateX === 'string' && /px/.test(translateX)) {
-                translateX = parseInt(translateX, 10);
+          transformed.transform = compact(
+            transformations.map(transformation => {
+              if (!/\)$/.test(transformation)) {
+                transformation += ')';
               }
-              let translateY = bits2[1];
-              if (typeof translateY === 'string' && /px/.test(translateY)) {
-                translateY = parseInt(translateY, 10);
+              const bits = transformation.split(/\(/);
+              const key = bits.shift();
+              const values = bits.join('').replace(/\)$/, '');
+              switch (key) {
+              case 'matrix':
+              default:
+                return null;
+              case 'translate': {
+                const bits2 = values.split(/,\s+/);
+                let translateX = bits2[0];
+                if (typeof translateX === 'string' && /px/.test(translateX)) {
+                  translateX = parseInt(translateX, 10);
+                }
+                let translateY = bits2[1];
+                if (typeof translateY === 'string' && /px/.test(translateY)) {
+                  translateY = parseInt(translateY, 10);
+                }
+                return {translateX, translateY};
               }
-              return {translateX, translateY};
-            }
-            case 'translateX': {
-              let translateX = values;
-              if (typeof translateX === 'string' && /px/.test(translateX)) {
-                translateX = parseInt(translateX, 10);
+              case 'translateX': {
+                let translateX = values;
+                if (typeof translateX === 'string' && /px/.test(translateX)) {
+                  translateX = parseInt(translateX, 10);
+                }
+                return {translateX};
               }
-              return {translateX};
-            }
-            case 'translateY': {
-              let translateY = values;
-              if (typeof translateY === 'string' && /px/.test(translateY)) {
-                translateY = parseInt(translateY, 10);
+              case 'translateY': {
+                let translateY = values;
+                if (typeof translateY === 'string' && /px/.test(translateY)) {
+                  translateY = parseInt(translateY, 10);
+                }
+                return {translateY};
               }
-              return {translateY};
-            }
-            case 'perspective':
-              return {perspective: Number(values)};
-            case 'rotate':
-              return {rotate: values};
-            case 'rotateX':
-              return {rotateX: values};
-            case 'rotateY':
-              return {rotateY: values};
-            case 'rotateZ':
-              return {rotateZ: values};
-            case 'scale': {
-              const bits2 = values.split(/,\s+/);
-              const scaleX = Number(bits2[0]);
-              const scaleY = Number(bits2[1]);
-              return {scaleX, scaleY};
-            }
-            case 'scaleX':
-              return {scaleX: Number(values)};
-            case 'scaleY':
-              return {scaleY: Number(values)};
-            case 'skew': {
-              const bits2 = values.split(/,\s+/);
-              const skewX = bits2[0];
-              const skewY = bits2[1];
-              return {skewX, skewY};
-            }
-            case 'skewX':
-              return {skewX: (values)};
-            case 'skewY':
-              return {skewY: values};
-            }
-          }));
+              case 'perspective':
+                return {perspective: Number(values)};
+              case 'rotate':
+                return {rotate: values};
+              case 'rotateX':
+                return {rotateX: values};
+              case 'rotateY':
+                return {rotateY: values};
+              case 'rotateZ':
+                return {rotateZ: values};
+              case 'scale': {
+                const bits2 = values.split(/,\s+/);
+                const scaleX = Number(bits2[0]);
+                const scaleY = Number(bits2[1]);
+                return {scaleX, scaleY};
+              }
+              case 'scaleX':
+                return {scaleX: Number(values)};
+              case 'scaleY':
+                return {scaleY: Number(values)};
+              case 'skew': {
+                const bits2 = values.split(/,\s+/);
+                const skewX = bits2[0];
+                const skewY = bits2[1];
+                return {skewX, skewY};
+              }
+              case 'skewX':
+                return {skewX: (values)};
+              case 'skewY':
+                return {skewY: values};
+              }
+            }));
         }
       } else if (Array.isArray(transformed.transform)) {
         transformed.transform = transformed.transform.map((transformation) => {
@@ -146,6 +148,7 @@ const transformStyle = (styles) => {
             }
             return `${key}(${transformation[key]})`;
           }
+          return '';
         }).join(' ');
       }
       break;
