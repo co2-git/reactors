@@ -11,95 +11,84 @@ if (typeof __DEV__ === 'undefined') {
   global.__DEV__ = process.env.NODE_ENV !== 'production';
 }
 
-export class Core {
-  platform = guessPlatform();
+export default class Reactors {
+  static platform = guessPlatform();
 
-  getOS() {
-    if (this.platform === 'mobile') {
+  static getOS = () => {
+    if (Reactors.platform === 'mobile') {
       const RN = require('react-native');
       return RN.Platform;
     }
-    return {OS: this.platform};
-  }
+    return {OS: Reactors.platform};
+  };
 
-  isDOM() {
-    return includes(['desktop', 'web'], this.platform);
-  }
-
-  isMobile() {
-    return this.platform === 'mobile';
-  }
-
-  isDesktop() {
-    return this.platform === 'desktop';
-  }
-
-  isWeb() {
-    return this.platform === 'web';
-  }
-
-  isAndroid() {
-    if (!this.isMobile()) {
+  static isAndroid = () => {
+    if (!Reactors.isMobile()) {
       return false;
     }
     const RN = require('react-native');
     return RN.Platform.OS === 'android';
-  }
+  };
 
-  isiOS() {
-    if (!this.isMobile()) {
+  static isDesktop = () => Reactors.platform === 'desktop';
+
+  static isDOM = () => includes(['desktop', 'web'], Reactors.platform);
+
+  static isiOS = () => {
+    if (!Reactors.isMobile()) {
       return false;
     }
     const RN = require('react-native');
     return RN.Platform.OS === 'ios';
-  }
+  };
 
-  mergeStyles(...styles: any[]) {
-    if (this.isMobile()) {
-      const merged = [];
+  static isMobile = () => Reactors.platform === 'mobile';
 
-      for (const style of styles) {
-        if (Array.isArray(style)) {
-          merged.push(...style);
-        } else if (style && typeof style === 'object') {
-          // List style (from StyleSheet.create)
-          if (style[0]) {
-            merged.push(...Array.from(style));
-          } else {
-            merged.push(style);
-          }
-        }
-      }
+  static isWeb = () => Reactors.platform === 'web';
 
-      return merged;
-    }
-
-    let merged = {};
-
-    for (const style of styles) {
-      if (Array.isArray(style)) {
-        for (const item of style) {
-          merged = {...merged, item};
-        }
-      } else if (style && typeof style === 'object') {
-        // List style (from StyleSheet.create)
-        if (style[0]) {
-          const arr = Array.from(style);
-
-          for (const item of arr) {
-            merged = {...merged, item};
-          }
-        } else {
-          merged = {...merged, ...style};
-        }
-      }
-    }
-
-    return merged;
-  }
-
-  props = props.bind(this);
-
+  static props = props;
 }
 
-export default new Core();
+// mergeStyles(...styles: any[]) {
+//   if (this.isMobile()) {
+//     const merged = [];
+//
+//     for (const style of styles) {
+//       if (Array.isArray(style)) {
+//         merged.push(...style);
+//       } else if (style && typeof style === 'object') {
+//         // List style (from StyleSheet.create)
+//         if (style[0]) {
+//           merged.push(...Array.from(style));
+//         } else {
+//           merged.push(style);
+//         }
+//       }
+//     }
+//
+//     return merged;
+//   }
+//
+//   let merged = {};
+//
+//   for (const style of styles) {
+//     if (Array.isArray(style)) {
+//       for (const item of style) {
+//         merged = {...merged, item};
+//       }
+//     } else if (style && typeof style === 'object') {
+//       // List style (from StyleSheet.create)
+//       if (style[0]) {
+//         const arr = Array.from(style);
+//
+//         for (const item of arr) {
+//           merged = {...merged, item};
+//         }
+//       } else {
+//         merged = {...merged, ...style};
+//       }
+//     }
+//   }
+//
+//   return merged;
+// }

@@ -1,6 +1,6 @@
 {
   "name": "reactors",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "description": "View components and APIs that work web, mobile and desktop!",
   "main": "dist/index.js",
   "keywords": [
@@ -33,7 +33,8 @@
     "flow": "flow",
     "prepush": "npm run eslint && npm test",
     "push": "npm run babel && npm run prepush && npm publish",
-    "test": "jest --colors --notify --verbose"
+    "jest": "jest --colors --notify --verbose",
+    "test": "rm -rf test; babel --out-dir test _test_; node ~/Dev/lib/describe-react/dist/bin/exec.js test/API/*/*.spec.js"
   },
   "author": {
     "name": "francois",
@@ -67,6 +68,7 @@
     "sinon": "^1.17.7"
   },
   "dependencies": {
+    "@francoisv/describe-react": "^0.1.52",
     "electron-notifications": "^0.1.4",
     "nedb": "^1.8.0"
   },
