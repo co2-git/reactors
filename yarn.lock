@@ -55,9 +55,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@francoisv/describe-react@^0.1.52":
-  version "0.1.52"
-  resolved "https://registry.yarnpkg.com/@francoisv/describe-react/-/describe-react-0.1.52.tgz#02f5c5ca0dde8918ec72db5af2a1be570687e6cb"
+"@francoisv/describe-react@^0.1.53":
+  version "0.1.53"
+  resolved "https://registry.yarnpkg.com/@francoisv/describe-react/-/describe-react-0.1.53.tgz#c8693de1cf99f31b37e98117f4e9d5ce35ecfc6f"
   dependencies:
     babel-eslint "^8.0.3"
     colors "^1.1.2"

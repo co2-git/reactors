@@ -1,4 +1,5 @@
 import Reactors from '../Core';
+import transform from './transform';
 
 export default class StyleSheet {
   static create(styles) {
@@ -8,6 +9,8 @@ export default class StyleSheet {
     }
     return new this(styles);
   }
+
+  static transform = transform;
 
   constructor(rules: {}) {
     for (const selector in rules) {
