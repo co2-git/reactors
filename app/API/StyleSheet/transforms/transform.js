@@ -1,5 +1,3 @@
-import compact from 'lodash/compact';
-
 import Reactors from '../../Core';
 
 const translateTransform = (values) => {
@@ -52,7 +50,7 @@ const transform = (style) => {
     const transformed = {};
     const transformations = style.transform.split(/\)\s+/);
     transformed.transform = [];
-    transformations.map(transformation => {
+    transformations.forEach(transformation => {
       if (!/\)$/.test(transformation)) {
         transformation += ')';
       }
