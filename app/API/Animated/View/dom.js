@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import first from 'lodash/first';
 import keys from 'lodash/keys';
+import uniq from 'lodash/uniq';
 
 import Reactors from '../../Core';
 import StyleSheet from '../../StyleSheet';
@@ -11,14 +12,19 @@ import timing from '../timing/dom';
 const parse = (styles, setState, getState) => {
   const style = StyleSheet.merge(styles);
   const parsed = {};
+  const transitions = [];
 
   for (const key in style) {
     if (style[key] instanceof Value) {
-      style[key].change = ({value}) => setState({
-        ...getState(),
-        [key]: value,
-      });
+      style[key].change = ({value}) => {
+        const nextState = {
+          ...getState(),
+          [key]: value,
+        };
+        return setState(nextState);
+      };
       parsed[key] = style[key]._value;
+      transitions.push('key');
     } else if (key === 'transform' && Array.isArray(style.transform)) {
       parsed.transform = [];
       let index = 0;
@@ -37,6 +43,7 @@ const parse = (styles, setState, getState) => {
             }),
           });
           parsed.transform.push({[transformerName]: transformerValue._value});
+          transitions.push('transform');
         } else {
           parsed.transform.push({[transformerName]: transformerValue});
         }
@@ -45,6 +52,9 @@ const parse = (styles, setState, getState) => {
     } else {
       parsed[key] = style[key];
     }
+  }
+  if (keys(transitions).length) {
+    parsed.transition = uniq(transitions).map(transition => `${transition} 1s`).join(', ');
   }
   return StyleSheet.merge(parsed);
 };

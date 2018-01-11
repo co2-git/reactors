@@ -1,6 +1,6 @@
-const timing = (animatedValue, {toValue}) => ({
+const timing = (animatedValue, {duration = '1s', toValue}) => ({
   start: () => {
-    animatedValue.change({value: toValue});
+    animatedValue.change({value: toValue, duration});
   },
 });
 
