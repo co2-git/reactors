@@ -16,6 +16,7 @@ export const transformProps = (props) => {
       case 'web':
       case 'desktop':
         mutatedProps.onClick = props[prop];
+        delete props.onPress;
         break;
       }
       break;
@@ -31,5 +32,5 @@ export const transformProps = (props) => {
       break;
     }
   }
-  return mutatedProps;
+  return {...props, ...mutatedProps};
 };

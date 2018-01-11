@@ -1,15 +1,13 @@
 import * as accessibility from '../Accessibility';
 import * as gesture from '../Gesture';
-import transformStyleProps from '../StyleSheet/transform';
+import StyleSheet from '../StyleSheet';
 
 const makeReactorsProps = props => {
-  const transformed = {
-    ...props,
-    ...accessibility.transformProps(props),
-    ...gesture.transformProps(props),
-  };
+  let transformed = {...props};
+  transformed = accessibility.transformProps(transformed);
+  transformed = gesture.transformProps(transformed);
   if (props.style) {
-    transformed.style = transformStyleProps(props.style);
+    transformed.style = StyleSheet.transform(props.style);
   }
   return transformed;
 };

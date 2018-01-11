@@ -32,6 +32,8 @@ var style = function style(styleProps) {
   return (0, _props2.default)({ style: styleProps });
 };
 
+var onPress = function onPress() {};
+
 exports.default = function () {
   return _react2.default.createElement(
     _describeReact.Describe,
@@ -46,7 +48,36 @@ exports.default = function () {
     ),
     _react2.default.createElement(
       _describeReact.Describe,
+      { label: 'Gestures' },
+      _react2.default.createElement(
+        _describeReact.Describe,
+        { label: 'DOM' },
+        _react2.default.createElement(_describeReact.Run, { script: setPlatformToWeb }),
+        _react2.default.createElement(
+          _describeReact.Describe,
+          { label: 'onPress should be transformed to onClick' },
+          _react2.default.createElement(_describeReact.Expect, {
+            'function': function _function() {
+              return (0, _props2.default)({ onPress: onPress });
+            },
+            'return': { onClick: onPress }
+          })
+        )
+      )
+    ),
+    _react2.default.createElement(
+      _describeReact.Describe,
       { label: 'Styles' },
+      _react2.default.createElement(
+        _describeReact.Describe,
+        { label: 'Merge styles - accept arrays and objects' },
+        _react2.default.createElement(_describeReact.Expect, {
+          'function': function _function() {
+            return style([{ margin: 10 }, { padding: 5 }, { padding: 4 }]);
+          },
+          'return': { style: { margin: 10, padding: 4 } }
+        })
+      ),
       _react2.default.createElement(
         _describeReact.Describe,
         { label: 'Mobile' },
@@ -98,7 +129,7 @@ exports.default = function () {
             'function': function _function() {
               return style({ transform: 'translate(120px, 50%)' });
             },
-            'return': { style: { transform: [{ translateX: 120, translateY: '50%' }] } }
+            'return': { style: { transform: [{ translateX: 120 }, { translateY: '50%' }] } }
           })
         ),
         _react2.default.createElement(
@@ -173,17 +204,17 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           _describeReact.Describe,
-          { label: '{transform: scale(2, 0.5} = {scale: [{scaleX: 2, scaleY: 0.5}]}' },
+          { label: '{transform: scale(2, 0.5} = {transform: [{scaleX: 2, scaleY: 0.5}]}' },
           _react2.default.createElement(_describeReact.Expect, {
             'function': function _function() {
               return style({ transform: 'scale(2, 0.5)' });
             },
-            'return': { style: { transform: [{ scaleX: 2, scaleY: 0.5 }] } }
+            'return': { style: { transform: [{ scaleX: 2 }, { scaleY: 0.5 }] } }
           })
         ),
         _react2.default.createElement(
           _describeReact.Describe,
-          { label: '{transform: scaleX(2} = {scale: [{scaleX: 2}]}' },
+          { label: '{transform: scaleX(2} = {transform: [{scaleX: 2}]}' },
           _react2.default.createElement(_describeReact.Expect, {
             'function': function _function() {
               return style({ transform: 'scaleX(2)' });
@@ -193,7 +224,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           _describeReact.Describe,
-          { label: '{transform: scaleY(2} = {scale: [{scaleY: 2}]}' },
+          { label: '{transform: scaleY(2} = {transform: [{scaleY: 2}]}' },
           _react2.default.createElement(_describeReact.Expect, {
             'function': function _function() {
               return style({ transform: 'scaleY(2)' });
@@ -203,17 +234,17 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           _describeReact.Describe,
-          { label: '{transform: skew(30deg, 20deg} = {skew: [{skewX: 30deg, skewY: 20deg}]}' },
+          { label: '{transform: skew(30deg, 20deg} = {transform: [{skewX: 30deg, skewY: 20deg}]}' },
           _react2.default.createElement(_describeReact.Expect, {
             'function': function _function() {
               return style({ transform: 'skew(30deg, 20deg)' });
             },
-            'return': { style: { transform: [{ skewX: '30deg', skewY: '20deg' }] } }
+            'return': { style: { transform: [{ skewX: '30deg' }, { skewY: '20deg' }] } }
           })
         ),
         _react2.default.createElement(
           _describeReact.Describe,
-          { label: '{transform: skewX(20deg} = {skew: [{skewX: 20deg}]}' },
+          { label: '{transform: skewX(20deg} = {transform: [{skewX: 20deg}]}' },
           _react2.default.createElement(_describeReact.Expect, {
             'function': function _function() {
               return style({ transform: 'skewX(20deg)' });
@@ -223,12 +254,22 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           _describeReact.Describe,
-          { label: '{transform: skewY(30deg} = {skew: [{skewY: 30deg}]}' },
+          { label: '{transform: skewY(30deg} = {transform: [{skewY: 30deg}]}' },
           _react2.default.createElement(_describeReact.Expect, {
             'function': function _function() {
               return style({ transform: 'skewY(30deg)' });
             },
             'return': { style: { transform: [{ skewY: '30deg' }] } }
+          })
+        ),
+        _react2.default.createElement(
+          _describeReact.Describe,
+          { label: '{transition: margin 1s} = {}' },
+          _react2.default.createElement(_describeReact.Expect, {
+            'function': function _function() {
+              return style({ transition: 'margin 1s' });
+            },
+            'return': { style: {} }
           })
         )
       ),
@@ -304,6 +345,16 @@ exports.default = function () {
               return style({ transform: [{ rotate: '20deg' }, { translateX: 120 }] });
             },
             'return': { style: { transform: 'rotate(20deg) translateX(120px)' } }
+          })
+        ),
+        _react2.default.createElement(
+          _describeReact.Describe,
+          { label: '{flexDirection: \'row\' | \'column\'} = {display: \'flex\', flexDirection: \'row\' | \'column\'}' },
+          _react2.default.createElement(_describeReact.Expect, {
+            'function': function _function() {
+              return style({ flexDirection: 'row' });
+            },
+            'return': { style: { flexDirection: 'row', display: 'flex' } }
           })
         )
       )

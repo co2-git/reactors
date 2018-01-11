@@ -14,6 +14,8 @@ const setPlatformToWeb = () => {
 
 const style = styleProps => props({style: styleProps});
 
+const onPress = () => {};
+
 export default () => (
   <Describe label="Reactors props">
     <Expect value={props} isAFunction />
@@ -22,7 +24,26 @@ export default () => (
       <Expect function={() => props({foo: 1})} return={{foo: 1}} />
     </Describe>
 
+    <Describe label="Gestures">
+      <Describe label="DOM">
+        <Run script={setPlatformToWeb} />
+        <Describe label="onPress should be transformed to onClick">
+          <Expect
+            function={() => props({onPress})}
+            return={{onClick: onPress}}
+          />
+        </Describe>
+      </Describe>
+    </Describe>
+
     <Describe label="Styles">
+      <Describe label="Merge styles - accept arrays and objects">
+        <Expect
+          function={() => style([{margin: 10}, {padding: 5}, {padding: 4}])}
+          return={{style: {margin: 10, padding: 4}}}
+        />
+      </Describe>
+
       <Describe label="Mobile">
         <Run script={setPlatformToMobile} />
 
@@ -57,7 +78,7 @@ export default () => (
         <Describe label="{transform: translate(120px, 50%)} = {transform: [{translateX: 120}, {translateY: '50%'}]}">
           <Expect
             function={() => style({transform: 'translate(120px, 50%)'})}
-            return={{style: {transform: [{translateX: 120, translateY: '50%'}]}}}
+            return={{style: {transform: [{translateX: 120}, {translateY: '50%'}]}}}
           />
         </Describe>
 
@@ -110,45 +131,52 @@ export default () => (
           />
         </Describe>
 
-        <Describe label="{transform: scale(2, 0.5} = {scale: [{scaleX: 2, scaleY: 0.5}]}">
+        <Describe label="{transform: scale(2, 0.5} = {transform: [{scaleX: 2, scaleY: 0.5}]}">
           <Expect
             function={() => style({transform: 'scale(2, 0.5)'})}
-            return={{style: {transform: [{scaleX: 2, scaleY: 0.5}]}}}
+            return={{style: {transform: [{scaleX: 2}, {scaleY: 0.5}]}}}
           />
         </Describe>
 
-        <Describe label="{transform: scaleX(2} = {scale: [{scaleX: 2}]}">
+        <Describe label="{transform: scaleX(2} = {transform: [{scaleX: 2}]}">
           <Expect
             function={() => style({transform: 'scaleX(2)'})}
             return={{style: {transform: [{scaleX: 2}]}}}
           />
         </Describe>
 
-        <Describe label="{transform: scaleY(2} = {scale: [{scaleY: 2}]}">
+        <Describe label="{transform: scaleY(2} = {transform: [{scaleY: 2}]}">
           <Expect
             function={() => style({transform: 'scaleY(2)'})}
             return={{style: {transform: [{scaleY: 2}]}}}
           />
         </Describe>
 
-        <Describe label="{transform: skew(30deg, 20deg} = {skew: [{skewX: 30deg, skewY: 20deg}]}">
+        <Describe label="{transform: skew(30deg, 20deg} = {transform: [{skewX: 30deg, skewY: 20deg}]}">
           <Expect
             function={() => style({transform: 'skew(30deg, 20deg)'})}
-            return={{style: {transform: [{skewX: '30deg', skewY: '20deg'}]}}}
+            return={{style: {transform: [{skewX: '30deg'}, {skewY: '20deg'}]}}}
           />
         </Describe>
 
-        <Describe label="{transform: skewX(20deg} = {skew: [{skewX: 20deg}]}">
+        <Describe label="{transform: skewX(20deg} = {transform: [{skewX: 20deg}]}">
           <Expect
             function={() => style({transform: 'skewX(20deg)'})}
             return={{style: {transform: [{skewX: '20deg'}]}}}
           />
         </Describe>
 
-        <Describe label="{transform: skewY(30deg} = {skew: [{skewY: 30deg}]}">
+        <Describe label="{transform: skewY(30deg} = {transform: [{skewY: 30deg}]}">
           <Expect
             function={() => style({transform: 'skewY(30deg)'})}
             return={{style: {transform: [{skewY: '30deg'}]}}}
+          />
+        </Describe>
+
+        <Describe label="{transition: margin 1s} = {}">
+          <Expect
+            function={() => style({transition: 'margin 1s'})}
+            return={{style: {}}}
           />
         </Describe>
       </Describe>
@@ -201,6 +229,13 @@ export default () => (
           <Expect
             function={() => style({transform: [{rotate: '20deg'}, {translateX: 120}]})}
             return={{style: {transform: 'rotate(20deg) translateX(120px)'}}}
+          />
+        </Describe>
+
+        <Describe label="{flexDirection: 'row' | 'column'} = {display: 'flex', flexDirection: 'row' | 'column'}">
+          <Expect
+            function={() => style({flexDirection: 'row'})}
+            return={{style: {flexDirection: 'row', display: 'flex'}}}
           />
         </Describe>
       </Describe>

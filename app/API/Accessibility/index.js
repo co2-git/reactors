@@ -31,5 +31,5 @@ export const transformProps = (props = {}) => {
       break;
     }
   }
-  return mutatedProps;
+  return {...props, ...mutatedProps};
 };
