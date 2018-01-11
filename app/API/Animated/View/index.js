@@ -1,7 +1,11 @@
 import Reactors from '../../Core';
 
-const ReactorsAnimated = require(
-  Reactors.platform === 'mobile' ? './mobile' : './dom'
-).default;
+let ReactorsAnimated;
+
+if (Reactors.platform === 'mobile') {
+  ReactorsAnimated = require('./mobile').default;
+} else {
+  ReactorsAnimated = require('./dom').default;
+}
 
 export default ReactorsAnimated;

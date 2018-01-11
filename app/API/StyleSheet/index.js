@@ -10,10 +10,17 @@ import transform from './transforms/transform';
 import transition from './transforms/transition';
 
 export default class StyleSheet {
+  static sheets = {};
+
   static create(styles) {
     if (Reactors.isMobile()) {
       const RNSS = require('react-native').StyleSheet;
-      return RNSS.create(styles);
+      const sheet = RNSS.create(styles);
+      for (const selector in sheet) {
+        const number = sheet[selector];
+        StyleSheet.sheets[number.toString()] = styles[selector];
+      }
+      return sheet;
     }
     return new this(styles);
   }
@@ -26,9 +33,13 @@ export default class StyleSheet {
       array.push(styles);
     }
     const transformed = {};
-    for (const style of array) {
-      Object.assign(transformed, style);
-    }
+    array.forEach(style => {
+      if (typeof style === 'number') {
+        Object.assign(transformed, StyleSheet.sheets[style.toString()]);
+      } else {
+        Object.assign(transformed, style);
+      }
+    });
     return transformed;
   };
 
@@ -45,9 +56,9 @@ export default class StyleSheet {
       transition,
     ];
     let transformed = StyleSheet.merge(styles);
-    for (const transformer of transformers) {
+    transformers.forEach(transformer => {
       transformed = transformer(transformed);
-    }
+    });
     return transformed;
   };
 
