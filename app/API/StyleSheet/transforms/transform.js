@@ -104,7 +104,7 @@ const transform = (style) => {
     });
     return {...style, ...transformed};
   }
-  if (Array.isArray(style.transform)) {
+  if (Array.isArray(style.transform) && Reactors.isDOM()) {
     const transformed = {};
     transformed.transform = style.transform.map((transformation) => {
       for (const key in transformation) {

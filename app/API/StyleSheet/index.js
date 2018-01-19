@@ -1,3 +1,5 @@
+import compact from 'lodash/compact';
+
 import borderWidth from './transforms/borderWidth';
 import cursor from './transforms/cursor';
 import display from './transforms/display';
@@ -28,7 +30,7 @@ export default class StyleSheet {
   static merge = (styles) => {
     const array = [];
     if (Array.isArray(styles)) {
-      array.push(...styles);
+      array.push(...compact(styles));
     } else {
       array.push(styles);
     }
