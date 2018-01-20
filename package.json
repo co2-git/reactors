@@ -1,6 +1,6 @@
 {
   "name": "reactors",
-  "version": "4.2.16",
+  "version": "4.2.18",
   "description": "View components and APIs that work web, mobile and desktop!",
   "main": "dist/index.js",
   "keywords": [
@@ -31,7 +31,6 @@
     "babel:watch": "rm -rf dist; babel --watch --out-dir dist/ app/",
     "eslint": "eslint app",
     "flow": "flow",
-    "postInstall": "node_modules/.bin/rn-nodeify --install --hack",
     "prepublishOnly": "npm run eslint && yarn babel && yarn test",
     "prepush": "npm run eslint && npm test",
     "push": "npm run babel && npm run prepush && npm publish",
@@ -69,6 +68,7 @@
   },
   "dependencies": {
     "@francoisv/describe-react": "^0.1.53",
+    "css-property-parser": "^1.0.5",
     "electron-notifications": "^0.1.4",
     "nedb": "^1.8.0"
   },

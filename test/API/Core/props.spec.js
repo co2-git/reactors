@@ -34,6 +34,121 @@ var style = function style(styleProps) {
 
 var onPress = function onPress() {};
 
+var testStylesMobile = [{
+  name: 'Border shorthand',
+  in: { border: '1px solid #000' },
+  out: {
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#000'
+  }
+}, {
+  name: 'Box Shadow',
+  in: { boxShadow: '0 4px 4px 1px rgba(0, 0, 0, .2)' },
+  out: {
+    shadowColor: 'rgba(0, 0, 0, .2)',
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4
+  }
+}, {
+  name: 'Box Shadow',
+  in: { boxShadow: '60px -16px teal' },
+  out: {
+    shadowColor: 'teal',
+    shadowOffset: {
+      width: 60,
+      height: -16
+    },
+    shadowOpacity: 1
+  }
+}, {
+  name: 'Box Shadow',
+  in: { boxShadow: '10px 5px 5px black' },
+  out: {
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 10,
+      height: 5
+    },
+    shadowOpacity: 1,
+    shadowRadius: 5
+  }
+}, {
+  name: 'Box Shadow',
+  in: { boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)' },
+  out: {
+    shadowColor: 'rgba(0, 0, 0, 0.2)',
+    shadowOffset: {
+      width: 2,
+      height: 2
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
+  }
+}, {
+  name: 'Box Shadow(s)',
+  in: { boxShadow: '3px 3px red, -1em 0 0.4em olive' },
+  out: {
+    shadowColor: 'red',
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    shadowOpacity: 1
+  }
+}, {
+  name: 'Box Shadow inset',
+  in: { boxShadow: 'inset 5em 1em gold' },
+  out: {
+    shadowColor: 'gold',
+    shadowOffset: {
+      width: -5,
+      height: -1
+    },
+    shadowOpacity: 1
+  }
+}, {
+  name: 'Cursor',
+  in: { cursor: 'pointer' },
+  out: {}
+}, {
+  name: 'Flex display with no direction',
+  in: { display: 'flex' },
+  out: { flexDirection: 'row' }
+}, {
+  name: 'Flex display with column',
+  in: { display: 'flex', flexDirection: 'column' },
+  out: { flexDirection: 'column' }
+}, {
+  name: 'Flex display with row',
+  in: { display: 'flex', flexDirection: 'row' },
+  out: { flexDirection: 'row' }
+}, {
+  name: 'Transform matrix',
+  in: { transform: 'matrix(1, 2, 3)' },
+  out: { transform: [] }
+}, {
+  name: 'Transform translate',
+  in: { transform: 'translate(120px, 50%)' },
+  out: { transform: [{ translateX: 120 }, { translateY: '50%' }] }
+}, {
+  name: 'Transform translate X',
+  in: { transform: 'translateX(120px)' },
+  out: { transform: [{ translateX: 120 }] }
+}, {
+  name: 'Transform translate Y',
+  in: { transform: 'translateY(120px)' },
+  out: { transform: [{ translateY: 120 }] }
+}, {
+  name: 'Remove transition',
+  in: { transition: 'margin 1s' },
+  out: {}
+}];
+
 exports.default = function () {
   return _react2.default.createElement(
     _describeReact.Describe,
@@ -82,76 +197,20 @@ exports.default = function () {
         _describeReact.Describe,
         { label: 'Mobile' },
         _react2.default.createElement(_describeReact.Run, { script: setPlatformToMobile }),
-        _react2.default.createElement(
-          _describeReact.Describe,
-          { label: '{display: flex} = {flexDirection: row}' },
-          _react2.default.createElement(_describeReact.Expect, {
-            'function': function _function() {
-              return style({ display: 'flex' });
+        testStylesMobile.map(function (test) {
+          return _react2.default.createElement(
+            _describeReact.Describe,
+            {
+              label: test.name + ' --- ' + (JSON.stringify(test.in) + ' ==> ' + JSON.stringify(test.out))
             },
-            'return': { style: { flexDirection: 'row' } }
-          })
-        ),
-        _react2.default.createElement(
-          _describeReact.Describe,
-          { label: '{display: flex, flexDirection: column} = {flexDirection: column}' },
-          _react2.default.createElement(_describeReact.Expect, {
-            'function': function _function() {
-              return style({ display: 'flex', flexDirection: 'column' });
-            },
-            'return': { style: { flexDirection: 'column' } }
-          })
-        ),
-        _react2.default.createElement(
-          _describeReact.Describe,
-          { label: '{cursor: *} = {}' },
-          _react2.default.createElement(_describeReact.Expect, {
-            'function': function _function() {
-              return style({ cursor: 'pointer' });
-            },
-            'return': { style: {} }
-          })
-        ),
-        _react2.default.createElement(
-          _describeReact.Describe,
-          { label: '{transform: matrix(1, 2, 3)} = {transform: []}' },
-          _react2.default.createElement(_describeReact.Expect, {
-            'function': function _function() {
-              return style({ transform: 'matrix(1, 2,3)' });
-            },
-            'return': { style: { transform: [] } }
-          })
-        ),
-        _react2.default.createElement(
-          _describeReact.Describe,
-          { label: '{transform: translate(120px, 50%)} = {transform: [{translateX: 120}, {translateY: \'50%\'}]}' },
-          _react2.default.createElement(_describeReact.Expect, {
-            'function': function _function() {
-              return style({ transform: 'translate(120px, 50%)' });
-            },
-            'return': { style: { transform: [{ translateX: 120 }, { translateY: '50%' }] } }
-          })
-        ),
-        _react2.default.createElement(
-          _describeReact.Describe,
-          { label: '{transform: translateX(120px)} = {transform: [{translateX: 120}]}' },
-          _react2.default.createElement(_describeReact.Expect, {
-            'function': function _function() {
-              return style({ transform: 'translateX(120px)' });
-            },
-            'return': { style: { transform: [{ translateX: 120 }] } }
-          })
-        ),
-        _react2.default.createElement(
-          _describeReact.Describe,
-          { label: '{transform: translateY(120px)} = {transform: [{translateY: 120}]}' },
-          _react2.default.createElement(_describeReact.Expect, {
-            'function': function _function() {
-              return style({ transform: 'translateY(120px)' });
-            },
-            'return': { style: { transform: [{ translateY: 120 }] } }
-          })
-        ),
+            _react2.default.createElement(_describeReact.Expect, {
+              'function': function _function() {
+                return style(test.in);
+              },
+              'return': { style: test.out }
+            })
+          );
+        }),
         _react2.default.createElement(
           _describeReact.Describe,
           { label: '{transform: perspective(1)} = {transform: [{perspective: 1}]}' },
@@ -260,16 +319,6 @@ exports.default = function () {
               return style({ transform: 'skewY(30deg)' });
             },
             'return': { style: { transform: [{ skewY: '30deg' }] } }
-          })
-        ),
-        _react2.default.createElement(
-          _describeReact.Describe,
-          { label: '{transition: margin 1s} = {}' },
-          _react2.default.createElement(_describeReact.Expect, {
-            'function': function _function() {
-              return style({ transition: 'margin 1s' });
-            },
-            'return': { style: {} }
           })
         )
       ),

@@ -16,6 +16,138 @@ const style = styleProps => props({style: styleProps});
 
 const onPress = () => {};
 
+const testStylesMobile = [
+  {
+    name: 'Border shorthand',
+    in: {border: '1px solid #000'},
+    out: {
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderColor: '#000',
+    },
+  },
+  {
+    name: 'Box Shadow',
+    in: {boxShadow: '0 4px 4px 1px rgba(0, 0, 0, .2)'},
+    out: {
+      shadowColor: 'rgba(0, 0, 0, .2)',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 4,
+    },
+  },
+  {
+    name: 'Box Shadow',
+    in: {boxShadow: '60px -16px teal'},
+    out: {
+      shadowColor: 'teal',
+      shadowOffset: {
+        width: 60,
+        height: -16,
+      },
+      shadowOpacity: 1,
+    },
+  },
+  {
+    name: 'Box Shadow',
+    in: {boxShadow: '10px 5px 5px black'},
+    out: {
+      shadowColor: 'black',
+      shadowOffset: {
+        width: 10,
+        height: 5,
+      },
+      shadowOpacity: 1,
+      shadowRadius: 5,
+    },
+  },
+  {
+    name: 'Box Shadow',
+    in: {boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)'},
+    out: {
+      shadowColor: 'rgba(0, 0, 0, 0.2)',
+      shadowOffset: {
+        width: 2,
+        height: 2,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 2,
+    },
+  },
+  {
+    name: 'Box Shadow(s)',
+    in: {boxShadow: '3px 3px red, -1em 0 0.4em olive'},
+    out: {
+      shadowColor: 'red',
+      shadowOffset: {
+        width: 3,
+        height: 3,
+      },
+      shadowOpacity: 1,
+    },
+  },
+  {
+    name: 'Box Shadow inset',
+    in: {boxShadow: 'inset 5em 1em gold'},
+    out: {
+      shadowColor: 'gold',
+      shadowOffset: {
+        width: -5,
+        height: -1,
+      },
+      shadowOpacity: 1,
+    },
+  },
+  {
+    name: 'Cursor',
+    in: {cursor: 'pointer'},
+    out: {},
+  },
+  {
+    name: 'Flex display with no direction',
+    in: {display: 'flex'},
+    out: {flexDirection: 'row'},
+  },
+  {
+    name: 'Flex display with column',
+    in: {display: 'flex', flexDirection: 'column'},
+    out: {flexDirection: 'column'},
+  },
+  {
+    name: 'Flex display with row',
+    in: {display: 'flex', flexDirection: 'row'},
+    out: {flexDirection: 'row'},
+  },
+  {
+    name: 'Transform matrix',
+    in: {transform: 'matrix(1, 2, 3)'},
+    out: {transform: []},
+  },
+  {
+    name: 'Transform translate',
+    in: {transform: 'translate(120px, 50%)'},
+    out: {transform: [{translateX: 120}, {translateY: '50%'}]},
+  },
+  {
+    name: 'Transform translate X',
+    in: {transform: 'translateX(120px)'},
+    out: {transform: [{translateX: 120}]},
+  },
+  {
+    name: 'Transform translate Y',
+    in: {transform: 'translateY(120px)'},
+    out: {transform: [{translateY: 120}]},
+  },
+  {
+    name: 'Remove transition',
+    in: {transition: 'margin 1s'},
+    out: {},
+  },
+];
+
 export default () => (
   <Describe label="Reactors props">
     <Expect value={props} isAFunction />
@@ -47,54 +179,19 @@ export default () => (
       <Describe label="Mobile">
         <Run script={setPlatformToMobile} />
 
-        <Describe label="{display: flex} = {flexDirection: row}">
-          <Expect
-            function={() => style({display: 'flex'})}
-            return={{style: {flexDirection: 'row'}}}
-          />
-        </Describe>
-
-        <Describe label="{display: flex, flexDirection: column} = {flexDirection: column}">
-          <Expect
-            function={() => style({display: 'flex', flexDirection: 'column'})}
-            return={{style: {flexDirection: 'column'}}}
-          />
-        </Describe>
-
-        <Describe label="{cursor: *} = {}">
-          <Expect
-            function={() => style({cursor: 'pointer'})}
-            return={{style: {}}}
-          />
-        </Describe>
-
-        <Describe label="{transform: matrix(1, 2, 3)} = {transform: []}">
-          <Expect
-            function={() => style({transform: 'matrix(1, 2,3)'})}
-            return={{style: {transform: []}}}
-          />
-        </Describe>
-
-        <Describe label="{transform: translate(120px, 50%)} = {transform: [{translateX: 120}, {translateY: '50%'}]}">
-          <Expect
-            function={() => style({transform: 'translate(120px, 50%)'})}
-            return={{style: {transform: [{translateX: 120}, {translateY: '50%'}]}}}
-          />
-        </Describe>
-
-        <Describe label="{transform: translateX(120px)} = {transform: [{translateX: 120}]}">
-          <Expect
-            function={() => style({transform: 'translateX(120px)'})}
-            return={{style: {transform: [{translateX: 120}]}}}
-          />
-        </Describe>
-
-        <Describe label="{transform: translateY(120px)} = {transform: [{translateY: 120}]}">
-          <Expect
-            function={() => style({transform: 'translateY(120px)'})}
-            return={{style: {transform: [{translateY: 120}]}}}
-          />
-        </Describe>
+        {testStylesMobile.map(test => (
+          <Describe
+            label={
+              `${test.name} --- ` +
+              `${JSON.stringify(test.in)} ==> ${JSON.stringify(test.out)}`
+            }
+          >
+            <Expect
+              function={() => style(test.in)}
+              return={{style: test.out}}
+            />
+          </Describe>
+        ))}
 
         <Describe label="{transform: perspective(1)} = {transform: [{perspective: 1}]}">
           <Expect
@@ -170,13 +267,6 @@ export default () => (
           <Expect
             function={() => style({transform: 'skewY(30deg)'})}
             return={{style: {transform: [{skewY: '30deg'}]}}}
-          />
-        </Describe>
-
-        <Describe label="{transition: margin 1s} = {}">
-          <Expect
-            function={() => style({transition: 'margin 1s'})}
-            return={{style: {}}}
           />
         </Describe>
       </Describe>

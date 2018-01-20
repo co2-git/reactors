@@ -1,6 +1,8 @@
 import compact from 'lodash/compact';
 
+import border from './transforms/border';
 import borderWidth from './transforms/borderWidth';
+import boxShadow from './transforms/boxShadow';
 import cursor from './transforms/cursor';
 import display from './transforms/display';
 import flexDirection from './transforms/flexDirection';
@@ -47,7 +49,9 @@ export default class StyleSheet {
 
   static transform = (styles) => {
     const transformers = [
+      border,
       borderWidth,
+      boxShadow,
       cursor,
       display,
       flexDirection,
